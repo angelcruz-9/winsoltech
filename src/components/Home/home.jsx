@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import About from "../about/about";
 import Cards from "./cards";
 
 function Home() {
-  const [headerText, setHeaderText] = useState(
-    "WINSOLTECH offers an extensive range of solutions to its clients to implement and upgrade best practices in health care industry."
-  );
+  const headerText = "WINSOLTECH offers an extensive range of solutions to its clients to implement and upgrade best practices in health care industry."
 
   return (
     <>
