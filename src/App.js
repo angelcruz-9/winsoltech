@@ -9,6 +9,7 @@ function App() {
       <Layout>
         <Routes>
           <Route exact path="/" element={<Home/>} />
+          <Route path="/winsoltech" element={<Home />} />
         </Routes>
       </Layout>
     </Router>
