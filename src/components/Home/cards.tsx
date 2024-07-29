@@ -1,22 +1,31 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
+import { SiCashapp } from "react-icons/si";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
+import { AiFillAccountBook } from "react-icons/ai";
 
 const aboutUsData = [
   {
     id: 1,
-    title: 'Cash Posting',
-    description: 'When a claim has been processed and paid, the amount paid will have to be applied to the amount charged for individual patient’s treatment in the Medical Billing Software.'
+    icon: <SiCashapp size={32} />,
+    title: "Cash Posting",
+    description:
+      "When a claim has been processed and paid, the amount paid will have to be applied to the amount charged for individual patient’s treatment in the Medical Billing Software.",
   },
   {
     id: 2,
-    title: 'Eligibility Verification',
-    description: 'Setup of new patient/emergency patient accounts, update existing accounts with insurance changes in your dental software.'
+    icon: <RiVerifiedBadgeFill size={32} />,
+    title: "Eligibility Verification",
+    description:
+      "Setup of new patient/emergency patient accounts, update existing accounts with insurance changes in your dental software.",
   },
   {
     id: 3,
-    title: 'Account Receivables',
-    description: 'Dental Management Services for dental billing, insurance & patient accounts receivable management, and EOB posting.'
-  }
+    icon: <AiFillAccountBook size={32} />,
+    title: "Account Receivables",
+    description:
+      "Dental Management Services for dental billing, insurance & patient accounts receivable management, and EOB posting.",
+  },
 ];
 
 function Cards() {
@@ -31,7 +40,10 @@ function Cards() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-2xl font-bold mb-4 text-gray-900">{card.title}</h2>
+            <div className="flex justify-center mb-4">{card.icon}</div>
+            <h2 className="text-2xl font-bold mb-4 text-gray-900">
+              {card.title}
+            </h2>
             <p className="text-gray-700">{card.description}</p>
           </motion.div>
         ))}

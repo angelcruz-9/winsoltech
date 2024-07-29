@@ -8,8 +8,8 @@ function Home() {
 
   return (
     <>
-      <div className="py-44 bg-gray-700">
-        <div className="container-common relative">
+      <div className="bg-gray-700">
+        <div className="container-common relative py-52">
           <h1 className="text-3xl font-bold text-white leading-[38px] text-center">
             {headerText}
           </h1>
@@ -17,14 +17,14 @@ function Home() {
             <Link
               href="#"
               target="_blank"
-              className="py-2 px-6 border border-secondary bg-secondary border-solid rounded-lg mr-8"
+              className="py-2 px-6 border border-secondary bg-secondary border-solid rounded-xl mr-8"
             >
               Our Service
             </Link>
             <Link
               href="#"
               target="_blank"
-              className="py-2 px-6 border border-primary bg-primary text-white border-solid rounded-lg"
+              className="py-2 px-6 border border-primary bg-primary text-white border-solid rounded-xl"
             >
               Contact Us
             </Link>
