@@ -4,39 +4,32 @@ import { motion } from 'framer-motion';
 const aboutData = {
   title: (
     <>
-      <strong>WINSOLTECH</strong> is the Medical Billing company associated globally and Most of
-      the outsourcing activities are performed from our Indian office. We offer
-      medical billing services to all the physicians across various specialties
-      and to increase profitability and cash flow while improving office
-      efficiency. We believe that our employees’ commitment, sincerity, morale,
-      communication skills, positive attitude, and leadership qualities are the
-      important factors that contribute to customer satisfaction and smooth
-      delivery.
+      <strong className="text-primary">WINSOLTECH</strong> is a globally recognized leader in medical billing services. Our primary office in India manages outsourcing activities to ensure seamless service delivery to physicians across various specialties. Our mission is to enhance profitability, optimize cash flow, and improve office efficiency through our dedicated services. We attribute our success to our employees' commitment, sincerity, morale, communication skills, positive attitude, and leadership qualities, all of which are crucial for exceptional customer satisfaction and smooth operations.
     </>
   ),
   subTitle: 'OUR VALUES',
   subItems: [
-    'High-end professionals care for your billing',
-    'Expertise in dealing with physicians, payers, patients',
-    'Better results with quality and timely delivery methods',
-    'Provide inputs on business excellence and performance',
-    'End delivery per standards',
-    'Proficiency Services',
+    'High-end professional care for your billing needs',
+    'Expertise in handling interactions with physicians, payers, and patients',
+    'Delivering superior results with quality and timely methods',
+    'Providing valuable insights on business excellence and performance',
+    'Ensuring end delivery meets industry standards',
+    'Offering proficient and reliable services',
   ],
 };
 
 function About() {
   return (
-    <div className="py-16 bg-gray-100 pt-44">
-      <div className="container-common px-4 flex flex-col lg:flex-row">
+    <section className="py-16 bg-gray-50 pt-48">
+      <div className="container px-4 mx-auto flex flex-col lg:flex-row">
         {/* Left Section */}
         <motion.div
-          className="lg:w-1/2 mb-8 lg:mb-0 lg:pr-8"
+          className="lg:w-1/2 mb-8 lg:mb-0 lg:pr-12"
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="text-xl  text-gray-900 mb-4">
+          <h1 className="text-xl font-semibold text-gray-800 mb-4 leading-relaxed">
             {aboutData.title}
           </h1>
         </motion.div>
@@ -48,17 +41,17 @@ function About() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          <h2 className="text-2xl font-semibold text-gray-900 mb-6">
             {aboutData.subTitle}
           </h2>
-          <ul className="list-disc pl-5 space-y-2 text-gray-700">
+          <ul className="list-disc pl-6 space-y-3 text-gray-700">
             {aboutData.subItems.map((item, index) => (
-              <li key={index} className="text-lg">{item}</li>
+              <li key={index} className="text-base">{item}</li>
             ))}
           </ul>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 }
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { SiCashapp } from "react-icons/si";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
@@ -29,9 +29,18 @@ const aboutUsData = [
 ];
 
 function Cards() {
+  const [currentCard, setCurrentCard] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentCard((prevCard) => (prevCard + 1) % aboutUsData.length);
+    }, 3000); // Change card every 3 seconds
+
+    return () => clearInterval(interval); // Cleanup interval on component unmount
+  }, []);
   return (
     <div className="py-16 flex flex-col items-center absolute">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-6">
+      <div className="xl:grid grid-cols-1 hidden sm:grid-cols-2 md:grid-cols-3 gap-8 p-6">
         {aboutUsData.map((card) => (
           <motion.div
             key={card.id}
@@ -47,6 +56,26 @@ function Cards() {
             <p className="text-gray-700">{card.description}</p>
           </motion.div>
         ))}
+      </div>
+      <div className="block xl:hidden">
+        <motion.div
+          key={aboutUsData[currentCard].id}
+          className="bg-white shadow-xl rounded-lg p-6 max-w-md mx-auto transform transition-transform duration-500 hover:scale-105 hover:shadow-2xl"
+          initial={{ opacity: 0, x: 50, scale: 0.9 }}
+          animate={{ opacity: 1, x: 0, scale: 1 }}
+          exit={{ opacity: 0, x: 50, scale: 0.9 }}
+          transition={{ duration: 0.6 }} // Slow animation
+        >
+          <div className="flex justify-center mb-4">
+            {aboutUsData[currentCard].icon}
+          </div>
+          <h2 className="text-2xl font-bold mb-4 text-gray-900">
+            {aboutUsData[currentCard].title}
+          </h2>
+          <p className="text-gray-700">
+            {aboutUsData[currentCard].description}
+          </p>
+        </motion.div>
       </div>
     </div>
   );

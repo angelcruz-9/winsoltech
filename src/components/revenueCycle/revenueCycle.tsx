@@ -3,6 +3,8 @@ import { motion } from 'framer-motion';
 import RCM from './rcm';
 import Priority from './priority';
 import Current from './current';
+import Quality from './quality';
+import Deliver from './deliver';
 
 const revenueData = {
     hightLightText: 'Revenue Cycle Management',
@@ -29,7 +31,7 @@ const buttonVariants = {
 function RevenueCycle() {
   return (
     <section className='flex flex-col'>
-            <div className="container-common pt-40">
+            <div className="container-common pt-24 xl:pt-40">
       <motion.div 
         className="flex flex-col h-full"
         variants={containerVariants}
@@ -37,9 +39,9 @@ function RevenueCycle() {
         animate="visible"
       >
         {/* Top Section */}
-        <div className="flex flex-row mb-16">
+        <div className="flex flex-col xl:flex-row xl:mb-16">
           {/* Left Section */}
-          <div className="w-1/2 p-4 flex flex-col justify-between items-start space-y-6">
+          <div className="xl:w-1/2 w-full p-4 flex flex-col justify-between items-start space-y-6">
             <motion.h3
               className='text-lg font-bold text-blue-400'
               initial={{ opacity: 0, x: -20 }}
@@ -49,7 +51,7 @@ function RevenueCycle() {
               {revenueData.hightLightText}
             </motion.h3>
             <motion.h2
-              className="text-5xl font-bold mb-4 leading-[44px]"
+              className="text-5xl font-bold mb-4 leading-[54px] xl:leading-[44px]"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -76,7 +78,7 @@ function RevenueCycle() {
           </div>
 
           {/* Right Section */}
-          <div className="w-1/2 p-4 flex items-center justify-center">
+          <div className="xl:w-1/2 w-full p-4 flex items-center justify-center">
             <motion.img
               src={`${process.env.PUBLIC_URL}/${revenueData.revenueImg}`}
               alt="Revenue Cycle Management"
@@ -94,6 +96,8 @@ function RevenueCycle() {
     </div>
     <Priority />
     <Current />
+    <Quality />
+    <Deliver />
     </section>
   );
 }
