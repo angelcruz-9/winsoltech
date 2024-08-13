@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="bg-gray-800 p-4 flex justify-between items-center w-full text-white">
       <div className="container-common mx-auto flex justify-between items-center">
-        <div className="text-left w-1/2 xl:w-full">
+        <div className="text-left w-1/2">
           <p>&copy; {new Date().getFullYear()} WinsolTech All rights reserved.</p>
         </div>
         <div className="text-right">
