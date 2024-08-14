@@ -17,6 +17,7 @@ interface InnerCardDetails {
 }
 
 interface ServiceCardProps {
+    key?: number;
     id?: number; // Added ID prop
     title?: string;
     icon?: React.ReactElement<SvgIconProps>;

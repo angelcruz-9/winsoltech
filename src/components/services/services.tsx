@@ -1,6 +1,9 @@
 import React from "react";
 import ServiceCard from "./serviceCard";
 import HowToRegIcon from '@mui/icons-material/HowToReg';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import ManageHistoryIcon from '@mui/icons-material/ManageHistory';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 
 const servicesData = {
     title: <>Our Services</>,
@@ -52,7 +55,7 @@ const servicesData = {
         {
             id: 2,
             title: "Claim Submission",
-            icon: <HowToRegIcon fontSize="large" />,
+            icon: <AssignmentIcon fontSize="large" />,
             link: 'claim-submission',
             description:
                 "Our Services include preparing and sending healthcare claims to insurance companies for reimbursement. This involves compiling accurate billing information, coding services correctly, and adhering to payer-specific guidelines to ensure that claims are processed efficiently and without delay.",
@@ -84,7 +87,7 @@ const servicesData = {
         {
             id: 3,
             title: "Claim Management",
-            icon: <HowToRegIcon fontSize="large" />,
+            icon: <ManageHistoryIcon fontSize="large" />,
             link: 'claim-management',
             description:
                 "Our Services encompasses the processes of submitting, tracking, correcting, and following up on healthcare claims to ensure that providers are reimbursed correctly and promptly. It involves detailed attention to coding accuracy, compliance with payer guidelines, and proactive resolution of any issues that may lead to delays or denials.",
@@ -256,7 +259,7 @@ const servicesData = {
         {
             id: 4,
             title: "Account Receivable",
-            icon: <HowToRegIcon fontSize="large" />,
+            icon: <AccountBalanceIcon fontSize="large" />,
             link: 'account-receivable',
             description:
                 "Our service refers to the outstanding payments that healthcare providers are entitled to receive from patients, insurance companies, and other payers for services delivered. Efficient A/R management involves tracking these receivables, following up on unpaid accounts, and ensuring timely collections to optimize revenue flow and minimize the risk of bad debt.",
@@ -655,7 +658,7 @@ const Services = () => {
                     <h1 className="text-4xl font-bold text-gray-900">{servicesData.title}</h1>
                     <div className="border-b-4 border-primary w-24 mb-6"></div>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8">
                     {servicesData.cardData.map((service) => (
                         <ServiceCard
                             key={service.id}

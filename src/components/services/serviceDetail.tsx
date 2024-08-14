@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { motion } from "framer-motion";
 
 interface NestedSubItem {
   id?: number;
@@ -465,80 +468,80 @@ const cardData: ServiceCardProps[] = [
                 id: 1,
                 title: "Timely Follow-Up:",
                 desc: (
-                  <>
-                    <p>
+                  <ul className='text-md leading-5 text-gray-600 list-disc pl-4'>
+                    <li className='leading-8'>
                       Prompt follow-ups reduce the days in A/R and accelerate
                       cash collections.
-                    </p>
-                    <p>
+                    </li>
+                    <li className='leading-8'>
                       Prioritization of claims based on dollar value and date of
                       service maximizes recovery efforts.
-                    </p>
-                  </>
+                    </li>
+                  </ul>
                 ),
               },
               {
                 id: 2,
                 title: "Claim Management:",
                 desc: (
-                  <>
-                    <p>
+                  <ul className='text-md leading-5 text-gray-600 list-disc pl-4'>
+                    <li className='leading-8'>
                       Meticulous tracking of claim status to address any issues
                       during the billing process.
-                    </p>
-                    <p>
+                    </li>
+                    <li className='leading-8'>
                       Experienced billers adept at navigating insurance
                       follow-ups and resolving discrepancies efficiently.
-                    </p>
-                  </>
+                    </li>
+                  </ul>
                 ),
               },
               {
                 id: 3,
                 title: "Reporting and Analysis:",
                 desc: (
-                  <>
-                    <p>
+                  <ul className='text-md leading-5 text-gray-600 list-disc pl-4'>
+                    <li className='leading-8'>
                       Detailed reports on A/R metrics to help you understand
                       your financial position.
-                    </p>
-                    <p>
+                    </li>
+                    <li className='leading-8'>
                       Insights provided for informed decision-making regarding
                       your revenue cycle.
-                    </p>
-                  </>
+                    </li>
+                  </ul>
                 ),
               },
               {
                 id: 4,
                 title: "Denial Management:",
                 desc: (
-                  <>
-                    <p>
+                  <ul className='text-md leading-5 text-gray-600 list-disc pl-4'>
+                    <li className='leading-8'>
                       Robust denial management process to address denied claims
                       swiftly.
-                    </p>
-                    <p>
+                    </li>
+                    <li className='leading-8'>
                       Root cause analysis of denials and implementation of
                       strategies to prevent future occurrences.
-                    </p>
-                  </>
+                    </li>
+                  </ul>
                 ),
               },
               {
                 id: 5,
                 title: "Patient Collections:",
                 desc: (
-                  <>
-                    <p>
+                  <ul className='text-md leading-5 text-gray-600 list-disc pl-4'>
+                    <li className='leading-8'>
                       Management of self-pay accounts with effective collection
                       strategies.
-                    </p>
-                    <p>
+                    </li>
+                    <li className='leading-8'>
                       Enhancement of patient communication to improve recovery
                       rates.
-                    </p>
-                  </>
+                    </li>
+                  </ul>
                 ),
               },
             ],
@@ -607,13 +610,13 @@ const cardData: ServiceCardProps[] = [
                   "Patient collections involve obtaining payments from patients for healthcare services rendered, including:",
                 subItems: [
                   {
-                    title: "Co-pays",
+                    desc: "Co-pays",
                   },
                   {
-                    title: "Deductibles",
+                    desc: "Deductibles",
                   },
                   {
-                    title: "Balances remaining after insurance payments",
+                    desc: "Balances remaining after insurance payments",
                   },
                 ],
               },
@@ -622,13 +625,13 @@ const cardData: ServiceCardProps[] = [
                 title: "Effective strategies for patient collections include:",
                 subItems: [
                   {
-                    title: "Clear communication",
+                    desc: "Clear communication",
                   },
                   {
-                    title: "Patient education",
+                    desc: "Patient education",
                   },
                   {
-                    title:
+                    desc:
                       "Efficient processes to maximize collections and minimize bad debt",
                   },
                 ],
@@ -645,15 +648,15 @@ const cardData: ServiceCardProps[] = [
                 title: "Point-of-Service Collections:",
                 subItems: [
                   {
-                    title:
+                    desc:
                       "Emphasizing the collection of payments at the time of service.",
                   },
                   {
-                    title:
+                    desc:
                       "Ensuring patients understand their financial responsibilities.",
                   },
                   {
-                    title:
+                    desc:
                       "Offering convenient payment options such as credit/debit cards and online payments.",
                   },
                 ],
@@ -663,15 +666,15 @@ const cardData: ServiceCardProps[] = [
                 title: "Automated Payment Plans:",
                 subItems: [
                   {
-                    title:
+                    desc:
                       "Providing flexible payment plans for patients to manage their balances over time.",
                   },
                   {
-                    title:
+                    desc:
                       "Facilitating easier management of healthcare expenses.",
                   },
                   {
-                    title:
+                    desc:
                       "Utilizing an automated system to ensure timely payments and reduce administrative burdens.",
                   },
                 ],
@@ -681,15 +684,15 @@ const cardData: ServiceCardProps[] = [
                 title: "Patient Financial Assistance:",
                 subItems: [
                   {
-                    title:
+                    desc:
                       "Assisting patients in navigating the complexities of healthcare financing.",
                   },
                   {
-                    title:
+                    desc:
                       "Helping them understand insurance coverage, deductibles, and out-of-pocket expenses.",
                   },
                   {
-                    title:
+                    desc:
                       "Providing information on financial assistance programs and working with patients to find suitable solutions.",
                   },
                 ],
@@ -699,11 +702,11 @@ const cardData: ServiceCardProps[] = [
                 title: "Denial Management:",
                 subItems: [
                   {
-                    title:
+                    desc:
                       "Offering a robust denial management process that addresses denied claims promptly and effectively.",
                   },
                   {
-                    title:
+                    desc:
                       "Analyzing the causes of denials and implementing strategies to prevent future occurrences, maximizing revenue recovery.",
                   },
                 ],
@@ -713,15 +716,15 @@ const cardData: ServiceCardProps[] = [
                 title: "Reporting and Analytics:",
                 subItems: [
                   {
-                    title:
+                    desc:
                       "Providing detailed reports on patient collection metrics.",
                   },
                   {
-                    title:
+                    desc:
                       "Helping you understand your financial position and identify areas for improvement.",
                   },
                   {
-                    title:
+                    desc:
                       "Empowering informed decision-making regarding your revenue cycle.",
                   },
                 ],
@@ -859,55 +862,121 @@ const cardData: ServiceCardProps[] = [
 ];
 
 function ServiceDetail() {
-  const { id } = useParams<{ id: string }>();
+    const [activeIndex, setActiveIndex] = useState<number>(0);
+    const { id } = useParams<{ id: string }>();
   const service = cardData.find((service) => service.link === id);
-  console.log(service);
   if (!service) return <div>Service not found</div>;
+
+  const toggleItem = (index: number) => {
+    setActiveIndex((prevIndex) => (prevIndex === index ? -1 : index));
+  };
 
   return (
     <section className="container-common py-36">
-      <h1 className="text-5xl font-bold text-center text-primary pb-8">
+      <motion.h1
+        className="text-4xl font-bold text-center text-primary pb-8"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+      >
         {service.title}
-      </h1>
+      </motion.h1>
+
       {service.subItems && service.subItems.length > 0 ? (
-        service.subItems.map((item) => (
-          <>
-            <div key={item.id} className="flex flex-col mb-8">
-              <h2 className="text-3xl font-semibold text-secondary">
+        service.subItems.map((item, index) => (
+          <motion.div
+            key={item.id}
+            className="mb-6 bg-white p-8 rounded-lg shadow-lg cursor-pointer"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            onClick={() => toggleItem(index)}
+          >
+            <div className='flex justify-between items-center'>
+              <h2 className="text-2xl font-semibold text-secondary">
                 {item.title}
               </h2>
-              {item.desc && <div className="mt-4">{item.desc}</div>}
-              {item.subItems &&
-                item.subItems.map((item: any) => (
-                  <div key={item.id} className="mt-4">
-                    <h4 className="text-xl mb-2 font-semibold text-primary">
-                      {item.title}
-                    </h4>
-                    <p className="text-md leading-6 mb-4">{item.desc}</p>
-                    {item.subItems &&
-                      item.subItems.map((item: any) => (
-                        <div key={item.id} className="mt-4">
-                          <h3 className="text-2xl mb-2 font-semibold text-primary">
-                            {item.title}
-                          </h3>
-                          <p className="text-md leading-6 mb-4">{item.desc}</p>
-                          {item.subItems &&
-                            item.subItems.map((item: any) => (
-                              <>
-                                <h5 className="text-lg mb-2 font-semibold text-secondary">
-                                  {item.title}
-                                </h5>
-                                <p className="text-md leading-6 mb-4">
-                                  {item.desc}
-                                </p>
-                              </>
-                            ))}
-                        </div>
-                      ))}
-                  </div>
-                ))}
+              {index === activeIndex ? (
+                <KeyboardArrowUpIcon fontSize="large" className="text-secondary" />
+              ) : (
+                <KeyboardArrowDownIcon fontSize="large" className="text-secondary" />
+              )}
             </div>
-          </>
+
+            {index === activeIndex && item.desc && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.4, ease: 'easeInOut' }}
+              >
+                <p className="text-lg leading-7 text-gray-700 mt-4">
+                  {item.desc}
+                </p>
+              </motion.div>
+            )}
+
+            {index === activeIndex && item.subItems && item.subItems.length > 0 && (
+              <div className="mt-4 space-y-6">
+                {item.subItems.map((subItem) => (
+                  <motion.div
+                    key={subItem.id}
+                    className="bg-gray-100 p-6 rounded-md shadow-md"
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, ease: 'easeOut' }}
+                  >
+                    <h3 className="text-2xl font-semibold text-primary mb-3">
+                      {subItem.title}
+                    </h3>
+                    {subItem.desc && (
+                      <p className="text-base leading-6 text-gray-600 mb-4">
+                        {subItem.desc}
+                      </p>
+                    )}
+
+                    {subItem.subItems && subItem.subItems.length > 0 && (
+                      <div className="mt-4 space-y-4">
+                        {subItem.subItems.map((subSubItem) => (
+                          <motion.div
+                            key={subSubItem.id}
+                            className="p-4 rounded-lg bg-gray-50 shadow-sm"
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.4, ease: 'easeOut' }}
+                          >
+                            <h4 className="text-lg font-semibold text-black mb-2">
+                              {subSubItem.title}
+                            </h4>
+                            {subSubItem.desc && (
+                                subSubItem.desc
+                            )}
+
+                            {subSubItem.subItems && (
+                              <ul className="list-decimal pl-6">
+                                {subSubItem.subItems.map((subSubSubItem) => (
+                                  <li
+                                    key={subSubSubItem.id}
+                                    className="mb-4 text-sm leading-5 text-gray-600"
+                                  >
+                                    <h5 className="text-lg font-semibold mb-1">
+                                      {subSubSubItem.title}
+                                    </h5>
+                                    <p className='text-md leading-6 text-gray-600'>{subSubSubItem.desc}</p>
+                                  </li>
+                                ))}
+                              </ul>
+                            )}
+                          </motion.div>
+                        ))}
+                      </div>
+                    )}
+                  </motion.div>
+                ))}
+              </div>
+            )}
+          </motion.div>
         ))
       ) : (
         <div>No sub-items available</div>
