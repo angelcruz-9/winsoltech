@@ -8,13 +8,12 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <main>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <div className="">
-        {children}
-      </div>
+      {/* Main content will grow to fill available space */}
+      <main className="flex-grow">{children}</main>
       <Footer />
-    </main>
+    </div>
   );
 };
 

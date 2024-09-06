@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaChevronDown, FaChevronUp, FaBars, FaTimes } from "react-icons/fa";
@@ -22,6 +22,22 @@ const Navigation = () => {
   const location = useLocation();
   const [openDropdown, setOpenDropdown] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const isActive = (path: string) => location.pathname === path;
 
@@ -45,7 +61,7 @@ const Navigation = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className="fixed top-0 left-0 w-full h-screen bg-white z-50 p-6 flex flex-col items-center"
+            className={`fixed top-0 left-0 w-full h-screen bg-white z-50 p-6 flex flex-col items-center`}
             initial={{ x: "-100%" }}
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
@@ -63,12 +79,12 @@ const Navigation = () => {
                     to={item.path}
                     className={`flex items-center justify-center ${
                       item.name === "Contact"
-                        ? "bg-primary border border-primary hover:bg-blue-800 hover:border-blue-800 rounded-2xl text-white px-6 py-1"
+                        ? "bg-primary border border-primary hover:bg-blue-800 hover:border-blue-800 rounded-2xl px-6 py-1 text-white"
                         : `hover:text-secondary ${
                             isActive(item.path)
                               ? "border-b-4 border-secondary text-secondary"
                               : "text-black"
-                          }`
+                          } `
                     }`}
                     onClick={() => {
                       if (item.dropdown) {
@@ -132,12 +148,12 @@ const Navigation = () => {
                 to={item.path}
                 className={`flex items-center ${
                   item.name === "Contact"
-                    ? "bg-primary border border-primary hover:bg-blue-800 hover:border-blue-800 rounded-2xl text-white px-6 py-1"
+                    ? "bg-primary border border-primary hover:bg-blue-800 hover:border-blue-800 rounded-2xl px-6 py-1"
                     : `hover:text-secondary ${
                         isActive(item.path)
                           ? "border-b-4 border-secondary text-secondary"
-                          : "text-black"
-                      }`
+                          : ""
+                      } ${isScrolled ? 'text-black' : 'text-white'}`
                 }`}
                 onClick={() => {
                   if (item.dropdown) {
