@@ -35,7 +35,7 @@ function Cards() {
           {aboutUsData.map((card) => (
             <motion.div
               key={card.id}
-              className="bg-white shadow-lg rounded-lg p-6 flex flex-col items-center text-center transition-transform duration-300 hover:shadow-xl hover:scale-105"
+              className="bg-white shadow-lg rounded-3xl p-6 flex flex-col items-center text-center transition-transform duration-300 hover:shadow-xl hover:scale-105"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaChevronDown, FaChevronUp, FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const navItems = [
   { name: "Home", path: "/" },
@@ -10,9 +10,6 @@ const navItems = [
   {
     name: "Our Solutions",
     path: "/solutions",
-    dropdown: [
-      { name: "Revenue Cycle Management", path: "/revenueCycleManagement" },
-    ],
   },
   { name: "Careers", path: "/careers" },
   { name: "Contact", path: "/contact" },
@@ -20,17 +17,12 @@ const navItems = [
 
 const Navigation = () => {
   const location = useLocation();
-  const [openDropdown, setOpenDropdown] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 50);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -40,10 +32,11 @@ const Navigation = () => {
   }, []);
 
   const isActive = (path: string) => location.pathname === path;
-
-  const toggleDropdown = () => setOpenDropdown(!openDropdown);
-
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
+
+  // Determine text color based on scroll position and current page
+  const isHomePage = location.pathname === "/";
+  const textColor = isScrolled || !isHomePage ? "text-black" : "text-white";
 
   return (
     <div className="p-4">
@@ -61,7 +54,7 @@ const Navigation = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            className={`fixed top-0 left-0 w-full h-screen bg-white z-50 p-6 flex flex-col items-center`}
+            className="fixed top-0 left-0 w-full h-screen bg-white z-50 p-4 flex flex-col items-center"
             initial={{ x: "-100%" }}
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
@@ -77,61 +70,18 @@ const Navigation = () => {
                 <li key={item.path} className="relative">
                   <Link
                     to={item.path}
-                    className={`flex items-center justify-center ${
+                    className={`flex items-center ${
                       item.name === "Contact"
                         ? "bg-primary border border-primary hover:bg-blue-800 hover:border-blue-800 rounded-2xl px-6 py-1 text-white"
                         : `hover:text-secondary ${
                             isActive(item.path)
                               ? "border-b-4 border-secondary text-secondary"
-                              : "text-black"
-                          } `
+                              : ""
+                          } ${textColor}`
                     }`}
-                    onClick={() => {
-                      if (item.dropdown) {
-                        toggleDropdown();
-                      }
-                      closeMobileMenu(); // Close the mobile menu when an item is clicked
-                    }}
                   >
                     {item.name}
-                    {item.dropdown && (
-                      <span className="ml-2 text-black">
-                        {openDropdown ? (
-                          <FaChevronUp size={12} />
-                        ) : (
-                          <FaChevronDown size={12} />
-                        )}
-                      </span>
-                    )}
                   </Link>
-                  {item.dropdown && (
-                    <AnimatePresence>
-                      {openDropdown && (
-                        <motion.ul
-                          initial={{ opacity: 0, y: -20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          transition={{ duration: 0.3 }}
-                          className="bg-gray-700 p-2 rounded mt-2"
-                        >
-                          {item.dropdown.map((subItem) => (
-                            <li
-                              key={subItem.path}
-                              className="p-2 hover:bg-gray-600"
-                            >
-                              <Link
-                                to={subItem.path}
-                                className="text-white"
-                                onClick={closeMobileMenu} // Close the mobile menu when a sub-item is clicked
-                              >
-                                {subItem.name}
-                              </Link>
-                            </li>
-                          ))}
-                        </motion.ul>
-                      )}
-                    </AnimatePresence>
-                  )}
                 </li>
               ))}
             </ul>
@@ -148,54 +98,16 @@ const Navigation = () => {
                 to={item.path}
                 className={`flex items-center ${
                   item.name === "Contact"
-                    ? "bg-primary border border-primary hover:bg-blue-800 hover:border-blue-800 rounded-2xl px-6 py-1"
+                    ? "bg-primary border border-primary hover:bg-blue-800 hover:border-blue-800 rounded-2xl px-6 py-1 text-white"
                     : `hover:text-secondary ${
                         isActive(item.path)
                           ? "border-b-4 border-secondary text-secondary"
                           : ""
-                      } ${isScrolled ? 'text-black' : 'text-white'}`
+                      } ${textColor}`
                 }`}
-                onClick={() => {
-                  if (item.dropdown) {
-                    toggleDropdown();
-                  }
-                }}
               >
                 {item.name}
-                {item.dropdown && (
-                  <span className="ml-2 text-black">
-                    {openDropdown ? (
-                      <FaChevronUp size={12} />
-                    ) : (
-                      <FaChevronDown size={12} />
-                    )}
-                  </span>
-                )}
               </Link>
-              {item.dropdown && (
-                <AnimatePresence>
-                  {openDropdown && (
-                    <motion.ul
-                      initial={{ opacity: 0, y: -20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -20 }}
-                      transition={{ duration: 0.3 }}
-                      className="absolute left-0 mt-2 bg-gray-700 p-2 rounded w-64"
-                    >
-                      {item.dropdown.map((subItem) => (
-                        <li
-                          key={subItem.path}
-                          className="p-2 hover:bg-gray-600"
-                        >
-                          <Link to={subItem.path} className="text-white">
-                            {subItem.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </motion.ul>
-                  )}
-                </AnimatePresence>
-              )}
             </li>
           ))}
         </ul>

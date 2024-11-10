@@ -20,12 +20,12 @@ const Header = () => {
   }, []);
 
   return (
-    <header
+    <div
       className={`fixed top-0 left-0 right-0 p-4 flex justify-between items-center w-full z-50 transition-all duration-300 ${
         isScrolled ? "bg-white shadow-lg" : "bg-transparent"
       }`}
     >
-      <div className="container-common flex justify-between items-center">
+      <div className="container-common flex justify-between items-center w-full">
         <div className="text-white text-2xl">
           <img
             src={`${process.env.PUBLIC_URL}/assets/images/logo.png`}
@@ -35,7 +35,7 @@ const Header = () => {
         </div>
         <Navigation />
       </div>
-    </header>
+    </div>
   );
 };
 

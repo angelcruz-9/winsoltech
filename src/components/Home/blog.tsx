@@ -30,7 +30,7 @@ const BlogSection: React.FC<BlogSectionProps> = ({ blogPosts }) => {
 
   return (
     <section id="blog" className="bg-white py-24">
-      <div className="container mx-auto px-10 lg:px-24">
+      <div className="container-common px-10 lg:px-24">
         <h2 className="text-2xl font-bold text-gray-800 mb-6">Latest Insights</h2>
         <p className="text-gray-600 mb-12">
           Stay updated with the latest trends and innovations in healthcare technology.
@@ -43,7 +43,7 @@ const BlogSection: React.FC<BlogSectionProps> = ({ blogPosts }) => {
               <div key={post.id} className="p-6 rounded-lg shadow-lg">
                 <h3 className="text-xl font-semibold text-primary mb-4">{post.title}</h3>
                 <p className="text-gray-600 mb-6">{post.excerpt}</p>
-                <Link to={post.link} className="text-blue-500 hover:underline">
+                <Link to={post.link} target='_blank' className="text-blue-500 hover:underline">
                   Read More
                 </Link>
               </div>
@@ -56,7 +56,7 @@ const BlogSection: React.FC<BlogSectionProps> = ({ blogPosts }) => {
               <div key={post.id} className="p-6 rounded-lg shadow-lg">
                 <h3 className="text-xl font-semibold text-primary mb-4">{post.title}</h3>
                 <p className="text-gray-600 mb-6">{post.excerpt}</p>
-                <Link to={post.link} className="text-blue-500 hover:underline">
+                <Link to={post.link}  target='_blank' className="text-blue-500 hover:underline">
                   Read More
                 </Link>
               </div>
