@@ -5,6 +5,7 @@ import Priority from "./priority";
 import Current from "./current";
 import Quality from "./quality";
 import Deliver from "./deliver";
+import Services from "../services/services";
 
 const revenueData = {
   hightLightText: "Revenue Cycle Management",
@@ -90,7 +91,7 @@ function RevenueCycle() {
               />
             </div>
           </div>
-
+         <Services />
           {/* Bottom Section */}
           <RCM />
         </motion.div>

@@ -3,10 +3,14 @@ import Home from "./components/Home/home";
 import Layout from "./components/layout/layout";
 import "./App.css";
 import RevenueCycle from "./components/revenueCycle/revenueCycle";
-import Services from "./components/services/services";
-import ServiceDetail from "./components/services/serviceDetail";
+// import ServiceDetail from "./components/services/serviceDetail";
 import Contact from "./components/contact/contact";
 import Careers from "./components/careers/careers";
+import FullCodingServices from "./components/revenueCycle/solutions/full-coding-services";
+import DenialManagement from "./components/revenueCycle/solutions/denial-management";
+import UMProcess from "./components/revenueCycle/solutions/pre-service";
+import ChargeCapture from "./components/revenueCycle/solutions/charge-capture";
+import TelehealthRPM from "./components/revenueCycle/solutions/telehealth";
 
 function App() {
   return (
@@ -16,10 +20,13 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route path="/winsoltech" element={<Home />} />
           <Route path="/solutions" element={<RevenueCycle />} />
-          <Route path="/services" element={<Services />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/careers" element={<Careers />} />
-          <Route path="/services/:id" element={<ServiceDetail />} /> {/* Child route */}
+          <Route path="solutions/full-coding-services" element={<FullCodingServices/>} />
+          <Route path="solutions/denial-management" element={<DenialManagement/>} />
+          <Route path="solutions/pre-service" element={<UMProcess />} />
+          <Route path="solutions/charge-capture" element={<ChargeCapture />} />
+          <Route path="solutions/telehealth" element={<TelehealthRPM />} />
         </Routes>
       </Layout>
     </Router>

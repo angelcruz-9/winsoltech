@@ -2,7 +2,11 @@ import React from "react";
 import { FaCode, FaCircleDollarToSlot } from "react-icons/fa6";
 import { LuHeartPulse } from "react-icons/lu";
 import { ImStatsDots } from "react-icons/im";
+import { SiCashapp } from "react-icons/si";
+import { RiVerifiedBadgeFill } from "react-icons/ri";
+import { AiFillAccountBook } from "react-icons/ai";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { FaPhoneSquare, FaFileMedical, FaHome } from "react-icons/fa";
 import Card from "../ui components/card";
 
@@ -29,7 +33,7 @@ const rcmData = {
           <li>Home Health Coding</li>
         </ul>
       ),
-      innerLink: "https://shearwaterhealth.com/coding/",
+      serviceId: "full-coding-services",
       innerButtonText: "Learn More",
     },
     {
@@ -42,7 +46,8 @@ const rcmData = {
           Highly-skilled and experienced registered nurses resolving denials
           across State Authorization, Coding, and Medical Necessity aspects
         </p>
-      ),
+      ), 
+      serviceId: "denial-management",
     },
     {
       id: 3,
@@ -56,6 +61,7 @@ const rcmData = {
           experienced Registered Nurses
         </p>
       ),
+      serviceId: "pre-service",
     },
     {
       id: 4,
@@ -68,6 +74,7 @@ const rcmData = {
           related to procedures
         </p>
       ),
+      serviceId: "charge-capture",
     },
     {
       id: 5,
@@ -80,6 +87,7 @@ const rcmData = {
           monitoring, case management support, and care coordination
         </p>
       ),
+      serviceId: "telehealth"
     },
     {
       id: 6,
@@ -105,6 +113,39 @@ const rcmData = {
         </p>
       ),
     },
+    {
+      id: 8,
+      icon: <SiCashapp size={36} />,
+      title: "Cash Posting",
+      innerTitle: "Cash Posting",
+      innerDescription : (
+        <p>
+          When a claim has been processed and paid, the amount paid will have to be applied to the amount charged for individual patient’s treatment in the Medical Billing Software.
+        </p>
+      )
+    },
+    {
+      id: 9,
+      icon: <RiVerifiedBadgeFill size={36} />,
+      title: "Eligibility Verification",
+      innerTitle: "Eligibility Verification",
+      description: (
+        <p>
+          Setup of new patient/emergency patient accounts, update existing accounts with insurance changes in your dental software.
+        </p>
+      )
+    },
+    {
+      id: 10,
+      icon: <AiFillAccountBook size={36} />,
+      title: "Account Receivables",
+      innerTitle: "Account Receivables",
+      description: (
+        <p>
+          Dental Management Services for dental billing, insurance & patient accounts receivable management, and EOB posting.
+        </p>
+      )
+    }
   ],
 };
 
@@ -113,6 +154,13 @@ const buttonVariants = {
 };
 
 function RCM() {
+  const navigate = useNavigate();
+
+  const handleCardClick = (serviceId: string) => {
+    navigate(`/solutions/${serviceId}`);
+  };
+  
+
   return (
     <section className="py-16">
       <div className="container-common">
@@ -129,6 +177,7 @@ function RCM() {
               title={card.title}
               innerTitle={card.innerTitle}
               innerDescription={card.innerDescription}
+              onClick={() => handleCardClick(card.serviceId ?? "default")}//+
             />
           ))}
         </div>

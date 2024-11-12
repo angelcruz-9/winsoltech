@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import About from "../about/about";
-// import Cards from "./cards";
 import BlogSection from "./blog"; // Import the BlogSection component
 import useScrollToHash from "./useScrollToHash";
 
@@ -134,15 +133,6 @@ function Home() {
           </div>
         </div>
       </section>
-
-      {/* Services Section */}
-      {/* <section id="services" className="bg-white py-16 sm:py-24">
-        <div className="container mx-auto px-6 lg:px-24 text-center">
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">Tailored Solutions for the Healthcare Industry</h2>
-          <p className="text-gray-600 mb-8 sm:mb-12">Our services are designed to address the unique challenges in healthcare, from optimizing hospital management systems to improving patient data security and care coordination.</p>
-          <Cards />
-        </div>
-      </section> */}
 
       {/* About Section */}
       <section id="about" className="bg-gray-100 py-12 sm:py-16">

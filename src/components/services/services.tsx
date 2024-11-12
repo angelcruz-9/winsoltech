@@ -652,7 +652,7 @@ const servicesData = {
 
 const Services = () => {
     return (
-        <section className="py-36 bg-gray-100 h-screen overflow-auto">
+        <section className="py-8">
             <div className="container mx-auto px-4">
                 <div className="flex flex-col justify-center items-center gap-4">
                     <h1 className="text-4xl font-bold text-gray-900">{servicesData.title}</h1>
