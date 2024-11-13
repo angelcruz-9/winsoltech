@@ -100,6 +100,7 @@ const rcmData = {
           retrieval, sorting, tagging, etc.)
         </p>
       ),
+      serviceId: "medical-records",
     },
     {
       id: 7,
@@ -112,6 +113,7 @@ const rcmData = {
           management, coding, patient education, and scheduling
         </p>
       ),
+      serviceId: "home-health",
     },
     {
       id: 8,
@@ -122,7 +124,8 @@ const rcmData = {
         <p>
           When a claim has been processed and paid, the amount paid will have to be applied to the amount charged for individual patient’s treatment in the Medical Billing Software.
         </p>
-      )
+      ),
+      serviceId: "cash-posting",
     },
     {
       id: 9,
@@ -133,7 +136,8 @@ const rcmData = {
         <p>
           Setup of new patient/emergency patient accounts, update existing accounts with insurance changes in your dental software.
         </p>
-      )
+      ),
+      serviceId: "eligibility-verification",
     },
     {
       id: 10,
@@ -144,7 +148,8 @@ const rcmData = {
         <p>
           Dental Management Services for dental billing, insurance & patient accounts receivable management, and EOB posting.
         </p>
-      )
+      ),
+      serviceId: "account-receivable",
     }
   ],
 };
@@ -158,6 +163,10 @@ function RCM() {
 
   const handleCardClick = (serviceId: string) => {
     navigate(`/solutions/${serviceId}`);
+  };
+
+  const handleClick = () => {
+    navigate('/contact');
   };
   
 
@@ -188,6 +197,7 @@ function RCM() {
             whileHover="hover"
             initial={{ scale: 1 }}
             animate={{ scale: 1 }}
+            onClick={handleClick}
           >
             Get Started
           </motion.button>

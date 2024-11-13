@@ -111,10 +111,10 @@ function Home() {
         </div>
 
         <div className="relative z-10 flex flex-col items-center justify-center text-center h-full px-6">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white leading-tight mb-6 px-6 md:px-36">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl md:w-2/3 font-bold text-white leading-tight mb-6 px-6 md:px-36">
             Revolutionizing Healthcare with Comprehensive Solutions
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-white mb-8 px-4 md:px-24">
+          <p className="text-base sm:text-lg md:w-2/3 md:text-xl text-white mb-8 px-4 md:px-24">
             At WINSOLTECH, we empower healthcare organizations with cutting-edge technology solutions that enhance patient care, optimize clinical workflows, and drive operational excellence.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-8">

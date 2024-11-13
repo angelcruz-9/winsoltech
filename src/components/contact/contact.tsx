@@ -27,7 +27,7 @@ const Contact: React.FC = () => {
   return (
     <div
       style={{
-        backgroundImage: 'url(https://your-image-url.com)', // Add your image URL here
+        // backgroundImage: 'url(https://your-image-url.com)', // Add your image URL here
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '100vh',
@@ -37,7 +37,7 @@ const Contact: React.FC = () => {
         alignItems: 'center',
         color: 'white',
         textAlign: 'center',
-        padding: '20px',
+        paddingTop: '60px',
       }}
     >
       <div className="overlay" style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0, 0, 0, 0.5)' }}></div>
@@ -100,7 +100,7 @@ const Contact: React.FC = () => {
       </form>
 
       {/* Address Section */}
-      <div className="mt-8 text-white">
+      <div className="mt-8 text-black shadow-lg p-8 rounded-md bg-orange-200">
         <h3 className="text-xl font-bold">Our Office</h3>
         <p className="text-lg mt-2">
           123 Main Street, Suite 456

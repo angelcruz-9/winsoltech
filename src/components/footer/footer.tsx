@@ -1,6 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const Footer = () => {
+const Footer: React.FC = () => {
+  const navigate = useNavigate();
+
+  // Function to handle navigation
+  const handleNavigate = (path: string) => {
+    navigate(path);
+  };
+
   return (
     <footer className="bg-gray-800 p-4 flex justify-between items-center w-full text-white">
       <div className="container-common mx-auto flex justify-between items-center">
@@ -10,13 +18,28 @@ const Footer = () => {
         <div className="text-right">
           <ul className="flex flex-col xl:flex-row xl:space-x-4">
             <li>
-              <a href="/privacy-policy" className="hover:text-gray-400">Privacy Policy</a>
+              <button
+                onClick={() => handleNavigate('/privacy-policy')}
+                className="hover:text-gray-400"
+              >
+                Privacy Policy
+              </button>
             </li>
             <li>
-              <a href="/terms-of-service" className="hover:text-gray-400">Terms of Service</a>
+              <button
+                onClick={() => handleNavigate('/terms-of-service')}
+                className="hover:text-gray-400"
+              >
+                Terms of Service
+              </button>
             </li>
             <li>
-              <a href="/contact" className="hover:text-gray-400">Contact</a>
+              <button
+                onClick={() => handleNavigate('/contact')}
+                className="hover:text-gray-400"
+              >
+                Contact
+              </button>
             </li>
           </ul>
         </div>
