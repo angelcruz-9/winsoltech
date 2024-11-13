@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/winsoltech/static/css/main.f86c6739.css",
-    "main.js": "/winsoltech/static/js/main.e3f0d7f6.js",
+    "main.css": "/winsoltech/static/css/main.1a244067.css",
+    "main.js": "/winsoltech/static/js/main.6e24527f.js",
     "index.html": "/winsoltech/index.html",
-    "main.f86c6739.css.map": "/winsoltech/static/css/main.f86c6739.css.map",
-    "main.e3f0d7f6.js.map": "/winsoltech/static/js/main.e3f0d7f6.js.map"
+    "main.1a244067.css.map": "/winsoltech/static/css/main.1a244067.css.map",
+    "main.6e24527f.js.map": "/winsoltech/static/js/main.6e24527f.js.map"
   },
   "entrypoints": [
-    "static/css/main.f86c6739.css",
-    "static/js/main.e3f0d7f6.js"
+    "static/css/main.1a244067.css",
+    "static/js/main.6e24527f.js"
   ]
 }
