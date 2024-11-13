@@ -28,7 +28,7 @@ const jobs: Job[] = [
       'Professional development opportunities'
     ],
     department: 'Nursing',
-    color: 'bg-blue-100'
+    color: 'bg-blue-200'
   },
   {
     title: 'Medical Billing Specialist',
