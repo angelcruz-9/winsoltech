@@ -4,6 +4,8 @@ import HowToRegIcon from '@mui/icons-material/HowToReg';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import ManageHistoryIcon from '@mui/icons-material/ManageHistory';
 import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import { motion } from "framer-motion";
+
 
 const servicesData = {
     title: <>Our Services</>,
@@ -650,28 +652,71 @@ const servicesData = {
     ],
 };
 
+const titleVariant = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const dividerVariant = {
+    hidden: { scaleX: 0 },
+    visible: { scaleX: 1 },
+  };
+
+  const cardVariant = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
+    hover: { scale: 1.02, transition: { duration: 0.3 } }, // Subtle hover effect
+  };
+
 const Services = () => {
     return (
         <section className="py-8">
-            <div className="container mx-auto px-4">
-                <div className="flex flex-col justify-center items-center gap-4">
-                    <h1 className="text-4xl font-bold text-gray-900">{servicesData.title}</h1>
-                    <div className="border-b-4 border-primary w-24 mb-6"></div>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8">
-                    {servicesData.cardData.map((service) => (
-                        <ServiceCard
-                            key={service.id}
-                            title={service.title}
-                            icon={service.icon}
-                            description={service.description}
-                            link={service.link}
-                            subItems={service.subItems}
-                        />
-                    ))}
-                </div>
-            </div>
-        </section>
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col justify-center items-center gap-4">
+            {/* Title Animation */}
+            <motion.h1
+              className="text-4xl font-bold text-gray-900"
+              initial="hidden"
+              animate="visible"
+              variants={titleVariant}
+              transition={{ duration: 0.6 }}
+            >
+              {servicesData.title}
+            </motion.h1>
+  
+            {/* Divider Animation */}
+            <motion.div
+              className="border-b-4 border-primary w-24 mb-6"
+              initial="hidden"
+              animate="visible"
+              variants={dividerVariant}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            ></motion.div>
+          </div>
+  
+          {/* Service Cards Animation */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-8">
+            {servicesData.cardData.map((service) => (
+              <motion.div
+                key={service.id}
+                variants={cardVariant}
+                initial="hidden"
+                animate="visible"
+                whileHover="hover"
+                transition={{ duration: 0.6, delay: service.id * 0.1 }}
+              >
+                <ServiceCard
+                  title={service.title}
+                  icon={service.icon}
+                  description={service.description}
+                  link={service.link}
+                  subItems={service.subItems}
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
     );
 };
 
