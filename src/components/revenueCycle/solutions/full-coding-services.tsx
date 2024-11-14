@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const FullCodingServices: React.FC = () => {
   const codingServicesData = {
@@ -69,6 +69,10 @@ const FullCodingServices: React.FC = () => {
       },
     ],
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <section className="pt-28 px-4 md:px-12 lg:px-20 bg-gray-50 py-28">

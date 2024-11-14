@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const homeHealthCareData = {
   title: "Home Health Care in U.S. Healthcare Services",
@@ -108,6 +108,11 @@ const homeHealthCareData = {
 };
 
 const HomeHealthCare = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="py-8 pt-28 p-8 max-w-4xl mx-auto font-sans text-gray-800">
       <h1 className="text-2xl md:text-3xl font-bold text-center text-blue-600 mb-6">

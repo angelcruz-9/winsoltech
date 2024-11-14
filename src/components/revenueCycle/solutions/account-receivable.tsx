@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 interface AccountsReceivablesProps {
   patientPayments: number;
@@ -15,6 +15,12 @@ const AccountsReceivables: React.FC<AccountsReceivablesProps> = ({
   denialRate,
   daysInAR
 }) => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+
   return (
     <div className="pt-24 p-8 mx-auto lg:pt-24 lg:p-16 bg-gray-50">
       <header className="text-center mb-6">

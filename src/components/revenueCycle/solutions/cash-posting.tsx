@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const CashPostingComponent: React.FC = () => {
   const cashPostingData = {
@@ -55,6 +55,10 @@ const CashPostingComponent: React.FC = () => {
       },
     ],
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="py-8 pt-28 max-w-4xl mx-auto font-sans px-4 sm:px-6 md:px-8">

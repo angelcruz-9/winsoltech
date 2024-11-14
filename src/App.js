@@ -31,7 +31,7 @@ function App() {
           <Route path="/careers" element={<Careers />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
-          <Route path="solutions/full-coding-services" element={<FullCodingServices/>} />
+          <Route path="solutions/full-coding-services" element={<FullCodingServices />} />
           <Route path="solutions/denial-management" element={<DenialManagement/>} />
           <Route path="solutions/pre-service" element={<UMProcess />} />
           <Route path="solutions/charge-capture" element={<ChargeCapture />} />

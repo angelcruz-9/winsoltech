@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FaExclamationTriangle, FaUserNurse, FaMoneyBillWave, FaChartLine } from "react-icons/fa";
 
 const DenialManagement: React.FC = () => {
@@ -54,6 +54,10 @@ const DenialManagement: React.FC = () => {
       },
     ],
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <section className="py-20 pt-28 px-6 md:px-12 lg:px-24 bg-gray-50">

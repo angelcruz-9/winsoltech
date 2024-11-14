@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 interface EligibilityVerificationItem {
   title?: string;
@@ -76,6 +76,10 @@ const EligibilityVerificationComponent: React.FC = () => {
       },
     ],
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="py-8 p-8 pt-28 max-w-4xl mx-auto font-sans">

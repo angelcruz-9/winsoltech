@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   FaFileMedical,
   FaShieldAlt,
@@ -69,6 +69,10 @@ const UMProcess: React.FC = () => {
       },
     ],
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <section className="p-8 lg:pt-32 lg:p-16 bg-gray-50">

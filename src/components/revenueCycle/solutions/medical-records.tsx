@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 // Define the content dynamically
 const content = {
@@ -59,6 +59,11 @@ const content = {
 };
 
 const MedicalRecordsManagement = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="py-8 pt-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-sans text-gray-800">
       <h1 className="text-2xl md:text-3xl font-bold text-center text-blue-600 mb-6">
