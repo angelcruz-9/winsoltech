@@ -6,6 +6,7 @@ import {
   FaExclamationTriangle,
   FaLightbulb,
 } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const ChargeCapture: React.FC = () => {
   const chargeCaptureData = {
@@ -79,29 +80,56 @@ const ChargeCapture: React.FC = () => {
   return (
     <section className="p-8 lg:pt-24 lg:p-16 bg-gray-50">
       <div className="text-center mb-12 max-w-3xl mx-auto">
-        <h1 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">{chargeCaptureData.title}</h1>
-        <p className="text-lg text-gray-600">{chargeCaptureData.description}</p>
+        <motion.h1
+          className="text-3xl lg:text-4xl font-bold text-primary mb-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          {chargeCaptureData.title}
+        </motion.h1>
+        <motion.p
+          className="text-lg text-gray-600"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.5 }}
+        >
+          {chargeCaptureData.description}
+        </motion.p>
       </div>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {chargeCaptureData.sections.map((section, index) => (
-          <div
+          <motion.div
             key={index}
             className="p-6 bg-white rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: index * 0.2 }}
           >
             <div className="flex items-center mb-4">
               {section.icon}
               <h2 className="text-xl font-semibold text-gray-800 ml-3">{section.title}</h2>
             </div>
             <p className="text-gray-700 mb-4">{section.description}</p>
-            <ul className="list-disc list-inside space-y-2 text-gray-600">
+            <motion.ul
+              className="list-disc list-inside space-y-2 text-gray-600"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               {section.list.map((item, itemIndex) => (
-                <li key={itemIndex}>
+                <motion.li
+                  key={itemIndex}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: itemIndex * 0.1 }}
+                >
                   <strong>{item.title}:</strong> {item.content}
-                </li>
+                </motion.li>
               ))}
-            </ul>
-          </div>
+            </motion.ul>
+          </motion.div>
         ))}
       </div>
     </section>

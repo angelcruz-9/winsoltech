@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 const CashPostingComponent: React.FC = () => {
   const cashPostingData = {
@@ -62,34 +63,72 @@ const CashPostingComponent: React.FC = () => {
 
   return (
     <div className="py-8 pt-28 max-w-4xl mx-auto font-sans px-4 sm:px-6 md:px-8">
-      <h1 className="text-3xl text-center font-bold text-blue-800 mb-6">{cashPostingData.title}</h1>
-      <p className="text-lg text-gray-700 mb-8">{cashPostingData.description}</p>
+      <motion.h1
+        className="text-3xl text-center font-bold text-blue-800 mb-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+      >
+        {cashPostingData.title}
+      </motion.h1>
+      <motion.p
+        className="text-lg text-gray-700 mb-8"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        {cashPostingData.description}
+      </motion.p>
 
       {cashPostingData.sections.map((section, index) => (
-        <section key={index} className="mb-10">
-          <h2 className="text-2xl font-semibold text-blue-600 mb-4">{section.heading}</h2>
+        <motion.section
+          key={index}
+          className="mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: index * 0.2 }}
+        >
+          <motion.h2
+            className="text-2xl font-semibold text-blue-600 mb-4"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            {section.heading}
+          </motion.h2>
           {section.items.length > 1 ? (
             <ul className="list-disc list-inside space-y-2 text-gray-600">
               {section.items.map((item, itemIndex) => (
-                <li key={itemIndex}>
+                <motion.li
+                  key={itemIndex}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: itemIndex * 0.2 }}
+                >
                   {'title' in item && <strong>{item.title}: </strong>}
                   {item.content}
-                </li>
+                </motion.li>
               ))}
             </ul>
           ) : (
-            <div className="flex flex-col md:flex-row gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {section.items.map((item, itemIndex) => (
-                <div key={itemIndex} className="flex-1 bg-white p-6 shadow rounded-lg mb-6 md:mb-0">
+                <motion.div
+                  key={itemIndex}
+                  className="flex-1 bg-white p-6 shadow-lg rounded-lg"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: itemIndex * 0.2 }}
+                >
                   {'title' in item && (
                     <h3 className="text-xl font-semibold text-gray-800 mb-2">{item.title}</h3>
                   )}
                   <p className="text-gray-600">{item.content}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           )}
-        </section>
+        </motion.section>
       ))}
     </div>
   );

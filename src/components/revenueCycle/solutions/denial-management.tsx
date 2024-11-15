@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { FaExclamationTriangle, FaUserNurse, FaMoneyBillWave, FaChartLine } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const DenialManagement: React.FC = () => {
   const denialManagementData = {
@@ -61,18 +62,26 @@ const DenialManagement: React.FC = () => {
 
   return (
     <section className="py-20 pt-28 px-6 md:px-12 lg:px-24 bg-gray-50">
-      <div className="text-center mb-12 max-w-3xl mx-auto">
+      <motion.div
+        className="text-center mb-12 max-w-3xl mx-auto"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <h1 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
           {denialManagementData.title}
         </h1>
         <p className="text-lg text-gray-600">{denialManagementData.description}</p>
-      </div>
+      </motion.div>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {denialManagementData.sections.map((section, index) => (
-          <div
+          <motion.div
             key={index}
             className="p-6 bg-white rounded-lg shadow-lg transform hover:scale-105 transition duration-300"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
           >
             <div className="flex flex-col justify-center items-center mb-4">
               {section.icon}
@@ -81,18 +90,25 @@ const DenialManagement: React.FC = () => {
               </h2>
             </div>
             <p className="text-gray-700 mb-4">{section.content}</p>
-            <ul className="list-disc list-inside space-y-2 text-gray-600">
+            <motion.ul
+              className="list-disc list-inside space-y-2 text-gray-600"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
               {section.list.map((item, itemIndex) =>
                 typeof item === "string" ? (
-                  <li key={itemIndex}>{item}</li>
+                  <motion.li key={itemIndex} whileHover={{ scale: 1.05 }}>
+                    {item}
+                  </motion.li>
                 ) : (
-                  <li key={itemIndex}>
+                  <motion.li key={itemIndex} whileHover={{ scale: 1.05 }}>
                     <strong>{item.title}:</strong> {item.description}
-                  </li>
+                  </motion.li>
                 )
               )}
-            </ul>
-          </div>
+            </motion.ul>
+          </motion.div>
         ))}
       </div>
     </section>

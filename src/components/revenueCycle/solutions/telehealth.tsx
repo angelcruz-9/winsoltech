@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { FaHeartbeat, FaLaptopMedical, FaExclamationCircle, FaHandsHelping } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const TelehealthRPM: React.FC = () => {
   const telehealthData = {
@@ -73,23 +74,27 @@ const TelehealthRPM: React.FC = () => {
   return (
     <section className="p-8 lg:pt-24 lg:p-16 bg-gray-50">
       <div className="text-center mb-12 max-w-3xl mx-auto">
-        <h1 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
-          {telehealthData.title}
-        </h1>
+        <h1 className="text-3xl lg:text-4xl font-bold text-primary mb-4">{telehealthData.title}</h1>
         <p className="text-lg text-gray-600">{telehealthData.description}</p>
       </div>
 
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {/* Grid layout with Framer Motion */}
+      <motion.div
+        className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         {telehealthData.sections.map((section, index) => (
-          <div
+          <motion.div
             key={index}
             className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-200"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
           >
             <div className="flex items-center mb-4">
               {section.icon}
-              <h2 className="ml-4 text-2xl font-semibold text-gray-800">
-                {section.title}
-              </h2>
+              <h2 className="ml-4 text-2xl font-semibold text-gray-800">{section.title}</h2>
             </div>
             <p className="text-gray-600 mb-4">{section.description}</p>
             <ul className="space-y-2">
@@ -99,9 +104,9 @@ const TelehealthRPM: React.FC = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };

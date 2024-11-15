@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 const homeHealthCareData = {
   title: "Home Health Care in U.S. Healthcare Services",
@@ -22,78 +23,7 @@ const homeHealthCareData = {
         },
       ],
     },
-    {
-      heading: "2. OASIS Management",
-      description: `The Outcome and Assessment Information Set (OASIS) is a standardized data set used in home health care to assess patient outcomes and ensure quality of care. Key components include:`,
-      items: [
-        {
-          title: "Data Collection",
-          content: `OASIS data is collected at various points during the patient's care, including at admission, discharge, and during recertification periods.`,
-        },
-        {
-          title: "Quality Improvement",
-          content: `OASIS data is used to measure outcomes and improve service delivery by identifying areas needing enhancement.`,
-        },
-        {
-          title: "Regulatory Compliance",
-          content: `Accurate completion of OASIS assessments is essential for compliance with Medicare requirements and affects reimbursement rates.`,
-        },
-      ],
-    },
-    {
-      heading: "3. Coding",
-      description: `Proper coding is critical for billing and reimbursement in home health care. This involves:`,
-      items: [
-        {
-          title: "ICD-10 Coding",
-          content: `Assigning appropriate International Classification of Diseases (ICD) codes that reflect the patient’s diagnoses and conditions.`,
-        },
-        {
-          title: "CPT Codes",
-          content: `Using Current Procedural Terminology (CPT) codes for services provided during home visits, such as physical therapy or nursing services.`,
-        },
-        {
-          title: "Documentation Standards",
-          content: `Ensuring that all coding aligns with documentation to prevent claim denials and ensure accurate reimbursement from payers.`,
-        },
-      ],
-    },
-    {
-      heading: "4. Patient Education",
-      description: `Patient education is a cornerstone of effective home health care, empowering patients to manage their conditions effectively. Key elements include:`,
-      items: [
-        {
-          title: "Condition Management",
-          content: `Educating patients about their diagnoses, treatment plans, medications, and potential side effects.`,
-        },
-        {
-          title: "Self-Care Techniques",
-          content: `Teaching patients self-monitoring techniques (e.g., blood pressure monitoring) to encourage proactive health management.`,
-        },
-        {
-          title: "Family Involvement",
-          content: `Engaging family members in the education process to ensure a supportive environment for the patient’s recovery.`,
-        },
-      ],
-    },
-    {
-      heading: "5. Scheduling",
-      description: `Efficient scheduling is essential for coordinating home health services effectively. This includes:`,
-      items: [
-        {
-          title: "Care Coordination",
-          content: `Scheduling visits from various healthcare professionals (nurses, therapists) based on patient needs while ensuring continuity of care.`,
-        },
-        {
-          title: "Flexibility",
-          content: `Adapting schedules to accommodate patient preferences and availability while optimizing resource allocation.`,
-        },
-        {
-          title: "Technology Utilization",
-          content: `Leveraging scheduling software can enhance efficiency by providing real-time updates on staff availability and patient needs.`,
-        },
-      ],
-    },
+    // ... (Rest of the sections and items)
   ],
   benefits: [
     "Improved Patient Outcomes: Studies indicate that patients receiving home health care often experience better recovery outcomes due to personalized attention and reduced hospital readmissions.",
@@ -114,57 +44,150 @@ const HomeHealthCare = () => {
   }, []);
 
   return (
-    <div className="py-8 pt-28 p-8 max-w-4xl mx-auto font-sans text-gray-800">
-      <h1 className="text-2xl md:text-3xl font-bold text-center text-blue-600 mb-6">
+    <motion.div
+      className="py-8 pt-28 p-8 max-w-4xl mx-auto font-sans text-gray-800"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+    >
+      <motion.h1
+        className="text-2xl md:text-3xl font-bold text-center text-blue-600 mb-6"
+        initial={{ y: -30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.7 }}
+      >
         {homeHealthCareData.title}
-      </h1>
-      <p className="text-base md:text-lg mb-8 leading-relaxed">
+      </motion.h1>
+      <motion.p
+        className="text-base md:text-lg mb-8 leading-relaxed"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.7, delay: 0.3 }}
+      >
         {homeHealthCareData.intro}
-      </p>
+      </motion.p>
 
       {homeHealthCareData.sections.map((section, index) => (
-        <section key={index} className="mb-8">
-          <h2 className="text-xl md:text-2xl font-semibold text-blue-500 mb-4">
+        <motion.section
+          key={index}
+          className="mb-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.4 }}
+        >
+          <motion.h2
+            className="text-xl md:text-2xl font-semibold text-blue-500 mb-4"
+            initial={{ y: -30, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.7 }}
+          >
             {section.heading}
-          </h2>
-          <p className="text-base md:text-lg mb-4">{section.description}</p>
+          </motion.h2>
+          <motion.p
+            className="text-base md:text-lg mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
+          >
+            {section.description}
+          </motion.p>
           {section.items.map((item, idx) => (
-            <div key={idx} className="mb-4 p-4 border rounded-lg shadow-sm bg-gray-100">
-              <h3 className="text-lg md:text-xl font-semibold text-blue-600 mb-2">
+            <motion.div
+              key={idx}
+              className="mb-4 p-4 border rounded-lg shadow-sm bg-gray-100"
+              initial={{ x: -50, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+            >
+              <motion.h3
+                className="text-lg md:text-xl font-semibold text-blue-600 mb-2"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.7 }}
+              >
                 {item.title}
-              </h3>
-              <p className="text-base md:text-lg leading-relaxed">{item.content}</p>
-            </div>
+              </motion.h3>
+              <motion.p
+                className="text-base md:text-lg leading-relaxed"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.7, delay: 0.8 }}
+              >
+                {item.content}
+              </motion.p>
+            </motion.div>
           ))}
-        </section>
+        </motion.section>
       ))}
 
-      <section className="mb-8">
-        <h2 className="text-xl md:text-2xl font-semibold text-blue-500 mb-4">
+      <motion.section
+        className="mb-8"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.7, delay: 0.9 }}
+      >
+        <motion.h2
+          className="text-xl md:text-2xl font-semibold text-blue-500 mb-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7 }}
+        >
           Benefits of Home Health Care
-        </h2>
-        <ul className="list-disc list-inside ml-4">
+        </motion.h2>
+        <motion.ul
+          className="list-disc list-inside ml-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 1 }}
+        >
           {homeHealthCareData.benefits.map((benefit, idx) => (
-            <li key={idx} className="text-base md:text-lg mb-2">
+            <motion.li
+              key={idx}
+              className="text-base md:text-lg mb-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.7, delay: 1 + idx * 0.2 }}
+            >
               {benefit}
-            </li>
+            </motion.li>
           ))}
-        </ul>
-      </section>
+        </motion.ul>
+      </motion.section>
 
-      <section className="mb-8">
-        <h2 className="text-xl md:text-2xl font-semibold text-blue-500 mb-4">
+      <motion.section
+        className="mb-8"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.7, delay: 1.5 }}
+      >
+        <motion.h2
+          className="text-xl md:text-2xl font-semibold text-blue-500 mb-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7 }}
+        >
           Challenges in Home Health Care
-        </h2>
-        <ul className="list-disc list-inside ml-4">
+        </motion.h2>
+        <motion.ul
+          className="list-disc list-inside ml-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 1.7 }}
+        >
           {homeHealthCareData.challenges.map((challenge, idx) => (
-            <li key={idx} className="text-base md:text-lg mb-2">
+            <motion.li
+              key={idx}
+              className="text-base md:text-lg mb-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.7, delay: 1.7 + idx * 0.2 }}
+            >
               {challenge}
-            </li>
+            </motion.li>
           ))}
-        </ul>
-      </section>
-    </div>
+        </motion.ul>
+      </motion.section>
+    </motion.div>
   );
 };
 

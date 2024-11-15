@@ -1,11 +1,6 @@
 import React, { useEffect } from "react";
-import {
-  FaFileMedical,
-  FaShieldAlt,
-  FaClipboardCheck,
-  FaCheckCircle,
-  FaUserNurse,
-} from "react-icons/fa";
+import { FaFileMedical, FaShieldAlt, FaClipboardCheck, FaCheckCircle, FaUserNurse } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const UMProcess: React.FC = () => {
   const umData = {
@@ -75,17 +70,25 @@ const UMProcess: React.FC = () => {
   }, []);
 
   return (
-    <section className="p-8 lg:pt-32 lg:p-16 bg-gray-50">
-      <div className="text-center mb-12 max-w-3xl mx-auto">
+    <section className="p-8 lg:pt-32 lg:p-16 bg-gradient-to-br from-blue-50 via-indigo-100 to-pink-50">
+      <motion.div 
+        className="text-center mb-12 max-w-4xl mx-auto"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         <h1 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">{umData.title}</h1>
         <p className="text-lg text-gray-600">{umData.description}</p>
-      </div>
+      </motion.div>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {umData.sections.map((section, index) => (
-          <div
+          <motion.div
             key={index}
             className="p-6 bg-white rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: index * 0.2 }}
           >
             <div className="flex items-center mb-4">
               {section.icon}
@@ -99,7 +102,7 @@ const UMProcess: React.FC = () => {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

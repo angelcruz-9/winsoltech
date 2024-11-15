@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 interface EligibilityVerificationItem {
   title?: string;
@@ -83,34 +84,77 @@ const EligibilityVerificationComponent: React.FC = () => {
 
   return (
     <div className="py-8 p-8 pt-28 max-w-4xl mx-auto font-sans">
-      <h1 className="text-3xl font-bold text-blue-800 mb-6">{eligibilityVerificationData.title}</h1>
-      <p className="text-lg text-gray-700 mb-8">{eligibilityVerificationData.description}</p>
+      <motion.h1 
+        className="text-3xl font-bold text-blue-800 mb-6"
+        initial={{ opacity: 0 }} 
+        animate={{ opacity: 1 }} 
+        transition={{ duration: 1 }}
+      >
+        {eligibilityVerificationData.title}
+      </motion.h1>
+      <motion.p 
+        className="text-lg text-gray-700 mb-8"
+        initial={{ opacity: 0 }} 
+        animate={{ opacity: 1 }} 
+        transition={{ duration: 1, delay: 0.2 }}
+      >
+        {eligibilityVerificationData.description}
+      </motion.p>
 
       {eligibilityVerificationData.sections.map((section, index) => (
-        <section key={index} className="mb-10">
-          <h2 className="text-2xl font-semibold text-blue-600 mb-4">{section.heading}</h2>
+        <motion.section 
+          key={index} 
+          className="mb-10"
+          initial={{ opacity: 0 }} 
+          animate={{ opacity: 1 }} 
+          transition={{ duration: 1, delay: index * 0.2 }}
+        >
+          <motion.h2 
+            className="text-2xl font-semibold text-blue-600 mb-4"
+            initial={{ y: -20 }} 
+            animate={{ y: 0 }} 
+            transition={{ duration: 0.6 }}
+          >
+            {section.heading}
+          </motion.h2>
+
           {section.items.length > 1 ? (
-            <ul className="list-disc list-inside space-y-2 text-gray-600">
+            <motion.ul 
+              className="list-disc list-inside space-y-2 text-gray-600"
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              transition={{ duration: 1 }}
+            >
               {section.items.map((item, itemIndex) => (
-                <li key={itemIndex}>
+                <motion.li key={itemIndex} 
+                  initial={{ x: -30 }} 
+                  animate={{ x: 0 }} 
+                  transition={{ duration: 0.5, delay: itemIndex * 0.1 }}
+                >
                   {item.title && <strong>{item.title}: </strong>}
                   {item.content}
-                </li>
+                </motion.li>
               ))}
-            </ul>
+            </motion.ul>
           ) : (
             <div className="flex flex-wrap gap-8">
               {section.items.map((item, itemIndex) => (
-                <div key={itemIndex} className="flex-1 min-w-[250px] bg-white p-6 shadow rounded-lg">
+                <motion.div 
+                  key={itemIndex} 
+                  className="flex-1 min-w-[250px] bg-white p-6 shadow rounded-lg"
+                  initial={{ scale: 0.8 }} 
+                  animate={{ scale: 1 }} 
+                  transition={{ duration: 0.5, delay: itemIndex * 0.3 }}
+                >
                   {item.title && (
                     <h3 className="text-xl font-semibold text-gray-800 mb-2">{item.title}</h3>
                   )}
                   <p className="text-gray-600">{item.content}</p>
-                </div>
+                </motion.div>
               ))}
             </div>
           )}
-        </section>
+        </motion.section>
       ))}
     </div>
   );

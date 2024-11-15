@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';  // Import Framer Motion
 
 // Define the content dynamically
 const content = {
@@ -65,35 +66,68 @@ const MedicalRecordsManagement = () => {
   }, []);
 
   return (
-    <div className="py-8 pt-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 font-sans text-gray-800">
-      <h1 className="text-2xl md:text-3xl font-bold text-center text-blue-600 mb-6">
+    <div className="py-8 pt-28 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 font-sans text-gray-800">
+      {/* Title Animation */}
+      <motion.h1
+        className="text-3xl md:text-4xl font-bold text-center text-indigo-600 mb-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+      >
         {content.title}
-      </h1>
-      <p className="text-base md:text-lg mb-8 leading-relaxed">
+      </motion.h1>
+
+      {/* Intro Paragraph Animation */}
+      <motion.p
+        className="text-base md:text-lg mb-8 leading-relaxed text-gray-700"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.5 }}
+      >
         {content.intro}
-      </p>
+      </motion.p>
 
       {content.sections.map((section, index) => (
         <section key={index} className="mb-8">
-          <h2 className="text-xl md:text-2xl font-semibold text-blue-500 mb-4">
+          {/* Section Heading Animation */}
+          <motion.h2
+            className="text-2xl md:text-3xl font-semibold text-indigo-500 mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
             {section.heading}
-          </h2>
+          </motion.h2>
 
           {/* Render items differently based on their structure (objects vs strings) */}
           {section.items.map((item, idx) =>
             typeof item === "string" ? (
-              <li key={idx} className="text-base md:text-lg ml-5 list-disc list-inside mb-2">
+              // List Item Animation
+              <motion.li
+                key={idx}
+                className="text-base md:text-lg ml-5 list-disc list-inside mb-2"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.6 + idx * 0.2 }}
+              >
                 {item}
-              </li>
+              </motion.li>
             ) : (
-              <div key={idx} className="mb-4 p-4 border rounded-lg shadow-sm bg-white">
-                <h3 className="text-lg md:text-xl font-semibold text-blue-600 mb-2">
+              // Detailed Item (Card) Animation
+              <motion.div
+                key={idx}
+                className="mb-4 p-4 border rounded-lg shadow-lg bg-white"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.8 }}
+              >
+                <h3 className="text-lg md:text-xl font-semibold text-indigo-600 mb-2">
                   {item.title}
                 </h3>
                 <p className="text-base md:text-lg leading-relaxed">
                   {item.content}
                 </p>
-              </div>
+              </motion.div>
             )
           )}
         </section>

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 
 const FullCodingServices: React.FC = () => {
   const codingServicesData = {
@@ -77,28 +78,71 @@ const FullCodingServices: React.FC = () => {
   return (
     <section className="pt-28 px-4 md:px-12 lg:px-20 bg-gray-50 py-28">
       <div className="text-center mb-12 max-w-3xl mx-auto">
-        <h1 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+        <motion.h1
+          className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
           {codingServicesData.title}
-        </h1>
-        <p className="text-lg text-gray-600">{codingServicesData.description}</p>
+        </motion.h1>
+        <motion.p
+          className="text-lg text-gray-600"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.2 }}
+        >
+          {codingServicesData.description}
+        </motion.p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {codingServicesData.services.map((service) => (
-          <div
+          <motion.div
             key={service.id}
-            className="p-6 rounded-lg shadow-lg bg-white transition-transform transform hover:scale-105 hover:shadow-xl"
+            className="p-6 rounded-lg shadow-lg bg-white"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.5,
+              ease: "easeOut",
+            }}
+            whileHover={{ scale: 1.05}}
           >
-            <h2 className="text-xl font-semibold text-blue-700 mb-2">
+            <motion.h2
+              className="text-xl font-semibold text-blue-700 mb-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+            >
               {service.title}
-            </h2>
-            <p className="text-gray-700 mb-4">{service.description}</p>
-            <ul className="list-disc list-inside space-y-2 text-gray-600">
+            </motion.h2>
+            <motion.p
+              className="text-gray-700 mb-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+            >
+              {service.description}
+            </motion.p>
+            <motion.ul
+              className="list-disc list-inside space-y-2 text-gray-600"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.3 }}
+            >
               {service.details.map((detail, index) => (
-                <li key={index}>{detail}</li>
+                <motion.li
+                  key={index}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1, delay: 0.4 }}
+                >
+                  {detail}
+                </motion.li>
               ))}
-            </ul>
-          </div>
+            </motion.ul>
+          </motion.div>
         ))}
       </div>
     </section>

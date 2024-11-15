@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 interface AccountsReceivablesProps {
   patientPayments: number;
@@ -13,107 +14,134 @@ const AccountsReceivables: React.FC<AccountsReceivablesProps> = ({
   insuranceClaims,
   outstandingBalances,
   denialRate,
-  daysInAR
+  daysInAR,
 }) => {
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Animation variants
+  const fadeIn = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 1 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
+  };
 
   return (
-    <div className="pt-24 p-8 mx-auto lg:pt-24 lg:p-16 bg-gray-50">
-      <header className="text-center mb-6">
-        <h1 className="text-3xl font-bold text-gray-800">Accounts Receivables in U.S. Healthcare Services</h1>
-        <p className="text-xl text-gray-600 mt-2">
+    <motion.div
+      className="pt-24 p-8 mx-auto bg-gray-50 min-h-screen lg:px-24"
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+    >
+      {/* Header */}
+      <motion.header
+        className="text-center mb-12"
+        variants={fadeIn}
+      >
+        <h1 className="text-4xl font-bold text-primary">
+          Accounts Receivables in U.S. Healthcare Services
+        </h1>
+        <p className="text-lg text-gray-600 mt-4">
           Effective AR management is essential for maintaining cash flow, ensuring financial stability, and optimizing revenue cycle processes.
         </p>
-      </header>
+      </motion.header>
 
       {/* Key Information Section */}
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-        <div className="card bg-white p-4 rounded-lg shadow-lg">
-          <h2 className="text-xl font-semibold text-gray-700">Patient Payments</h2>
-          <p className="text-lg text-gray-800">${patientPayments}</p>
-        </div>
-        <div className="card bg-white p-4 rounded-lg shadow-lg">
-          <h2 className="text-xl font-semibold text-gray-700">Insurance Claims</h2>
-          <p className="text-lg text-gray-800">${insuranceClaims}</p>
-        </div>
-        <div className="card bg-white p-4 rounded-lg shadow-lg">
-          <h2 className="text-xl font-semibold text-gray-700">Outstanding Balances</h2>
-          <p className="text-lg text-gray-800">${outstandingBalances}</p>
-        </div>
-      </section>
+      <motion.section
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
+        variants={staggerContainer}
+      >
+        {[
+          { label: 'Patient Payments', value: `$${patientPayments}` },
+          { label: 'Insurance Claims', value: `$${insuranceClaims}` },
+          { label: 'Outstanding Balances', value: `$${outstandingBalances}` },
+        ].map((item, index) => (
+          <motion.div
+            key={index}
+            className="card bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            variants={fadeIn}
+          >
+            <h2 className="text-xl font-semibold text-gray-700">{item.label}</h2>
+            <p className="text-2xl text-gray-900 mt-2">{item.value}</p>
+          </motion.div>
+        ))}
+      </motion.section>
 
-      {/* Importance of AR Management Section */}
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Importance of Effective Accounts Receivables Management</h2>
-        <ul className="list-inside list-disc pl-4 text-gray-700">
-          <li>Optimizes cash flow by ensuring prompt payment collection.</li>
-          <li>Reduces days in AR, improving financial health.</li>
-          <li>Enhances patient satisfaction through transparent billing practices.</li>
-          <li>Provides insights into financial performance for better decision-making.</li>
+      {/* Importance Section */}
+      <motion.section className="mb-16" variants={fadeIn}>
+        <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          Importance of Effective Accounts Receivables Management
+        </h2>
+        <ul className="list-disc pl-6 text-gray-700 space-y-2">
+          <motion.li variants={fadeIn}>
+            Optimizes cash flow by ensuring prompt payment collection.
+          </motion.li>
+          <motion.li variants={fadeIn}>
+            Reduces days in AR, improving financial health.
+          </motion.li>
+          <motion.li variants={fadeIn}>
+            Enhances patient satisfaction through transparent billing practices.
+          </motion.li>
+          <motion.li variants={fadeIn}>
+            Provides insights into financial performance for better decision-making.
+          </motion.li>
         </ul>
-      </section>
+      </motion.section>
 
-      {/* Key Components of AR Management Section */}
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Key Components of Accounts Receivables Management</h2>
-        <div className="space-y-6">
-          <div className="bg-white p-4 rounded-lg shadow-lg">
-            <h3 className="text-xl font-semibold text-gray-700">Dental Billing</h3>
-            <p className="text-gray-600">The preparation and submission of claims to insurance companies for reimbursement of services provided. This includes accurate coding and following payer guidelines.</p>
-          </div>
-          <div className="bg-white p-4 rounded-lg shadow-lg">
-            <h3 className="text-xl font-semibold text-gray-700">Insurance and Patient AR Management</h3>
-            <p className="text-gray-600">Monitoring outstanding balances for both patient accounts and insurance claims, ensuring timely follow-ups and clear policies for overdue accounts.</p>
-          </div>
-          <div className="bg-white p-4 rounded-lg shadow-lg">
-            <h3 className="text-xl font-semibold text-gray-700">EOB Posting</h3>
-            <p className="text-gray-600">Accurately posting Explanation of Benefits (EOBs) into the system to reconcile payments against services billed, identifying discrepancies for resolution.</p>
-          </div>
+      {/* Key Components Section */}
+      <motion.section className="mb-16" variants={staggerContainer}>
+        <h2 className="text-2xl font-semibold text-gray-800 mb-6">
+          Key Components of Accounts Receivables Management
+        </h2>
+        <div className="space-y-8">
+          {[
+            {
+              title: 'Dental Billing',
+              description:
+                'The preparation and submission of claims to insurance companies for reimbursement of services provided. This includes accurate coding and following payer guidelines.',
+            },
+            {
+              title: 'Insurance and Patient AR Management',
+              description:
+                'Monitoring outstanding balances for both patient accounts and insurance claims, ensuring timely follow-ups and clear policies for overdue accounts.',
+            },
+            {
+              title: 'EOB Posting',
+              description:
+                'Accurately posting Explanation of Benefits (EOBs) into the system to reconcile payments against services billed, identifying discrepancies for resolution.',
+            },
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+              variants={fadeIn}
+            >
+              <h3 className="text-xl font-semibold text-gray-700">{item.title}</h3>
+              <p className="text-gray-600 mt-2">{item.description}</p>
+            </motion.div>
+          ))}
         </div>
-      </section>
+      </motion.section>
 
-      {/* Challenges in AR Management Section */}
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Challenges in Accounts Receivables Management</h2>
-        <ul className="list-inside list-disc pl-4 text-gray-700">
-          <li>Complex insurance policies causing delays or denials in payments.</li>
-          <li>High denial rates due to coding errors or incomplete documentation.</li>
-          <li>Increasing patient payment responsibility making collection difficult.</li>
-        </ul>
-      </section>
-
-      {/* Best Practices Section */}
-      <section className="mb-8">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Best Practices for Effective AR Management</h2>
-        <div className="space-y-6">
-          <div className="bg-white p-4 rounded-lg shadow-lg">
-            <h3 className="text-xl font-semibold text-gray-700">Implement Robust Billing Software</h3>
-            <p className="text-gray-600">Utilize advanced dental billing software that integrates with practice management systems for easier tracking and more efficient billing processes.</p>
-          </div>
-          <div className="bg-white p-4 rounded-lg shadow-lg">
-            <h3 className="text-xl font-semibold text-gray-700">Regular Staff Training</h3>
-            <p className="text-gray-600">Ensure staff are well-trained in billing, coding, and insurance policies to minimize errors and reduce denials.</p>
-          </div>
-          <div className="bg-white p-4 rounded-lg shadow-lg">
-            <h3 className="text-xl font-semibold text-gray-700">Establish Clear Communication Channels</h3>
-            <p className="text-gray-600">Maintain open communication with patients regarding their financial responsibilities and offer flexible payment options.</p>
-          </div>
-        </div>
-      </section>
-
-      {/* KPI Monitoring Section */}
-      <section className="bg-white p-6 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-semibold text-gray-800 mb-4">Key Performance Indicators (KPIs)</h2>
-        <ul className="list-inside list-disc pl-4 text-gray-700">
+      {/* KPI Section */}
+      <motion.section
+        className="bg-white p-6 rounded-lg shadow-md mb-16"
+        variants={fadeIn}
+      >
+        <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+          Key Performance Indicators (KPIs)
+        </h2>
+        <ul className="list-disc pl-6 text-gray-700">
           <li>Days in AR: {daysInAR} days</li>
           <li>Denial Rate: {denialRate}%</li>
         </ul>
-      </section>
-    </div>
+      </motion.section>
+    </motion.div>
   );
 };
 
