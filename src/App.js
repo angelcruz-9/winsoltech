@@ -3,7 +3,6 @@ import Home from "./components/Home/home";
 import Layout from "./components/layout/layout";
 import "./App.css";
 import RevenueCycle from "./components/revenueCycle/revenueCycle";
-// import ServiceDetail from "./components/services/serviceDetail";
 import Contact from "./components/contact/contact";
 import Careers from "./components/careers/careers";
 import FullCodingServices from "./components/revenueCycle/solutions/full-coding-services";
@@ -18,6 +17,9 @@ import EligibilityVerificationComponent from "./components/revenueCycle/solution
 import AccountsReceivables from "./components/revenueCycle/solutions/account-receivable";
 import PrivacyPolicy from "./components/footer/privacy-policy";
 import TermsOfService from "./components/footer/terms";
+import PatientPreRegistration from "./components/revenueCycle/solutions/pre-registration";
+import ClaimSubmission from "./components/revenueCycle/solutions/claim-submission";
+import ClaimManagement from "./components/revenueCycle/solutions/claim-management";
 
 function App() {
   return (
@@ -41,6 +43,9 @@ function App() {
           <Route path="solutions/cash-posting" element={<CashPostingComponent />} />
           <Route path="solutions/eligibility-verification" element={<EligibilityVerificationComponent />} />
           <Route path="solutions/account-receivable" element={<AccountsReceivables />} />
+          <Route path="solutions/pre-registration" element={<PatientPreRegistration />} />
+          <Route path="solutions/claim-submission" element={<ClaimSubmission />} />
+          <Route path="solutions/claim-management" element={<ClaimManagement />} />
         </Routes>
       </Layout>
     </Router>

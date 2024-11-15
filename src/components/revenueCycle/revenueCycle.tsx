@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import RCM from "./rcm";
 import Priority from "./priority";
 import Current from "./current";
 import Quality from "./quality";
 import Deliver from "./deliver";
-import Services from "../services/services";
 
 const revenueData = {
   hightLightText: "Revenue Cycle Management",
@@ -31,6 +30,11 @@ const buttonVariants = {
 };
 
 function RevenueCycle() {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <section className="flex flex-col">
       <div className="container-common pt-24 xl:pt-40">
@@ -91,7 +95,6 @@ function RevenueCycle() {
               />
             </div>
           </div>
-         <Services />
           {/* Bottom Section */}
           <RCM />
         </motion.div>

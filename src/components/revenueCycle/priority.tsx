@@ -29,7 +29,7 @@ const priorityData = {
 
 function Priority() {
   return (
-    <section className='py-12 bg-slate-500'>
+    <section className='py-12 bg-slate-500 px-2'>
         <div className='flex flex-col items-center'>
             <h2 className='text-2xl font-bold text-white text-center mb-8'>
                 {priorityData.title}

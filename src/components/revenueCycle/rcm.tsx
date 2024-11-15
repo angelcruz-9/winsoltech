@@ -5,6 +5,9 @@ import { ImStatsDots } from "react-icons/im";
 import { SiCashapp } from "react-icons/si";
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { AiFillAccountBook } from "react-icons/ai";
+import HowToRegIcon from '@mui/icons-material/HowToReg';
+import AssignmentIcon from '@mui/icons-material/Assignment';
+import ManageHistoryIcon from '@mui/icons-material/ManageHistory';
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { FaPhoneSquare, FaFileMedical, FaHome } from "react-icons/fa";
@@ -132,7 +135,7 @@ const rcmData = {
       icon: <RiVerifiedBadgeFill size={36} />,
       title: "Eligibility Verification",
       innerTitle: "Eligibility Verification",
-      description: (
+      innerDescription: (
         <p>
           Setup of new patient/emergency patient accounts, update existing accounts with insurance changes in your dental software.
         </p>
@@ -144,13 +147,49 @@ const rcmData = {
       icon: <AiFillAccountBook size={36} />,
       title: "Account Receivables",
       innerTitle: "Account Receivables",
-      description: (
+      innerDescription: (
         <p>
           Dental Management Services for dental billing, insurance & patient accounts receivable management, and EOB posting.
         </p>
       ),
       serviceId: "account-receivable",
-    }
+    },
+    {
+      id: 11,
+      title: "Pre - Registration",
+      icon: <HowToRegIcon fontSize="large" />,
+      innerTitle: 'Pre - Registration',
+      innerDescription: (
+        <p>
+          Our Service involves collecting and verifying patient information such as demographics, insurance details, medical history, and consent forms before the patient visits the healthcare facility. This process can be completed over the phone, online, or through patient portals, allowing patients to provide their information at their convenience.
+        </p>
+      ),  
+      serviceId: "pre-registration",
+  },
+  {
+      id: 12,
+      title: "Claim Submission",
+      icon: <AssignmentIcon fontSize="large" />,
+      innerTitle: 'Claim - Submission',
+      innerDescription: (
+        <p>
+          Our Services include preparing and sending healthcare claims to insurance companies for reimbursement. This involves compiling accurate billing information, coding services correctly, and adhering to payer-specific guidelines to ensure that claims are processed efficiently and without delay.
+        </p>
+      ),  
+      serviceId: "claim-submission",
+  },
+  {
+      id: 13,
+      title: "Claim Management",
+      icon: <ManageHistoryIcon fontSize="large" />,
+      innerTitle: 'Claim - Management',
+      innerDescription: (
+        <p>
+          Our Services encompasses the processes of submitting, tracking, correcting, and following up on healthcare claims to ensure that providers are reimbursed correctly and promptly. It involves detailed attention to coding accuracy, compliance with payer guidelines, and proactive resolution of any issues that may lead to delays or denials.
+        </p>
+      ),  
+      serviceId: "claim-management",
+  },
   ],
 };
 
