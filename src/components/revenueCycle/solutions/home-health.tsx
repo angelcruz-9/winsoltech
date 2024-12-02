@@ -91,7 +91,7 @@ const HomeHealthCare = () => {
             >
               {section.description}
             </motion.p>
-            <div className="grid grid-cols-3 gap-8">
+            <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-8">
               {section.items.map((item, idx) => (
                 <motion.div
                   key={idx}

@@ -77,7 +77,7 @@ const TelehealthRPM: React.FC = () => {
   }, []);
 
   return (
-    <section className="p-8 lg:py-24 bg-gradient-to-b from-blue-50 via-gray-100 to-white">
+    <section className="p-8 py-24 bg-gradient-to-b from-blue-50 via-gray-100 to-white">
       <div className="text-center mb-16 max-w-4xl mx-auto">
         <h1 className="text-4xl lg:text-5xl font-extrabold text-blue-800 mb-6">
           {telehealthData.title}

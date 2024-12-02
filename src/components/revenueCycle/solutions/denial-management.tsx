@@ -82,7 +82,7 @@ const DenialManagement: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-20 px-6 md:px-12 lg:px-18 bg-gradient-to-b from-blue-50 to-white">
+    <section className="py-24 px-6 md:px-12 lg:px-18 bg-gradient-to-b from-blue-50 to-white">
       <motion.div
         className="text-center mb-16 max-w-4xl mx-auto"
         initial={{ opacity: 0 }}
@@ -96,7 +96,7 @@ const DenialManagement: React.FC = () => {
           {denialManagementData.description}
         </p>
       </motion.div>
-      <div className="container mx-auto px-6 py-16">
+      <div className="container mx-auto px-6">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
           {denialManagementData.sections.map((section, index) => (
             <motion.div

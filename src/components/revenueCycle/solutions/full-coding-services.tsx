@@ -113,11 +113,11 @@ const FullCodingServices: React.FC = () => {
       </div>
 
       {/* Services Section */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 py-8">
           {codingServicesData.services.map((service) => (
             <motion.div
               key={service.id}
-              className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
+              className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer mx-4"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: "easeOut" }}

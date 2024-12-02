@@ -78,7 +78,7 @@ const ChargeCapture: React.FC = () => {
   }, []);
 
   return (
-    <section className="p-8 lg:pt-20 lg:px-16 bg-gradient-to-b from-gray-50 to-blue-50">
+    <section className="p-8 pt-28 lg:pt-24 lg:px-16 bg-gradient-to-b from-gray-50 to-blue-50">
       <div className="text-center mb-16 max-w-4xl mx-auto">
         <motion.h1
           className="text-3xl lg:text-5xl font-extrabold text-blue-700 mb-6"
