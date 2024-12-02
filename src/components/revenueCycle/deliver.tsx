@@ -5,27 +5,18 @@ import DeveloperBoardIcon from '@mui/icons-material/DeveloperBoard';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 
 const deliverData = {
-  title: <>Partner with us to Deliver Quality Outcomes at Scale</>,
+  title: <>Partner with Us to Deliver Quality Outcomes at Scale</>,
   cardData: [
     {
       id: 1,
       title: "People",
       icon: <PeopleIcon fontSize="large" />,
       description: (
-        <ul className="list-disc pl-5">
+        <ul className="list-disc pl-6 space-y-2">
           <li>All our Coders are certified through AHIMA or AAPC</li>
-          <li>
-            Our Coding Educators bear up to 10 years average professional
-            experience
-          </li>
-          <li>
-            Our Coding Certification Programs boasts of {">"} 95% average pass
-            rate for the last 5 years
-          </li>
-          <li>
-            Coding talent from certification programs bears {">"} 90%
-            Industry-leading retention rate
-          </li>
+          <li>Our Coding Educators have 10+ years of experience</li>
+          <li>Our Coding Certification Programs boast a 95% average pass rate over the last 5 years</li>
+          <li>Industry-leading retention rate of over 90%</li>
         </ul>
       ),
     },
@@ -34,12 +25,12 @@ const deliverData = {
       title: "Process",
       icon: <DeveloperBoardIcon fontSize="large" />,
       description: (
-        <ul className="list-disc pl-5">
+        <ul className="list-disc pl-6 space-y-2">
           <li>Identify and hire the best talent</li>
           <li>Robust quality and training platform</li>
-          <li>Clear reporting</li>
-          <li>Six Sigma strategy and efficiencies</li>
-          <li>Opportunity to implement concurrent coding</li>
+          <li>Clear, transparent reporting</li>
+          <li>Six Sigma strategies for efficiency</li>
+          <li>Opportunity for concurrent coding implementation</li>
         </ul>
       ),
     },
@@ -48,14 +39,11 @@ const deliverData = {
       title: "Result",
       icon: <MonetizationOnIcon fontSize="large" />,
       description: (
-        <ul className="list-disc pl-5">
-          <li>Reduce Cost with 30-60% savings</li>
-          <li>
-            Improve cash flow through consistent turn around time compliance and
-            reduce DNFB
-          </li>
-          <li>Increase reimbursement through improved quality</li>
-          <li>Reduce burden of recruitment and people management</li>
+        <ul className="list-disc pl-6 space-y-2">
+          <li>Reduce costs with 30-60% savings</li>
+          <li>Improve cash flow through timely compliance and reduced DNFB</li>
+          <li>Increase reimbursement with improved quality</li>
+          <li>Reduce the burden of recruitment and people management</li>
         </ul>
       ),
     },
@@ -69,13 +57,15 @@ const cardVariants = {
 
 function Deliver() {
   return (
-    <section className="py-16 bg-gray-100">
+    <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="flex flex-col justify-center items-center gap-4">
-          <h1 className="text-4xl font-semibold text-gray-900">{deliverData.title}</h1>
-          <div className="border-b-4 border-primary w-24"></div>
+          <h1 className="text-4xl font-semibold text-gray-900 leading-tight">
+            {deliverData.title}
+          </h1>
+          <div className="border-b-4 border-primary w-24 mt-2"></div>
         </div>
-        <div className="flex flex-col mt-8">
+        <div className="flex flex-col mt-12">
           <div className="flex flex-wrap justify-center gap-8">
             {deliverData.cardData.map((card) => (
               <motion.div
@@ -84,11 +74,11 @@ function Deliver() {
                 animate="visible"
                 variants={cardVariants}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
-                className="bg-white rounded-lg shadow-lg p-4 flex flex-col w-full sm:w-80 h-96"
+                className="bg-white rounded-xl shadow-lg hover:shadow-2xl p-6 flex flex-col w-full sm:w-96 lg:w-1/3 h-auto transition-transform transform hover:scale-105"
               >
-                <div className="mb-4 text-primary">{card.icon}</div>
-                <h2 className="text-xl font-semibold mb-4 text-left">{card.title}</h2>
-                <div className="text-gray-700">{card.description}</div>
+                <div className="mb-6 text-primary flex justify-center">{card.icon}</div>
+                <h2 className="text-2xl font-semibold mb-4 text-gray-800">{card.title}</h2>
+                <div className="text-gray-600">{card.description}</div>
               </motion.div>
             ))}
           </div>

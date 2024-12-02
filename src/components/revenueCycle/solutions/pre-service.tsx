@@ -1,5 +1,11 @@
 import React, { useEffect } from "react";
-import { FaFileMedical, FaShieldAlt, FaClipboardCheck, FaCheckCircle, FaUserNurse } from "react-icons/fa";
+import { 
+  FaFileMedical, 
+  FaShieldAlt, 
+  FaClipboardCheck, 
+  FaCheckCircle, 
+  FaUserNurse 
+} from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const UMProcess: React.FC = () => {
@@ -9,7 +15,7 @@ const UMProcess: React.FC = () => {
       "Utilization Management (UM) is a critical process in the U.S. healthcare system that ensures patients receive appropriate, efficient, and medically necessary care. This process includes various components such as pre-authorization (pre-auth), pre-service checks, and post-service verifications, typically conducted by highly skilled registered nurses.",
     sections: [
       {
-        icon: <FaFileMedical className="text-blue-500" />,
+        icon: <FaFileMedical className="text-blue-500 text-3xl" />,
         title: "Utilization Management (UM)",
         description:
           "Utilization management involves systematic reviews of healthcare services to determine their necessity and appropriateness based on established criteria.",
@@ -20,7 +26,7 @@ const UMProcess: React.FC = () => {
         ],
       },
       {
-        icon: <FaShieldAlt className="text-green-500" />,
+        icon: <FaShieldAlt className="text-green-500 text-3xl" />,
         title: "Pre-Authorization (Pre-Auth)",
         description:
           "Pre-authorization is a process required by many insurance plans before certain services, procedures, or medications can be provided.",
@@ -31,7 +37,7 @@ const UMProcess: React.FC = () => {
         ],
       },
       {
-        icon: <FaClipboardCheck className="text-purple-500" />,
+        icon: <FaClipboardCheck className="text-purple-500 text-3xl" />,
         title: "Pre-Service Checks",
         description:
           "Pre-service checks verify patient eligibility and benefits prior to delivering healthcare services.",
@@ -41,7 +47,7 @@ const UMProcess: React.FC = () => {
         ],
       },
       {
-        icon: <FaCheckCircle className="text-indigo-500" />,
+        icon: <FaCheckCircle className="text-indigo-500 text-3xl" />,
         title: "Post-Service Verifications",
         description:
           "Post-service verifications occur after care is provided, reviewing clinical documentation to confirm that services rendered were necessary and appropriately billed.",
@@ -52,7 +58,7 @@ const UMProcess: React.FC = () => {
         ],
       },
       {
-        icon: <FaUserNurse className="text-pink-500" />,
+        icon: <FaUserNurse className="text-pink-500 text-3xl" />,
         title: "Role of Registered Nurses in UM Processes",
         description:
           "Registered nurses are integral to the UM process due to their clinical expertise and ability to interpret complex medical information.",
@@ -70,32 +76,34 @@ const UMProcess: React.FC = () => {
   }, []);
 
   return (
-    <section className="p-8 lg:pt-32 lg:p-16 bg-gradient-to-br from-blue-50 via-indigo-100 to-pink-50">
-      <motion.div 
-        className="text-center mb-12 max-w-4xl mx-auto"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <h1 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">{umData.title}</h1>
-        <p className="text-lg text-gray-600">{umData.description}</p>
-      </motion.div>
+    <section className="bg-gradient-to-br from-white to-gray-50 min-h-screen py-20">
+      <div className="relative bg-blue-100 p-12 text-center mb-16">
+        <motion.div
+          className="max-w-5xl mx-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1 }}
+        >
+          <h1 className="text-4xl lg:text-5xl font-bold text-blue-900">{umData.title}</h1>
+          <p className="text-lg lg:text-xl mt-4 text-blue-800">{umData.description}</p>
+        </motion.div>
+      </div>
 
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div className="container mx-auto grid gap-8 lg:grid-cols-3 md:grid-cols-2 px-6 lg:px-12">
         {umData.sections.map((section, index) => (
           <motion.div
             key={index}
-            className="p-6 bg-white rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
+            className="bg-white rounded-lg shadow-md p-6 hover:shadow-xl transform transition hover:scale-105"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: index * 0.2 }}
           >
             <div className="flex items-center mb-4">
               {section.icon}
-              <h2 className="text-xl font-semibold text-gray-800 ml-3">{section.title}</h2>
+              <h2 className="ml-4 text-xl font-semibold text-gray-900">{section.title}</h2>
             </div>
-            <p className="text-gray-700 mb-4">{section.description}</p>
-            <ul className="list-disc list-inside space-y-2 text-gray-600">
+            <p className="text-gray-700">{section.description}</p>
+            <ul className="mt-4 space-y-2 text-gray-600">
               {section.list.map((item, itemIndex) => (
                 <li key={itemIndex}>
                   <strong>{item.title}:</strong> {item.content}

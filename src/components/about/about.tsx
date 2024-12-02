@@ -21,29 +21,29 @@ const aboutData = {
 
 function About() {
   return (
-    <section className="py-16 bg-white rounded-xl">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 p-6 sm:p-10 gap-8">
+    <section className="py-16 bg-gradient-to-r from-blue-800 to-blue-500 text-white rounded-md">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 p-6 sm:p-10 gap-8 max-w-7xl mx-auto">
         {/* Left Section: Main Title and Description */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="lg:pr-8 rounded-2xl"
+          className="lg:pr-8 rounded-2xl space-y-6"
         >
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-blue-900 mb-6 leading-snug text-left">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-snug">
             Transforming Healthcare Services with Innovation & Commitment
           </h1>
-          <p className="text-base sm:text-lg lg:text-xl text-gray-700 leading-relaxed text-left">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-200 leading-relaxed">
             {aboutData.title}
           </p>
         </motion.div>
 
-        {/* Right Section: Values List */}
+        {/* Right Section: Values List with Background Image */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="bg-gray-50 p-6 sm:p-8 rounded-lg shadow-lg"
+          className="bg-white p-6 sm:p-8 rounded-lg shadow-xl bg-cover bg-center"
         >
           <h2 className="text-xl sm:text-2xl font-semibold text-blue-900 mb-6">
             {aboutData.subTitle}
@@ -52,7 +52,7 @@ function About() {
             {aboutData.subItems.map((item, index) => (
               <li key={index} className="flex items-start space-x-4">
                 <FaHeartbeat className="text-blue-900 w-6 h-6 mt-1" />
-                <span className="text-base sm:text-lg text-gray-700 text-left">{item}</span>
+                <span className="text-base sm:text-lg text-gray-700">{item}</span>
               </li>
             ))}
           </ul>

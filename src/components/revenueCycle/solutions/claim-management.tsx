@@ -8,15 +8,15 @@ interface SectionProps {
 
 const Section: React.FC<SectionProps> = ({ title, content }) => (
   <motion.div
-    className="bg-white shadow-lg rounded-lg p-6 border border-gray-200 mb-6 hover:shadow-xl transition-shadow"
-    initial={{ opacity: 0, y: 50 }}
+    className="bg-gradient-to-r from-white via-gray-100 to-gray-200 shadow-md rounded-xl p-8 mb-8 hover:scale-102 hover:shadow-lg transform transition-all duration-300 ease-in-out"
+    initial={{ opacity: 0, y: 40 }}
     animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, ease: 'easeOut' }}
+    transition={{ duration: 0.8, ease: 'easeOut' }}
   >
-    <h2 className="text-xl md:text-2xl font-semibold text-blue-700 mb-4">{title}</h2>
-    <ul className="list-disc list-inside text-gray-700 space-y-2">
+    <h2 className="text-2xl md:text-3xl font-bold text-primary mb-6">{title}</h2>
+    <ul className="list-disc list-inside text-gray-700 space-y-4">
       {content.map((item, index) => (
-        <li key={index}>{item}</li>
+        <li key={index} className="text-lg">{item}</li>
       ))}
     </ul>
   </motion.div>
@@ -24,9 +24,10 @@ const Section: React.FC<SectionProps> = ({ title, content }) => (
 
 const ClaimManagement: React.FC = () => {
   return (
-    <div className="container mx-auto px-4 pt-24 md:px-8 lg:px-16 py-10">
+    <div className="bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen py-20 pt-28 px-6 md:px-12">
+      {/* Header Section */}
       <motion.h1
-        className="text-3xl md:text-4xl font-bold text-blue-900 mb-10 text-center"
+        className="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -34,8 +35,9 @@ const ClaimManagement: React.FC = () => {
         Overview of Claim Management in U.S. Healthcare Services
       </motion.h1>
 
+      {/* Introduction Paragraph */}
       <motion.p
-        className="text-lg md:text-xl text-gray-800 mb-8 text-center max-w-2xl mx-auto"
+        className="text-lg text-gray-800 mb-10 text-center max-w-3xl mx-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.3 }}
@@ -43,7 +45,8 @@ const ClaimManagement: React.FC = () => {
         Claim management involves the submission, tracking, correction, and follow-up on claims, ensuring healthcare providers receive accurate and timely payments for services rendered.
       </motion.p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+      {/* Grid of Sections */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <Section
           title="Importance of Claim Management"
           content={[

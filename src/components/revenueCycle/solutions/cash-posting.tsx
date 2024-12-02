@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { FaCheckCircle } from 'react-icons/fa';
 
 const CashPostingComponent: React.FC = () => {
   const cashPostingData = {
@@ -62,9 +63,9 @@ const CashPostingComponent: React.FC = () => {
   }, []);
 
   return (
-    <div className="py-8 pt-28 max-w-4xl mx-auto font-sans px-4 sm:px-6 md:px-8">
+    <div className="py-8 pt-28 max-w-7xl mx-auto font-sans px-4 sm:px-6 md:px-8">
       <motion.h1
-        className="text-3xl text-center font-bold text-blue-800 mb-6"
+        className="text-5xl text-center font-extrabold text-blue-900 mb-8 leading-tight"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
@@ -72,7 +73,7 @@ const CashPostingComponent: React.FC = () => {
         {cashPostingData.title}
       </motion.h1>
       <motion.p
-        className="text-lg text-gray-700 mb-8"
+        className="text-lg text-gray-700 mb-12 leading-relaxed"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -83,13 +84,13 @@ const CashPostingComponent: React.FC = () => {
       {cashPostingData.sections.map((section, index) => (
         <motion.section
           key={index}
-          className="mb-10"
+          className="mb-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: index * 0.2 }}
         >
           <motion.h2
-            className="text-2xl font-semibold text-blue-600 mb-4"
+            className="text-4xl font-semibold text-blue-700 mb-6"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
@@ -97,31 +98,35 @@ const CashPostingComponent: React.FC = () => {
             {section.heading}
           </motion.h2>
           {section.items.length > 1 ? (
-            <ul className="list-disc list-inside space-y-2 text-gray-600">
+            <ul className="space-y-6 text-gray-700">
               {section.items.map((item, itemIndex) => (
                 <motion.li
                   key={itemIndex}
+                  className="flex items-start space-x-4"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: itemIndex * 0.2 }}
                 >
-                  {'title' in item && <strong>{item.title}: </strong>}
-                  {item.content}
+                  <FaCheckCircle className="text-teal-500" size={24} />
+                  <p>
+                    {'title' in item && <strong>{item.title}: </strong>}
+                    {item.content}
+                  </p>
                 </motion.li>
               ))}
             </ul>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {section.items.map((item, itemIndex) => (
                 <motion.div
                   key={itemIndex}
-                  className="flex-1 bg-white p-6 shadow-lg rounded-lg"
+                  className="bg-white p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 ease-in-out"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: itemIndex * 0.2 }}
                 >
                   {'title' in item && (
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">{item.title}</h3>
+                    <h3 className="text-2xl font-semibold text-gray-800 mb-4">{item.title}</h3>
                   )}
                   <p className="text-gray-600">{item.content}</p>
                 </motion.div>

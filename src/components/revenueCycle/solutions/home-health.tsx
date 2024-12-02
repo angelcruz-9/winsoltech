@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 
 const homeHealthCareData = {
   title: "Home Health Care in U.S. Healthcare Services",
@@ -38,20 +38,19 @@ const homeHealthCareData = {
 };
 
 const HomeHealthCare = () => {
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <motion.div
-      className="py-8 pt-28 p-8 max-w-4xl mx-auto font-sans text-gray-800"
+      className="py-24 px-8 bg-gray-50 max-w-7xl mx-auto font-sans text-gray-800"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
       <motion.h1
-        className="text-2xl md:text-3xl font-bold text-center text-blue-600 mb-6"
+        className="text-3xl md:text-4xl font-bold text-center text-blue-600 mb-8"
         initial={{ y: -30, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.7 }}
@@ -59,7 +58,7 @@ const HomeHealthCare = () => {
         {homeHealthCareData.title}
       </motion.h1>
       <motion.p
-        className="text-base md:text-lg mb-8 leading-relaxed"
+        className="text-lg md:text-xl text-center mb-12 leading-relaxed"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7, delay: 0.3 }}
@@ -67,67 +66,71 @@ const HomeHealthCare = () => {
         {homeHealthCareData.intro}
       </motion.p>
 
-      {homeHealthCareData.sections.map((section, index) => (
-        <motion.section
-          key={index}
-          className="mb-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.4 }}
-        >
-          <motion.h2
-            className="text-xl md:text-2xl font-semibold text-blue-500 mb-4"
-            initial={{ y: -30, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.7 }}
-          >
-            {section.heading}
-          </motion.h2>
-          <motion.p
-            className="text-base md:text-lg mb-4"
+      <div className="grid gap-12">
+        {homeHealthCareData.sections.map((section, index) => (
+          <motion.section
+            key={index}
+            className="bg-white p-8 rounded-lg shadow-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.7, delay: 0.5 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
           >
-            {section.description}
-          </motion.p>
-          {section.items.map((item, idx) => (
-            <motion.div
-              key={idx}
-              className="mb-4 p-4 border rounded-lg shadow-sm bg-gray-100"
-              initial={{ x: -50, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+            <motion.h2
+              className="text-2xl font-semibold text-blue-600 mb-4"
+              initial={{ y: -30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.7 }}
             >
-              <motion.h3
-                className="text-lg md:text-xl font-semibold text-blue-600 mb-2"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.7, delay: 0.7 }}
-              >
-                {item.title}
-              </motion.h3>
-              <motion.p
-                className="text-base md:text-lg leading-relaxed"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.7, delay: 0.8 }}
-              >
-                {item.content}
-              </motion.p>
-            </motion.div>
-          ))}
-        </motion.section>
-      ))}
+              {section.heading}
+            </motion.h2>
+            <motion.p
+              className="text-lg mb-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.5 }}
+            >
+              {section.description}
+            </motion.p>
+            <div className="grid grid-cols-3 gap-8">
+              {section.items.map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  className="bg-gray-100 mb-4 p-6 rounded-lg shadow-sm"
+                  initial={{ x: -50, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                >
+                  <motion.h3
+                    className="text-lg font-semibold text-blue-600 mb-2"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.7, delay: 0.7 }}
+                  >
+                    {item.title}
+                  </motion.h3>
+                  <motion.p
+                    className="text-base leading-relaxed"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.7, delay: 0.8 }}
+                  >
+                    {item.content}
+                  </motion.p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
+        ))}
+      </div>
 
       <motion.section
-        className="mb-8"
+        className="mt-16 bg-white p-8 rounded-lg shadow-lg"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7, delay: 0.9 }}
       >
         <motion.h2
-          className="text-xl md:text-2xl font-semibold text-blue-500 mb-4"
+          className="text-2xl font-semibold text-blue-600 mb-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7 }}
@@ -135,7 +138,7 @@ const HomeHealthCare = () => {
           Benefits of Home Health Care
         </motion.h2>
         <motion.ul
-          className="list-disc list-inside ml-4"
+          className="list-disc list-inside ml-6 text-lg"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 1 }}
@@ -143,7 +146,7 @@ const HomeHealthCare = () => {
           {homeHealthCareData.benefits.map((benefit, idx) => (
             <motion.li
               key={idx}
-              className="text-base md:text-lg mb-2"
+              className="mb-3"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.7, delay: 1 + idx * 0.2 }}
@@ -155,13 +158,13 @@ const HomeHealthCare = () => {
       </motion.section>
 
       <motion.section
-        className="mb-8"
+        className="mt-16 bg-white p-8 rounded-lg shadow-lg"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7, delay: 1.5 }}
       >
         <motion.h2
-          className="text-xl md:text-2xl font-semibold text-blue-500 mb-4"
+          className="text-2xl font-semibold text-blue-600 mb-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7 }}
@@ -169,7 +172,7 @@ const HomeHealthCare = () => {
           Challenges in Home Health Care
         </motion.h2>
         <motion.ul
-          className="list-disc list-inside ml-4"
+          className="list-disc list-inside ml-6 text-lg"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 1.7 }}
@@ -177,7 +180,7 @@ const HomeHealthCare = () => {
           {homeHealthCareData.challenges.map((challenge, idx) => (
             <motion.li
               key={idx}
-              className="text-base md:text-lg mb-2"
+              className="mb-3"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.7, delay: 1.7 + idx * 0.2 }}

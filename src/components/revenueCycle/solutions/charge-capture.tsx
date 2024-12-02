@@ -78,10 +78,10 @@ const ChargeCapture: React.FC = () => {
   }, []);
 
   return (
-    <section className="p-8 lg:pt-24 lg:p-16 bg-gray-50">
-      <div className="text-center mb-12 max-w-3xl mx-auto">
+    <section className="p-8 lg:pt-20 lg:px-16 bg-gradient-to-b from-gray-50 to-blue-50">
+      <div className="text-center mb-16 max-w-4xl mx-auto">
         <motion.h1
-          className="text-3xl lg:text-4xl font-bold text-primary mb-4"
+          className="text-3xl lg:text-5xl font-extrabold text-blue-700 mb-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1 }}
@@ -89,7 +89,7 @@ const ChargeCapture: React.FC = () => {
           {chargeCaptureData.title}
         </motion.h1>
         <motion.p
-          className="text-lg text-gray-600"
+          className="text-lg lg:text-xl text-gray-700 leading-relaxed"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
@@ -98,37 +98,29 @@ const ChargeCapture: React.FC = () => {
         </motion.p>
       </div>
 
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-3">
         {chargeCaptureData.sections.map((section, index) => (
           <motion.div
             key={index}
-            className="p-6 bg-white rounded-lg shadow-lg transition duration-300 transform hover:scale-105"
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
+            className="flex flex-col items-start bg-white rounded-lg shadow-md p-6 transform hover:shadow-lg hover:scale-105 transition"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: index * 0.2 }}
           >
             <div className="flex items-center mb-4">
               {section.icon}
-              <h2 className="text-xl font-semibold text-gray-800 ml-3">{section.title}</h2>
+              <h2 className="text-xl font-bold text-gray-800 ml-4">
+                {section.title}
+              </h2>
             </div>
-            <p className="text-gray-700 mb-4">{section.description}</p>
-            <motion.ul
-              className="list-disc list-inside space-y-2 text-gray-600"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
+            <p className="text-gray-600 mb-4">{section.description}</p>
+            <ul className="space-y-2 text-gray-700">
               {section.list.map((item, itemIndex) => (
-                <motion.li
-                  key={itemIndex}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: itemIndex * 0.1 }}
-                >
-                  <strong>{item.title}:</strong> {item.content}
-                </motion.li>
+                <li key={itemIndex}>
+                  <strong className="text-blue-600">{item.title}:</strong> {item.content}
+                </li>
               ))}
-            </motion.ul>
+            </ul>
           </motion.div>
         ))}
       </div>

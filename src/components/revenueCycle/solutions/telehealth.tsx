@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
-import { FaHeartbeat, FaLaptopMedical, FaExclamationCircle, FaHandsHelping } from "react-icons/fa";
+import {
+  FaHeartbeat,
+  FaLaptopMedical,
+  FaExclamationCircle,
+  FaHandsHelping,
+} from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const TelehealthRPM: React.FC = () => {
@@ -72,41 +77,46 @@ const TelehealthRPM: React.FC = () => {
   }, []);
 
   return (
-    <section className="p-8 lg:pt-24 lg:p-16 bg-gray-50">
-      <div className="text-center mb-12 max-w-3xl mx-auto">
-        <h1 className="text-3xl lg:text-4xl font-bold text-primary mb-4">{telehealthData.title}</h1>
-        <p className="text-lg text-gray-600">{telehealthData.description}</p>
+    <section className="p-8 lg:py-24 bg-gradient-to-b from-blue-50 via-gray-100 to-white">
+      <div className="text-center mb-16 max-w-4xl mx-auto">
+        <h1 className="text-4xl lg:text-5xl font-extrabold text-blue-800 mb-6">
+          {telehealthData.title}
+        </h1>
+        <p className="text-lg lg:text-xl text-gray-600">
+          {telehealthData.description}
+        </p>
       </div>
 
-      {/* Grid layout with Framer Motion */}
-      <motion.div
-        className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
+      <div className="container mx-auto grid gap-10 md:grid-cols-2 lg:grid-cols-3">
         {telehealthData.sections.map((section, index) => (
           <motion.div
             key={index}
-            className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-200"
+            className="relative bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105"
             whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
           >
-            <div className="flex items-center mb-4">
-              {section.icon}
-              <h2 className="ml-4 text-2xl font-semibold text-gray-800">{section.title}</h2>
+            <div className="p-6">
+              <div className="flex items-center justify-center mb-4">
+                {section.icon}
+              </div>
+              <h2 className="text-2xl font-semibold text-center text-blue-800 mb-4">
+                {section.title}
+              </h2>
+              <p className="text-gray-600 text-center mb-6">
+                {section.description}
+              </p>
+              <ul className="space-y-4">
+                {section.details.map((detail, detailIndex) => (
+                  <li key={detailIndex} className="text-gray-800">
+                    <strong>{detail.title}: </strong>
+                    {detail.content}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <p className="text-gray-600 mb-4">{section.description}</p>
-            <ul className="space-y-2">
-              {section.details.map((detail, detailIndex) => (
-                <li key={detailIndex} className="text-gray-700">
-                  <strong>{detail.title}:</strong> {detail.content}
-                </li>
-              ))}
-            </ul>
+            <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-blue-500 via-green-400 to-purple-500"></div>
           </motion.div>
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 };

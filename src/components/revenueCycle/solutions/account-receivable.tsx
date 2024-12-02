@@ -23,17 +23,17 @@ const AccountsReceivables: React.FC<AccountsReceivablesProps> = ({
   // Animation variants
   const fadeIn = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
   const staggerContainer = {
     hidden: { opacity: 1 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
+    visible: { opacity: 1, transition: { staggerChildren: 0.3 } },
   };
 
   return (
     <motion.div
-      className="pt-24 p-8 mx-auto bg-gray-50 min-h-screen lg:px-24"
+      className="pt-32 p-8 mx-auto bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 min-h-screen lg:px-24"
       initial="hidden"
       animate="visible"
       exit="hidden"
@@ -43,52 +43,52 @@ const AccountsReceivables: React.FC<AccountsReceivablesProps> = ({
         className="text-center mb-12"
         variants={fadeIn}
       >
-        <h1 className="text-4xl font-bold text-primary">
+        <h1 className="text-5xl font-extrabold text-blue-900 tracking-wide">
           Accounts Receivables in U.S. Healthcare Services
         </h1>
-        <p className="text-lg text-gray-600 mt-4">
-          Effective AR management is essential for maintaining cash flow, ensuring financial stability, and optimizing revenue cycle processes.
+        <p className="text-lg text-gray-600 mt-4 max-w-3xl mx-auto">
+          Efficient AR management is key to the financial sustainability of healthcare organizations, ensuring smooth operations and optimal revenue cycle processes.
         </p>
       </motion.header>
 
-      {/* Key Information Section */}
+      {/* Key Metrics Section */}
       <motion.section
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16"
         variants={staggerContainer}
       >
         {[
-          { label: 'Patient Payments', value: `$${patientPayments}` },
-          { label: 'Insurance Claims', value: `$${insuranceClaims}` },
-          { label: 'Outstanding Balances', value: `$${outstandingBalances}` },
+          { label: 'Patient Payments', value: '2000' },
+          { label: 'Insurance Claims', value: '5000' },
+          { label: 'Outstanding Balances', value: '10000' },
         ].map((item, index) => (
           <motion.div
             key={index}
-            className="card bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            className="bg-white p-6 rounded-xl shadow-xl hover:scale-105 transition-transform duration-300 ease-in-out"
             variants={fadeIn}
           >
-            <h2 className="text-xl font-semibold text-gray-700">{item.label}</h2>
-            <p className="text-2xl text-gray-900 mt-2">{item.value}</p>
+            <h2 className="text-xl font-semibold text-gray-800">{item.label}</h2>
+            <p className="text-3xl font-bold text-blue-600 mt-2">{item.value}</p>
           </motion.div>
         ))}
       </motion.section>
 
-      {/* Importance Section */}
+      {/* AR Importance Section */}
       <motion.section className="mb-16" variants={fadeIn}>
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">
           Importance of Effective Accounts Receivables Management
         </h2>
-        <ul className="list-disc pl-6 text-gray-700 space-y-2">
-          <motion.li variants={fadeIn}>
-            Optimizes cash flow by ensuring prompt payment collection.
+        <ul className="list-disc pl-6 text-gray-700 space-y-3">
+          <motion.li variants={fadeIn} className="text-lg">
+            Ensures timely payments, improving cash flow and financial stability.
           </motion.li>
-          <motion.li variants={fadeIn}>
-            Reduces days in AR, improving financial health.
+          <motion.li variants={fadeIn} className="text-lg">
+            Reduces days in AR, leading to improved operational efficiency.
           </motion.li>
-          <motion.li variants={fadeIn}>
-            Enhances patient satisfaction through transparent billing practices.
+          <motion.li variants={fadeIn} className="text-lg">
+            Increases patient satisfaction with transparent billing practices.
           </motion.li>
-          <motion.li variants={fadeIn}>
-            Provides insights into financial performance for better decision-making.
+          <motion.li variants={fadeIn} className="text-lg">
+            Provides actionable insights for better decision-making and strategy.
           </motion.li>
         </ul>
       </motion.section>
@@ -98,30 +98,30 @@ const AccountsReceivables: React.FC<AccountsReceivablesProps> = ({
         <h2 className="text-2xl font-semibold text-gray-800 mb-6">
           Key Components of Accounts Receivables Management
         </h2>
-        <div className="space-y-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {[
             {
               title: 'Dental Billing',
               description:
-                'The preparation and submission of claims to insurance companies for reimbursement of services provided. This includes accurate coding and following payer guidelines.',
+                'Preparation and submission of claims to insurers for reimbursement, ensuring accurate coding and adherence to payer guidelines.',
             },
             {
               title: 'Insurance and Patient AR Management',
               description:
-                'Monitoring outstanding balances for both patient accounts and insurance claims, ensuring timely follow-ups and clear policies for overdue accounts.',
+                'Tracking outstanding balances for patients and insurance claims, ensuring timely follow-ups and policies for overdue payments.',
             },
             {
               title: 'EOB Posting',
               description:
-                'Accurately posting Explanation of Benefits (EOBs) into the system to reconcile payments against services billed, identifying discrepancies for resolution.',
+                'Accurate posting of Explanation of Benefits (EOBs) to reconcile payments with billed services and resolve discrepancies.',
             },
           ].map((item, index) => (
             <motion.div
               key={index}
-              className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+              className="bg-white p-6 rounded-xl shadow-xl hover:scale-105 transition-transform duration-300 ease-in-out"
               variants={fadeIn}
             >
-              <h3 className="text-xl font-semibold text-gray-700">{item.title}</h3>
+              <h3 className="text-xl font-semibold text-gray-800">{item.title}</h3>
               <p className="text-gray-600 mt-2">{item.description}</p>
             </motion.div>
           ))}
@@ -130,17 +130,18 @@ const AccountsReceivables: React.FC<AccountsReceivablesProps> = ({
 
       {/* KPI Section */}
       <motion.section
-        className="bg-white p-6 rounded-lg shadow-md mb-16"
+        className="bg-white p-6 rounded-xl shadow-xl mb-16"
         variants={fadeIn}
       >
         <h2 className="text-2xl font-semibold text-gray-800 mb-4">
           Key Performance Indicators (KPIs)
         </h2>
         <ul className="list-disc pl-6 text-gray-700">
-          <li>Days in AR: {daysInAR} days</li>
-          <li>Denial Rate: {denialRate}%</li>
+          <li className="text-lg font-medium">Days in AR: {daysInAR} days</li>
+          <li className="text-lg font-medium">Denial Rate: {denialRate}%</li>
         </ul>
       </motion.section>
+
     </motion.div>
   );
 };

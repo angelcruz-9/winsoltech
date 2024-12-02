@@ -1,22 +1,27 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FaFileMedical, FaHospital, FaUserMd, FaHandHoldingMedical } from 'react-icons/fa'; // Icons
 
 interface SectionProps {
   title: string;
   content: string[];
+  icon: React.ReactNode;
 }
 
-const Section: React.FC<SectionProps> = ({ title, content }) => (
+const Section: React.FC<SectionProps> = ({ title, content, icon }) => (
   <motion.div
-    className="bg-white shadow-md rounded-lg p-6 border mb-6"
+    className="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 transform hover:scale-105"
     initial={{ opacity: 0, y: 30 }}
     animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.6, ease: 'easeOut' }}
+    transition={{ duration: 0.8 }}
   >
-    <h2 className="text-lg md:text-xl font-bold text-indigo-700 mb-4">{title}</h2>
-    <ul className="list-disc list-inside text-gray-700">
+    <div className="flex items-center space-x-4 mb-6">
+      <div className="text-3xl text-indigo-600">{icon}</div>
+      <h2 className="text-2xl font-medium text-indigo-800">{title}</h2>
+    </div>
+    <ul className="list-disc list-inside text-gray-700 space-y-3">
       {content.map((item, index) => (
-        <li key={index} className="mb-2">{item}</li>
+        <li key={index}>{item}</li>
       ))}
     </ul>
   </motion.div>
@@ -24,63 +29,68 @@ const Section: React.FC<SectionProps> = ({ title, content }) => (
 
 const ClaimSubmission: React.FC = () => {
   return (
-    <div className="container mx-auto px-4 md:px-12 pt-28 py-8">
+    <div className="px-6 md:px-12 pt-20 pb-10 bg-gradient-to-r from-blue-50 to-blue-200">
+      {/* Header Section */}
       <motion.h1
-        className="text-2xl md:text-4xl font-bold text-indigo-900 mb-8 text-center"
+        className="text-3xl md:text-4xl font-extrabold text-indigo-900 mb-10 text-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        Overview of Claim Submission in U.S. Healthcare Services
+        Healthcare Claim Submission in the U.S.
       </motion.h1>
 
+      {/* Introduction Paragraph */}
       <motion.p
-        className="text-lg text-gray-800 mb-6 text-center"
+        className="text-lg md:text-xl text-gray-700 mb-10 text-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1, delay: 0.3 }}
       >
-        Claim submission ensures healthcare providers are reimbursed for services rendered while maintaining compliance and accuracy.
+        Claim submission in healthcare ensures accurate reimbursement, minimizes denials, and maintains compliance with industry regulations.
       </motion.p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      {/* Sections */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         <Section
-          title="Importance of Claim Submission"
+          title="Why Claim Submission Matters"
+          icon={<FaFileMedical />}
           content={[
-            "Financial Reimbursement: Ensures providers receive payment for services rendered.",
-            "Compliance and Accuracy: Maintains regulatory standards and reduces claim denials.",
+            "Ensures providers are paid for services rendered.",
+            "Prevents delays and denials by maintaining accuracy.",
+            "Critical for adhering to healthcare standards and regulations.",
           ]}
         />
         <Section
-          title="Key Components of Claim Submission"
+          title="Key Elements in Claim Submission"
+          icon={<FaHospital />}
           content={[
-            "Patient Registration: Collect demographics, insurance, and medical history.",
-            "Medical Coding: Use standardized codes (CPT, HCPCS) for accurate claims.",
-            "Claim Preparation: Include procedure codes, diagnosis codes, and patient details.",
-            "Claim Transmission: Submit electronically or via paper forms (CMS-1500).",
-            "Adjudication Process: Insurance reviews claims for approval, denial, or clarification.",
-            "Payment Processing: Payments issued based on negotiated rates.",
+            "Patient Registration: Collecting accurate patient information.",
+            "Medical Coding: Ensuring correct codes for services and diagnosis.",
+            "Claim Preparation: Properly compiling and formatting data.",
+            "Submission: Sending claims electronically or through paper.",
+            "Adjudication: Review and decision-making by insurance companies.",
           ]}
         />
         <Section
-          title="Steps in the Claim Submission Process"
+          title="The Submission Process"
+          icon={<FaUserMd />}
           content={[
-            "Patient Registration: Gather patient information.",
-            "Insurance Verification: Confirm coverage for services provided.",
-            "Medical Coding: Assign accurate codes for services.",
-            "Claim Preparation: Compile required details.",
-            "Claim Submission: Submit electronically or via paper format.",
-            "Adjudication by Payer: Insurance reviews the claim.",
-            "Payment Processing: Issue payment for approved claims.",
+            "Collect Patient Details: Confirm insurance and medical history.",
+            "Apply Medical Codes: Use correct diagnosis and procedure codes.",
+            "Submit Claims: Ensure correct submission channels.",
+            "Claim Review: Insurers process and review for payment.",
+            "Receive Payment: Claims are paid as per policy guidelines.",
           ]}
         />
         <Section
-          title="Benefits of Efficient Claim Submission"
+          title="Benefits of Efficient Claims"
+          icon={<FaHandHoldingMedical />}
           content={[
-            "Reduced Denials: Properly coded claims reduce delays and denials.",
-            "Faster Reimbursements: Electronic submissions speed up processing.",
-            "Improved Cash Flow: Quicker payments enhance financial health.",
-            "Enhanced Compliance: Adheres to coding standards and payer guidelines.",
+            "Faster Reimbursement: Reduce waiting time for payment.",
+            "Reduced Errors: Fewer claim rejections due to accurate coding.",
+            "Compliance: Helps in meeting healthcare guidelines and requirements.",
+            "Improved Financial Health: Strengthens cash flow for providers.",
           ]}
         />
       </div>

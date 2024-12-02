@@ -1,5 +1,10 @@
 import React, { useEffect } from "react";
-import { FaExclamationTriangle, FaUserNurse, FaMoneyBillWave, FaChartLine } from "react-icons/fa";
+import {
+  FaExclamationTriangle,
+  FaUserNurse,
+  FaMoneyBillWave,
+  FaChartLine,
+} from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const DenialManagement: React.FC = () => {
@@ -14,10 +19,26 @@ const DenialManagement: React.FC = () => {
         content:
           "A claim denial occurs when a payer, such as Medicare or a private insurance company, refuses to reimburse a provider for medical services. Denials can stem from various issues, including:",
         list: [
-          { title: "Coding Errors", description: "Incorrect coding can lead to denials, as claims must accurately reflect the services provided." },
-          { title: "Medical Necessity", description: "Payers often deny claims if they determine that the service was not medically necessary based on their criteria." },
-          { title: "Authorization Issues", description: "Lack of prior authorization or failure to meet specific payer requirements can result in denied claims." },
-          { title: "Patient Eligibility", description: "Claims may be denied if the patient is not eligible for coverage under their insurance plan." },
+          {
+            title: "Coding Errors",
+            description:
+              "Incorrect coding can lead to denials, as claims must accurately reflect the services provided.",
+          },
+          {
+            title: "Medical Necessity",
+            description:
+              "Payers often deny claims if they determine that the service was not medically necessary based on their criteria.",
+          },
+          {
+            title: "Authorization Issues",
+            description:
+              "Lack of prior authorization or failure to meet specific payer requirements can result in denied claims.",
+          },
+          {
+            title: "Patient Eligibility",
+            description:
+              "Claims may be denied if the patient is not eligible for coverage under their insurance plan.",
+          },
         ],
       },
       {
@@ -61,55 +82,59 @@ const DenialManagement: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-20 pt-28 px-6 md:px-12 lg:px-24 bg-gray-50">
+    <section className="py-20 px-6 md:px-12 lg:px-18 bg-gradient-to-b from-blue-50 to-white">
       <motion.div
-        className="text-center mb-12 max-w-3xl mx-auto"
+        className="text-center mb-16 max-w-4xl mx-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <h1 className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4">
+        <h1 className="text-4xl lg:text-5xl font-extrabold text-blue-800 mb-6">
           {denialManagementData.title}
         </h1>
-        <p className="text-lg text-gray-600">{denialManagementData.description}</p>
+        <p className="text-lg text-gray-700">
+          {denialManagementData.description}
+        </p>
       </motion.div>
-
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {denialManagementData.sections.map((section, index) => (
-          <motion.div
-            key={index}
-            className="p-6 bg-white rounded-lg shadow-lg transform hover:scale-105 transition duration-300"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: index * 0.2 }}
-          >
-            <div className="flex flex-col justify-center items-center mb-4">
-              {section.icon}
-              <h2 className="text-xl font-semibold text-gray-800 ml-4">
-                {section.title}
-              </h2>
-            </div>
-            <p className="text-gray-700 mb-4">{section.content}</p>
-            <motion.ul
-              className="list-disc list-inside space-y-2 text-gray-600"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1 }}
+      <div className="container mx-auto px-6 py-16">
+        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+          {denialManagementData.sections.map((section, index) => (
+            <motion.div
+              key={index}
+              className="p-8 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
             >
-              {section.list.map((item, itemIndex) =>
-                typeof item === "string" ? (
-                  <motion.li key={itemIndex} whileHover={{ scale: 1.05 }}>
-                    {item}
-                  </motion.li>
-                ) : (
-                  <motion.li key={itemIndex} whileHover={{ scale: 1.05 }}>
-                    <strong>{item.title}:</strong> {item.description}
-                  </motion.li>
-                )
-              )}
-            </motion.ul>
-          </motion.div>
-        ))}
+              <div className="flex flex-col items-center text-center mb-6">
+                {section.icon}
+                <h2 className="text-2xl font-bold text-gray-800 mt-2">
+                  {section.title}
+                </h2>
+              </div>
+              <p className="text-gray-600 mb-4">{section.content}</p>
+              <ul className="space-y-4">
+                {section.list.map((item, itemIndex) =>
+                  typeof item === "string" ? (
+                    <li
+                      key={itemIndex}
+                      className="text-gray-700 border-l-4 border-blue-600 pl-4"
+                    >
+                      {item}
+                    </li>
+                  ) : (
+                    <li
+                      key={itemIndex}
+                      className="text-gray-700 border-l-4 border-blue-600 pl-4"
+                    >
+                      <strong>{item.title}:</strong> {item.description}
+                    </li>
+                  )
+                )}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

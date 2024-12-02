@@ -3,69 +3,74 @@ import { motion } from "framer-motion";
 
 const FullCodingServices: React.FC = () => {
   const codingServicesData = {
-    title: "Overview of Full-Service Coding Services in U.S. Healthcare",
+    title: "Comprehensive Healthcare Coding Services",
     description:
-      "Explore our suite of services to ensure compliance and accurate billing.",
+      "Explore our healthcare coding solutions designed to ensure compliance, optimize reimbursements, and improve operational efficiency in the U.S. healthcare system.",
     services: [
       {
         id: 1,
         title: "Risk Adjustment & HCC Coding",
         description:
-          "Hierarchical Condition Category (HCC) Coding is essential for risk adjustment.",
+          "Hierarchical Condition Category (HCC) coding helps ensure accurate risk adjustment, crucial for Medicare Advantage plans.",
         details: [
-          "Adjusts payments based on patients' health statuses",
+          "Adjusts payments based on patients' clinical complexity",
           "Ensures fair compensation for managing high-risk patients",
-          "Helps improve patient outcomes and reduce costs",
+          "Improves patient care and reduces overall healthcare costs",
         ],
       },
       {
         id: 2,
-        title: "Outpatient Coding: Facility and Professional Fee",
+        title: "Outpatient & Professional Fee Coding",
         description:
-          "Outpatient coding includes facility and professional fee coding.",
+          "Outpatient coding ensures accurate billing for facility and professional services provided in outpatient settings.",
         details: [
-          "Facility Coding: Uses APC codes for hospital resources used",
-          "Professional Fee Coding: Focuses on medical decision-making",
+          "Facility coding uses APC codes for hospital resource usage",
+          "Professional fee coding ensures correct billing for physician services",
+          "Optimizes claims for outpatient hospital visits and professional consultations",
         ],
       },
       {
         id: 3,
-        title: "Inpatient Coding",
+        title: "Inpatient Coding & DRG Management",
         description:
-          "Performed for admitted patients, using DRGs to determine payment.",
+          "Inpatient coding utilizes Diagnosis-Related Groups (DRGs) to assign payment amounts for hospitalized patients.",
         details: [
-          "Simplifies billing by assigning fixed payment for specific conditions",
-          "Covers all related costs except physician fees",
+          "Facilitates streamlined billing and cost management for hospital stays",
+          "Ensures compliance with Medicare and other insurance providers",
+          "Enhances operational efficiency and reduces reimbursement delays",
         ],
       },
       {
         id: 4,
-        title: "Clinical Documentation Improvement (CDI) & Provider Education",
+        title: "Clinical Documentation Improvement (CDI)",
         description:
-          "CDI ensures health records reflect patient conditions accurately.",
+          "Clinical Documentation Improvement (CDI) ensures medical records are accurate and comprehensive, directly impacting coding accuracy.",
         details: [
-          "Improves coding accuracy for reimbursement",
-          "Provider education reduces coding errors",
+          "Enhances clinical documentation to reflect true patient conditions",
+          "Reduces coding errors and denials, improving reimbursement rates",
+          "Educates providers on best documentation practices",
         ],
       },
       {
         id: 5,
-        title: "Intake & Patient Registration",
+        title: "Home Health Coding & Compliance",
         description:
-          "Collects accurate patient information at the outset of care.",
+          "Coding for home health services ensures compliance with Medicare and improves reimbursement rates for in-home patient care.",
         details: [
-          "Records demographic data, insurance information, and medical histories",
-          "Foundation for effective coding and billing",
+          "Complies with home health agency regulations",
+          "Optimizes reimbursement for Medicare home health services",
+          "Improves patient care quality through accurate coding",
         ],
       },
       {
         id: 6,
-        title: "Home Health Coding",
+        title: "Patient Intake & Registration",
         description:
-          "Tailored for services provided in a patient's home setting.",
+          "Efficient patient intake and registration services ensure accurate demographic and medical information for billing and coding.",
         details: [
-          "Ensures compliance with Medicare regulations",
-          "Optimizes reimbursement rates",
+          "Captures essential patient data for smooth coding and billing processes",
+          "Ensures insurance verification and accurate coding from the start",
+          "Lays the foundation for compliant healthcare billing",
         ],
       },
     ],
@@ -76,75 +81,88 @@ const FullCodingServices: React.FC = () => {
   }, []);
 
   return (
-    <section className="pt-28 px-4 md:px-12 lg:px-20 bg-gray-50 py-28">
-      <div className="text-center mb-12 max-w-3xl mx-auto">
-        <motion.h1
-          className="text-3xl lg:text-4xl font-bold text-gray-800 mb-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-        >
-          {codingServicesData.title}
-        </motion.h1>
-        <motion.p
-          className="text-lg text-gray-600"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.2 }}
-        >
-          {codingServicesData.description}
-        </motion.p>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {codingServicesData.services.map((service) => (
-          <motion.div
-            key={service.id}
-            className="p-6 rounded-lg shadow-lg bg-white"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.5,
-              ease: "easeOut",
-            }}
-            whileHover={{ scale: 1.05}}
-          >
-            <motion.h2
-              className="text-xl font-semibold text-blue-700 mb-2"
+    <section className="relative pt-20 bg-gradient-to-b from-blue-100 to-white">
+      {/* Hero Section */}
+      <div
+        className="relative w-full h-80 bg-cover bg-center"
+        style={{
+          backgroundImage:
+            "url('https://source.unsplash.com/1600x900/?healthcare,hospital')",
+        }}
+      >
+        <div className="absolute inset-0 bg-blue-800 bg-opacity-60 flex items-center justify-center">
+          <div className="text-center text-white px-4">
+            <motion.h1
+              className="text-4xl lg:text-5xl font-extrabold mb-4"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}
             >
-              {service.title}
-            </motion.h2>
+              {codingServicesData.title}
+            </motion.h1>
             <motion.p
-              className="text-gray-700 mb-4"
+              className="text-lg lg:text-xl max-w-3xl mx-auto"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
             >
-              {service.description}
+              {codingServicesData.description}
             </motion.p>
-            <motion.ul
-              className="list-disc list-inside space-y-2 text-gray-600"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.3 }}
+          </div>
+        </div>
+      </div>
+
+      {/* Services Section */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+          {codingServicesData.services.map((service) => (
+            <motion.div
+              key={service.id}
+              className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer"
+              initial={{ opacity: 0, y: 50 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              whileHover={{ scale: 1.05 }}
             >
-              {service.details.map((detail, index) => (
-                <motion.li
-                  key={index}
+              <div className="p-6 border-b-4 border-blue-600">
+                <motion.h2
+                  className="text-2xl font-semibold text-blue-800 mb-4"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ duration: 1, delay: 0.4 }}
+                  transition={{ duration: 1 }}
                 >
-                  {detail}
-                </motion.li>
-              ))}
-            </motion.ul>
-          </motion.div>
-        ))}
-      </div>
+                  {service.title}
+                </motion.h2>
+                <motion.p
+                  className="text-gray-700 mb-4"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 1, delay: 0.2 }}
+                >
+                  {service.description}
+                </motion.p>
+              </div>
+              <motion.ul
+                className="p-4 space-y-3 text-gray-600"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.3 }}
+              >
+                {service.details.map((detail, index) => (
+                  <motion.li
+                    key={index}
+                    className="flex items-start"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1, delay: 0.4 }}
+                  >
+                    <span className="w-4 h-4 mt-1 mr-2 rounded-full bg-blue-600"></span>
+                    {detail}
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </motion.div>
+          ))}
+        </div>
     </section>
   );
 };

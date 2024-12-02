@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';  // Import Framer Motion
+import React, { useEffect } from "react";
+import { motion } from "framer-motion"; // Import Framer Motion for animations
 
-// Define the content dynamically
 const content = {
   title: "Medical Records Management in U.S. Healthcare Services",
   intro: `Medical records management is a vital aspect of healthcare administration that involves the systematic handling of patient health information throughout its lifecycle. This encompasses the creation, storage, retrieval, and disposal of medical records, ensuring that healthcare providers can access accurate and timely information to deliver quality care. Effective medical records management is essential for compliance with regulations, safeguarding patient privacy, and enhancing operational efficiency within healthcare organizations.`,
@@ -15,19 +14,11 @@ const content = {
         },
         {
           title: "Storage and Organization",
-          content: `Medical records can be stored in various formats, including paper files and electronic health records (EHRs). The shift towards digital records has been significant due to the advantages of accessibility and security. Effective organization involves categorizing records by patient name, date of service, or type of treatment, enabling quick retrieval when needed.`,
+          content: `Medical records can be stored in various formats, including paper files and electronic health records (EHRs). The shift towards digital records has been significant due to the advantages of accessibility and security.`,
         },
         {
           title: "Retrieval and Access Control",
-          content: `Healthcare professionals must have timely access to medical records to make informed decisions about patient care. This requires robust systems that allow for efficient searching and retrieval. Access to sensitive patient information is strictly regulated under laws such as HIPAA, which mandates that only authorized personnel can view or manage medical records.`,
-        },
-        {
-          title: "Sorting and Tagging",
-          content: `Sorting involves categorizing documents by type (e.g., lab results, imaging reports) or by the nature of the visit (e.g., routine check-up, emergency care). Tagging enhances searchability within electronic systems by attaching keywords or metadata to documents, facilitating easier access during clinical decision-making.`,
-        },
-        {
-          title: "Retention and Disposal",
-          content: `Medical records must be retained for specific periods as dictated by state laws and regulations. While HIPAA does not specify retention durations, many states require records to be kept for at least seven years after the last treatment date. Secure disposal methods are essential to protect patient privacy when records are no longer needed.`,
+          content: `Healthcare professionals must have timely access to medical records to make informed decisions about patient care. This requires robust systems that allow for efficient searching and retrieval.`,
         },
       ],
     },
@@ -36,8 +27,6 @@ const content = {
       items: [
         "Quality of Care: Accurate and accessible medical records enable healthcare providers to make informed decisions about diagnosis and treatment, leading to improved patient outcomes.",
         "Regulatory Compliance: Adhering to federal and state regulations regarding record keeping helps prevent legal issues and penalties associated with improper handling of patient information.",
-        "Operational Efficiency: Streamlined processes for managing medical records reduce administrative burdens on healthcare staff, allowing them to focus more on patient care rather than paperwork.",
-        "Data Security: Implementing robust security measures protects sensitive patient information from unauthorized access or breaches, which is critical in maintaining trust between patients and providers.",
       ],
     },
     {
@@ -60,77 +49,63 @@ const content = {
 };
 
 const MedicalRecordsManagement = () => {
-
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0); // Ensure the page scrolls to the top on mount
   }, []);
 
   return (
-    <div className="py-8 pt-28 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 font-sans text-gray-800">
-      {/* Title Animation */}
-      <motion.h1
-        className="text-3xl md:text-4xl font-bold text-center text-indigo-600 mb-6"
+    <div className="py-24 px-8 bg-gradient-to-r from-blue-50 via-blue-100 to-white">
+      {/* Header Section */}
+      <motion.div
+        className="text-center max-w-5xl mx-auto mb-16"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        {content.title}
-      </motion.h1>
+        <h1 className="text-4xl font-extrabold text-blue-700 mb-6">{content.title}</h1>
+        <p className="text-xl text-gray-600 leading-relaxed">{content.intro}</p>
+      </motion.div>
 
-      {/* Intro Paragraph Animation */}
-      <motion.p
-        className="text-base md:text-lg mb-8 leading-relaxed text-gray-700"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.5 }}
-      >
-        {content.intro}
-      </motion.p>
+      {/* Sections */}
+      {content.sections.map((section, sectionIndex) => (
+        <motion.section
+          key={sectionIndex}
+          className="px-8 mb-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: sectionIndex * 0.3 }}
+        >
+          {/* Section Header */}
+          <h2 className="text-3xl font-semibold text-blue-600 mb-8">{section.heading}</h2>
 
-      {content.sections.map((section, index) => (
-        <section key={index} className="mb-8">
-          {/* Section Heading Animation */}
-          <motion.h2
-            className="text-2xl md:text-3xl font-semibold text-indigo-500 mb-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-          >
-            {section.heading}
-          </motion.h2>
-
-          {/* Render items differently based on their structure (objects vs strings) */}
-          {section.items.map((item, idx) =>
-            typeof item === "string" ? (
-              // List Item Animation
-              <motion.li
-                key={idx}
-                className="text-base md:text-lg ml-5 list-disc list-inside mb-2"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.6 + idx * 0.2 }}
-              >
-                {item}
-              </motion.li>
-            ) : (
-              // Detailed Item (Card) Animation
-              <motion.div
-                key={idx}
-                className="mb-4 p-4 border rounded-lg shadow-lg bg-white"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.8 }}
-              >
-                <h3 className="text-lg md:text-xl font-semibold text-indigo-600 mb-2">
-                  {item.title}
-                </h3>
-                <p className="text-base md:text-lg leading-relaxed">
-                  {item.content}
-                </p>
-              </motion.div>
-            )
-          )}
-        </section>
+          {/* Cards or List Items */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {section.items.map((item, itemIndex) =>
+              typeof item === "string" ? (
+                <motion.div
+                  key={itemIndex}
+                  className="bg-white p-8 rounded-xl shadow-lg border-2 border-blue-200 hover:shadow-xl transition-all duration-300 ease-in-out transform hover:scale-105"
+                  initial={{ y: 10, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2 * itemIndex }}
+                >
+                  <p className="text-lg text-gray-800">{item}</p>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key={itemIndex}
+                  className="bg-white p-8 rounded-xl shadow-lg border-2 border-blue-200 hover:shadow-xl transition-all duration-300 ease-in-out transform hover:scale-105"
+                  initial={{ y: 10, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.8, delay: 0.2 * itemIndex }}
+                >
+                  <h3 className="text-xl font-bold text-blue-700 mb-4">{item.title}</h3>
+                  <p className="text-gray-700">{item.content}</p>
+                </motion.div>
+              )
+            )}
+          </div>
+        </motion.section>
       ))}
     </div>
   );

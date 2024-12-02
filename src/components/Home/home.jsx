@@ -14,84 +14,84 @@ function Home() {
       title: "Improving Patient Care Through Technology",
       excerpt:
         "Discover how the latest healthcare technologies are improving patient outcomes and streamlining clinical processes.",
-      link: "https://www.bairesdev.com/blog/technologies-to-improve-patient-care/",
+      link: "/",
     },
     {
       id: 2,
       title: "The Role of AI in Healthcare Transformation",
       excerpt:
         "Artificial Intelligence is revolutionizing healthcare, from diagnostics to treatment planning. Learn how AI is making healthcare smarter.",
-      link: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8285156/",
+      link: "/",
     },
     {
       id: 3,
       title: "Optimizing Healthcare Operations with Data Analytics",
       excerpt:
         "Data-driven insights are helping healthcare organizations operate more efficiently. Explore the impact of data analytics.",
-      link: "https://www.striim.com/blog/hospital-operations-machine-learning/",
+      link: "/",
     },
     {
       id: 4,
       title: "Improving Patient Care Through Technology",
       excerpt:
         "Discover how the latest healthcare technologies are improving patient outcomes and streamlining clinical processes.",
-      link: "https://www.bairesdev.com/blog/technologies-to-improve-patient-care/",
+      link: "/",
     },
     {
       id: 5,
       title: "The Role of AI in Healthcare Transformation",
       excerpt:
         "Artificial Intelligence is revolutionizing healthcare, from diagnostics to treatment planning. Learn how AI is making healthcare smarter.",
-      link: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8285156/",
+      link: "/",
     },
     {
       id: 6,
       title: "Optimizing Healthcare Operations with Data Analytics",
       excerpt:
         "Data-driven insights are helping healthcare organizations operate more efficiently. Explore the impact of data analytics.",
-      link: "https://www.striim.com/blog/hospital-operations-machine-learning/",
+      link: "/",
     },
     {
       id: 7,
       title: "Improving Patient Care Through Technology",
       excerpt:
         "Discover how the latest healthcare technologies are improving patient outcomes and streamlining clinical processes.",
-      link: "https://www.bairesdev.com/blog/technologies-to-improve-patient-care/",
+      link: "/",
     },
     {
       id: 8,
       title: "The Role of AI in Healthcare Transformation",
       excerpt:
         "Artificial Intelligence is revolutionizing healthcare, from diagnostics to treatment planning. Learn how AI is making healthcare smarter.",
-      link: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8285156/",
+      link: "/",
     },
     {
       id: 9,
       title: "Optimizing Healthcare Operations with Data Analytics",
       excerpt:
         "Data-driven insights are helping healthcare organizations operate more efficiently. Explore the impact of data analytics.",
-      link: "https://www.striim.com/blog/hospital-operations-machine-learning/",
+      link: "/",
     },
     {
       id: 10,
       title: "Improving Patient Care Through Technology",
       excerpt:
         "Discover how the latest healthcare technologies are improving patient outcomes and streamlining clinical processes.",
-      link: "https://www.bairesdev.com/blog/technologies-to-improve-patient-care/",
+      link: "/",
     },
     {
       id: 11,
       title: "The Role of AI in Healthcare Transformation",
       excerpt:
         "Artificial Intelligence is revolutionizing healthcare, from diagnostics to treatment planning. Learn how AI is making healthcare smarter.",
-      link: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8285156/",
+      link: "/",
     },
     {
       id: 12,
       title: "Optimizing Healthcare Operations with Data Analytics",
       excerpt:
         "Data-driven insights are helping healthcare organizations operate more efficiently. Explore the impact of data analytics.",
-      link: "https://www.striim.com/blog/hospital-operations-machine-learning/",
+      link: "/",
     },
   ];
 
