@@ -1,21 +1,14 @@
 import React, { useState } from 'react';
 
-// Contact component
 const Contact: React.FC = () => {
-  // State to handle form inputs
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
   });
-
-  // State to toggle form visibility
   const [isFormVisible, setIsFormVisible] = useState(true);
-
-  // State to handle form submission status
   const [statusMessage, setStatusMessage] = useState('');
 
-  // Handle input changes
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -24,157 +17,153 @@ const Contact: React.FC = () => {
     });
   };
 
-  // Handle form submission
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Store form data in local storage
     const storedData = JSON.parse(localStorage.getItem('contactFormData') || '[]');
     localStorage.setItem('contactFormData', JSON.stringify([...storedData, formData]));
-
-    // Display status message and hide the form
-    setStatusMessage('Form submitted successfully!');
+    setStatusMessage('Thank you! We will get back to you shortly.');
     setIsFormVisible(false);
-
-    // Clear the form inputs
-    setFormData({
-      name: '',
-      email: '',
-      message: '',
-    });
+    setFormData({ name: '', email: '', message: '' });
   };
 
-  // Handle popup "OK" click
   const handleOkClick = () => {
     setIsFormVisible(true);
     setStatusMessage('');
   };
 
   return (
-    <div
-      style={{
-        backgroundImage: `url(${process.env.PUBLIC_URL}/assets/images/contact-bg.webp)`, // Using the image from the public folder
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: '20px',
-        position: 'relative',
-        color: 'white',
-      }}
-    >
-      {/* Light Gradient Overlay */}
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '90px',
-          background: 'linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.6))', // Light gradient overlay for shadow effect
-          zIndex: 0,
-        }}
-      ></div>
-
-      <h2 className="text-3xl font-bold mb-6" style={{ zIndex: 1 }}>
-        Get in Touch
-      </h2>
-
-      {/* Form or Popup */}
-      {isFormVisible ? (
-        <form
-          onSubmit={handleSubmit}
-          className="z-10 p-6 bg-white rounded-md shadow-lg w-full max-w-md"
-          style={{
-            position: 'relative',
-            zIndex: 1,
-          }}
-        >
-          <div className="mb-4">
-            <label htmlFor="name" className="block text-left text-gray-500">
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-md text-black"
-              placeholder="Your Name"
-              required
-            />
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="email" className="block text-left text-gray-500">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-md text-black"
-              placeholder="Your Email"
-              required
-            />
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="message" className="block text-left text-gray-500">
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              className="w-full p-3 border border-gray-300 rounded-md text-black"
-              placeholder="Your Message"
-              rows={5}
-              required
-            ></textarea>
-          </div>
-
-          <button
-            type="submit"
-            className="w-full py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
-          >
-            Submit
-          </button>
-        </form>
-      ) : (
-        <div
-          className="z-10 p-6 bg-white rounded-md shadow-lg w-full max-w-md text-center"
-          style={{ position: 'relative', zIndex: 1 }}
-        >
-          <p className="text-lg font-bold text-black">{statusMessage}</p>
-          <button
-            onClick={handleOkClick}
-            className="mt-4 py-2 px-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition"
-          >
-            OK
-          </button>
-        </div>
-      )}
-
-      {/* Address Section */}
-      <div
-        className="mt-8 text-black shadow-lg p-8 rounded-md bg-orange-100 w-full max-w-md"
-        style={{ zIndex: 1 }}
-      >
-        <h3 className="text-xl font-bold">Our Office</h3>
-        <p className="text-lg mt-2">
-          123 Main Street, Suite 456
-          <br />
-          City, State, Zip Code
+    <div className="min-h-screen flex flex-col items-center bg-gradient-to-b from-blue-50 to-blue-100 text-gray-800">
+      {/* Header Section */}
+      <header className="w-full bg-blue-600 py-24 text-center text-white">
+        <h1 className="text-5xl font-extrabold mb-4">Get in Touch</h1>
+        <p className="text-lg font-medium max-w-2xl mx-auto">
+          We're here to answer any questions you have. Feel free to reach out to us!
         </p>
-      </div>
+      </header>
+
+      <main className="container max-w-5xl mx-auto py-10 px-4">
+        {/* Why Contact Us */}
+        <section className="mb-12 text-center">
+          <h2 className="text-3xl font-semibold mb-6">Why Contact Us?</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-6 bg-white shadow-lg rounded-lg">
+              <h3 className="text-xl font-bold text-blue-600 mb-3">Expert Support</h3>
+              <p className="text-gray-600">Get answers from our team of specialists and expert advisors.</p>
+            </div>
+            <div className="p-6 bg-white shadow-lg rounded-lg">
+              <h3 className="text-xl font-bold text-blue-600 mb-3">Fast Response</h3>
+              <p className="text-gray-600">We value your time. Expect quick and helpful responses.</p>
+            </div>
+            <div className="p-6 bg-white shadow-lg rounded-lg">
+              <h3 className="text-xl font-bold text-blue-600 mb-3">Customized Solutions</h3>
+              <p className="text-gray-600">
+                Let us understand your needs and tailor solutions specifically for you.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Form Section */}
+        {isFormVisible ? (
+          <section className="mb-12 bg-white p-8 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-semibold text-center mb-6">Contact Form</h2>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label htmlFor="name" className="block text-gray-600 mb-1">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full p-3 border rounded-lg"
+                  placeholder="Enter your name"
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-gray-600 mb-1">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full p-3 border rounded-lg"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-gray-600 mb-1">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="w-full p-3 border rounded-lg"
+                  placeholder="Write your message"
+                  rows={5}
+                  required
+                ></textarea>
+              </div>
+              <button
+                type="submit"
+                className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+              >
+                Submit
+              </button>
+            </form>
+          </section>
+        ) : (
+          <section className="text-center p-8 bg-white rounded-lg shadow-lg">
+            <p className="text-lg font-bold">{statusMessage}</p>
+            <button
+              onClick={handleOkClick}
+              className="mt-4 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+            >
+              OK
+            </button>
+          </section>
+        )}
+
+        {/* Testimonials Section */}
+        <section className="mb-12 text-center">
+          <h2 className="text-3xl font-semibold mb-6">What Our Clients Say</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <blockquote className="p-6 bg-white shadow-lg rounded-lg">
+              <p className="text-gray-600">
+                "The team was incredibly responsive and went above and beyond to help us."
+              </p>
+              <cite className="block mt-4 font-bold text-gray-800">— Jane Doe</cite>
+            </blockquote>
+            <blockquote className="p-6 bg-white shadow-lg rounded-lg">
+              <p className="text-gray-600">
+                "I received expert guidance that helped solve my problem quickly."
+              </p>
+              <cite className="block mt-4 font-bold text-gray-800">— John Smith</cite>
+            </blockquote>
+            <blockquote className="p-6 bg-white shadow-lg rounded-lg">
+              <p className="text-gray-600">
+                "A fantastic experience! Highly recommend reaching out to them."
+              </p>
+              <cite className="block mt-4 font-bold text-gray-800">— Emily Brown</cite>
+            </blockquote>
+          </div>
+        </section>
+      </main>
+
+      {/* Footer Section */}
+      <footer className="w-full bg-blue-700 text-white py-6 text-center">
+        <p>123 Main Street, Suite 456, City, State, Zip Code | (123) 456-7890</p>
+        <p>© 2024 Your Company Name. All rights reserved.</p>
+      </footer>
     </div>
   );
 };

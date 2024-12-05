@@ -14,84 +14,84 @@ function Home() {
       title: "Improving Patient Care Through Technology",
       excerpt:
         "Discover how the latest healthcare technologies are improving patient outcomes and streamlining clinical processes.",
-      link: "/",
+      serviceId: "improving-patient-care",
     },
     {
       id: 2,
       title: "The Role of AI in Healthcare Transformation",
       excerpt:
         "Artificial Intelligence is revolutionizing healthcare, from diagnostics to treatment planning. Learn how AI is making healthcare smarter.",
-      link: "/",
+        serviceId: "ai-in-healthcare",
     },
     {
       id: 3,
       title: "Optimizing Healthcare Operations with Data Analytics",
       excerpt:
         "Data-driven insights are helping healthcare organizations operate more efficiently. Explore the impact of data analytics.",
-      link: "/",
+        serviceId: "data-analytics-in-healthcare",
     },
     {
       id: 4,
       title: "Improving Patient Care Through Technology",
       excerpt:
         "Discover how the latest healthcare technologies are improving patient outcomes and streamlining clinical processes.",
-      link: "/",
+      serviceId: "improving-patient-care",
     },
     {
       id: 5,
       title: "The Role of AI in Healthcare Transformation",
       excerpt:
         "Artificial Intelligence is revolutionizing healthcare, from diagnostics to treatment planning. Learn how AI is making healthcare smarter.",
-      link: "/",
+        serviceId: "ai-in-healthcare",
     },
     {
       id: 6,
       title: "Optimizing Healthcare Operations with Data Analytics",
       excerpt:
         "Data-driven insights are helping healthcare organizations operate more efficiently. Explore the impact of data analytics.",
-      link: "/",
+        serviceId: "data-analytics-in-healthcare",
     },
     {
       id: 7,
       title: "Improving Patient Care Through Technology",
       excerpt:
         "Discover how the latest healthcare technologies are improving patient outcomes and streamlining clinical processes.",
-      link: "/",
+      serviceId: "improving-patient-care",
     },
     {
       id: 8,
       title: "The Role of AI in Healthcare Transformation",
       excerpt:
         "Artificial Intelligence is revolutionizing healthcare, from diagnostics to treatment planning. Learn how AI is making healthcare smarter.",
-      link: "/",
+        serviceId: "ai-in-healthcare",
     },
     {
       id: 9,
       title: "Optimizing Healthcare Operations with Data Analytics",
       excerpt:
         "Data-driven insights are helping healthcare organizations operate more efficiently. Explore the impact of data analytics.",
-      link: "/",
+        serviceId: "data-analytics-in-healthcare",
     },
     {
       id: 10,
       title: "Improving Patient Care Through Technology",
       excerpt:
         "Discover how the latest healthcare technologies are improving patient outcomes and streamlining clinical processes.",
-      link: "/",
+      serviceId: "improving-patient-care",
     },
     {
       id: 11,
       title: "The Role of AI in Healthcare Transformation",
       excerpt:
         "Artificial Intelligence is revolutionizing healthcare, from diagnostics to treatment planning. Learn how AI is making healthcare smarter.",
-      link: "/",
+        serviceId: "ai-in-healthcare",
     },
     {
       id: 12,
       title: "Optimizing Healthcare Operations with Data Analytics",
       excerpt:
         "Data-driven insights are helping healthcare organizations operate more efficiently. Explore the impact of data analytics.",
-      link: "/",
+        serviceId: "data-analytics-in-healthcare",
     },
   ];
 

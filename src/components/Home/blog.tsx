@@ -6,7 +6,7 @@ type BlogPost = {
   id: number;
   title: string;
   excerpt: string;
-  link: string;
+  serviceId: string;
 };
 
 // Define the props type for the BlogSection component
@@ -74,7 +74,7 @@ const BlogSection: React.FC<BlogSectionProps> = ({ blogPosts }) => {
               >
                 <h3 className="text-2xl font-semibold text-blue-900 mb-4">{post.title}</h3>
                 <p className="text-gray-600 mb-6">{post.excerpt}</p>
-                <Link to={post.link} target='_blank' className="text-blue-500 hover:underline">
+                <Link to={`/blogPosts/${post.serviceId}`} className="text-blue-500 hover:underline">
                   Read More
                 </Link>
               </motion.div>
@@ -94,7 +94,7 @@ const BlogSection: React.FC<BlogSectionProps> = ({ blogPosts }) => {
               >
                 <h3 className="text-2xl font-semibold text-blue-900 mb-4">{post.title}</h3>
                 <p className="text-gray-600 mb-6">{post.excerpt}</p>
-                <Link to={post.link} target='_blank' className="text-blue-500 hover:underline">
+                <Link to={`/blogPosts/${post.serviceId}`} className="text-blue-500 hover:underline">
                   Read More
                 </Link>
               </motion.div>

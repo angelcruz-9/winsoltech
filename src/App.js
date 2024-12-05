@@ -20,6 +20,9 @@ import TermsOfService from "./components/footer/terms";
 import PatientPreRegistration from "./components/revenueCycle/solutions/pre-registration";
 import ClaimSubmission from "./components/revenueCycle/solutions/claim-submission";
 import ClaimManagement from "./components/revenueCycle/solutions/claim-management";
+import ImprovePatient from "./components/Home/blogPosts/improvePatient";
+import AiHealth from "./components/Home/blogPosts/aiHealth";
+import DataAnalytics from "./components/Home/blogPosts/dataAnalytics";
 
 function App() {
   return (
@@ -28,6 +31,9 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/winsoltech" element={<Home />} />
+          <Route path="blogPosts/improving-patient-care" element={<ImprovePatient />} />
+          <Route path="blogPosts/ai-in-healthcare" element={<AiHealth />} />
+          <Route path="blogPosts/data-analytics-in-healthcare" element={<DataAnalytics />} />
           <Route path="/solutions" element={<RevenueCycle />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/careers" element={<Careers />} />
