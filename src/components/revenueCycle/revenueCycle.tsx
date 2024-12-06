@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import RCM from "./rcm";
 import Priority from "./priority";
 import Current from "./current";
@@ -30,7 +31,6 @@ const buttonVariants = {
 };
 
 function RevenueCycle() {
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -57,13 +57,14 @@ function RevenueCycle() {
                 {revenueData.hightLightText}
               </motion.h3>
               <motion.h2
-                className="text-5xl font-bold mb-4 leading-[54px] xl:leading-[44px]"
+                className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight xl:leading-[44px] max-w-full break-words"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
               >
                 {revenueData.headTitle}
               </motion.h2>
+
               <motion.p
                 className="text-gray-700"
                 initial={{ opacity: 0 }}
@@ -72,15 +73,17 @@ function RevenueCycle() {
               >
                 {revenueData.headDescription}
               </motion.p>
-              <motion.button
-                className="px-6 py-2 bg-blue-500 text-white rounded-2xl shadow-lg hover:shadow-xl transition-transform"
-                variants={buttonVariants}
-                whileHover="hover"
-                initial={{ scale: 1 }}
-                animate={{ scale: 1 }}
-              >
-                {revenueData.headButton}
-              </motion.button>
+              <Link to="/contact">
+                <motion.button
+                  className="px-6 py-2 bg-blue-500 text-white rounded-2xl shadow-lg hover:shadow-xl transition-transform"
+                  variants={buttonVariants}
+                  whileHover="hover"
+                  initial={{ scale: 1 }}
+                  animate={{ scale: 1 }}
+                >
+                  {revenueData.headButton}
+                </motion.button>
+              </Link>
             </div>
 
             {/* Right Section */}

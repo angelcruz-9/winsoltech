@@ -87,7 +87,7 @@ const Navigation = () => {
                         : `hover:text-secondary ${
                             isActive(item.path)
                               ? "border-b-4 border-secondary text-secondary"
-                              : textColor
+                              : 'text-black'
                           }`
                     }`}
                     onClick={() => handleLinkClick(item.path)}

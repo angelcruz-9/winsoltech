@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const AiHealth: React.FC = () => {
 
@@ -120,9 +121,9 @@ const AiHealth: React.FC = () => {
         <p className="text-lg text-gray-700 mb-6">
           Join us on a journey to transform patient care and healthcare systems with cutting-edge AI technologies.
         </p>
-        <button className="bg-blue-600 text-white py-3 px-8 rounded-lg text-lg hover:bg-blue-700 transition">
+        <Link to='/contact' className="bg-indigo-600 text-white py-3 px-6 rounded-lg text-lg hover:bg-indigo-700 transition">
           Learn More
-        </button>
+        </Link>
       </footer>
     </div>
   );

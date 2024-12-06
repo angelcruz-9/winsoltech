@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+
 
 const DataAnalytics: React.FC = () => {
 
@@ -120,9 +122,9 @@ const DataAnalytics: React.FC = () => {
         <p className="text-lg text-gray-700 mb-6">
           Leverage data analytics to optimize healthcare services and improve patient care outcomes.
         </p>
-        <button className="bg-teal-600 text-white py-3 px-8 rounded-lg text-lg hover:bg-teal-700 transition">
+        <Link to='/contact' className="bg-teal-600 text-white py-3 px-8 rounded-lg text-lg hover:bg-teal-700 transition">
           Learn More
-        </button>
+        </Link>
       </footer>
     </div>
   );
