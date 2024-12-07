@@ -212,7 +212,7 @@ function Home() {
           <div className="flex flex-row justify-center gap-4">
             <motion.div variants={linkVariants} whileHover="hover">
               <Link
-                to="/solutions"
+                to="/contact"
                 className="py-2 px-6 sm:py-3 sm:px-8 bg-green-500 hover:bg-green-600 text-white rounded-lg shadow-md transition duration-300"
               >
                 Learn More

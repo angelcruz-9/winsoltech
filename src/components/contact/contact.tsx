@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phoneNumber: "",
     message: "",
   });
   const [errors, setErrors] = useState({
     name: "",
     email: "",
+    phoneNumber: "",
     message: "",
   });
   const [isFormVisible, setIsFormVisible] = useState(true);
@@ -32,18 +34,42 @@ const Contact: React.FC = () => {
     const newErrors = {
       name: "",
       email: "",
+      phoneNumber: "",
       message: "",
     };
 
+    const nameRegex = /^[A-Za-z\s]+$/;
     if (!formData.name.trim()) {
       newErrors.name = "Name is required.";
+    } else if (!nameRegex.test(formData.name)) {
+      newErrors.name = "Name can only contain letters and spaces.";
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // A stricter regex for valid email formats
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // General email format
+    const validDomains = [
+      "gmail.com",
+      "yahoo.com",
+      "outlook.com",
+      "hotmail.com",
+    ]; // Add other valid domains here
     if (!formData.email.trim()) {
       newErrors.email = "Email is required.";
     } else if (!emailRegex.test(formData.email)) {
       newErrors.email = "Please enter a valid email address.";
+    } else {
+      const domain = formData.email.split("@")[1]; // Extract domain from email
+      if (!validDomains.includes(domain)) {
+        newErrors.email = `Email domain must be a valid one`;
+      }
+    }
+
+    // Phone number validation - only numbers are allowed
+    const phoneNumberRegex = /^[0-9]+$/; // Only numbers allowed
+    if (!formData.phoneNumber.trim()) {
+      newErrors.phoneNumber = "Phone number is required.";
+    } else if (!phoneNumberRegex.test(formData.phoneNumber)) {
+      newErrors.phoneNumber = "Phone number can only contain digits.";
     }
 
     const messageRegex = /^[a-zA-Z0-9\s,.!?]*$/; // Allows letters, numbers, spaces, and some punctuation
@@ -70,7 +96,7 @@ const Contact: React.FC = () => {
       );
       setStatusMessage("Thank you! We will get back to you shortly.");
       setIsFormVisible(false);
-      setFormData({ name: "", email: "", message: "" });
+      setFormData({ name: "", email: "", phoneNumber: "", message: "" });
     }
   };
 
@@ -78,6 +104,11 @@ const Contact: React.FC = () => {
     setIsFormVisible(true);
     setStatusMessage("");
   };
+
+  useEffect(() => {
+    // Scroll to the top of the page on page load
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col items-center bg-gradient-to-b from-blue-50 to-blue-100 text-gray-800">
@@ -166,6 +197,30 @@ const Contact: React.FC = () => {
                 )}
               </div>
               <div>
+                <label
+                  htmlFor="phoneNumber"
+                  className="block text-gray-600 mb-1"
+                >
+                  Phone Number <span className="text-red-600">*</span>
+                </label>
+                <input
+                  type="tel" // Use type="tel" for phone number input
+                  id="phoneNumber"
+                  name="phoneNumber"
+                  value={formData.phoneNumber}
+                  onChange={handleChange}
+                  className={`w-full p-3 border rounded-lg ${
+                    errors.phoneNumber ? "border-red-500" : "border-gray-300"
+                  }`}
+                  placeholder="Enter your phone number"
+                  pattern="\d*" // This allows only numeric characters
+                  maxLength={15} // Set a max length if needed
+                />
+                {errors.phoneNumber && (
+                  <p className="text-red-500 text-sm">{errors.phoneNumber}</p>
+                )}
+              </div>
+              <div>
                 <label htmlFor="message" className="block text-gray-600 mb-1">
                   Message <span className="text-red-600">*</span>
                 </label>
@@ -242,7 +297,6 @@ const Contact: React.FC = () => {
         <p>
           123 Main Street, Suite 456, City, State, Zip Code | (123) 456-7890
         </p>
-        <p>© 2024 Your Company Name. All rights reserved.</p>
       </footer>
     </div>
   );

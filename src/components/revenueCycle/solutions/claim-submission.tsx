@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaFileMedical, FaHospital, FaUserMd, FaHandHoldingMedical } from 'react-icons/fa'; // Icons
 
@@ -28,6 +28,9 @@ const Section: React.FC<SectionProps> = ({ title, content, icon }) => (
 );
 
 const ClaimSubmission: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="px-6 md:px-12 pt-20 pb-10 bg-gradient-to-r from-blue-50 to-blue-200">
       {/* Header Section */}

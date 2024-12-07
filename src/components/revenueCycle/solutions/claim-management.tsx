@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 interface SectionProps {
@@ -23,6 +23,9 @@ const Section: React.FC<SectionProps> = ({ title, content }) => (
 );
 
 const ClaimManagement: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen py-20 pt-28 px-6 md:px-12">
       {/* Header Section */}
