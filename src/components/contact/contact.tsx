@@ -84,19 +84,48 @@ const Contact: React.FC = () => {
     return !Object.values(newErrors).some((error) => error);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateForm()) {
-      const storedData = JSON.parse(
-        localStorage.getItem("contactFormData") || "[]"
-      );
-      localStorage.setItem(
-        "contactFormData",
-        JSON.stringify([...storedData, formData])
-      );
-      setStatusMessage("Thank you! We will get back to you shortly.");
-      setIsFormVisible(false);
-      setFormData({ name: "", email: "", phoneNumber: "", message: "" });
+    const isValid = validateForm();
+
+    if (isValid) {
+      setIsLoading(true); // Start loading
+      const formDataToSend = {
+        name: formData.name,
+        email: formData.email,
+        phoneNumber: formData.phoneNumber,
+        message: formData.message,
+      };
+
+      try {
+        const response = await fetch(
+          "http://localhost:5000/send-email",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formDataToSend),
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        setStatusMessage("Thank you! We will get back to you shortly.");
+        setIsFormVisible(false);
+        setFormData({ name: "", email: "", phoneNumber: "", message: "" });
+      } catch (error) {
+        console.error("Error during form submission:", error);
+        setStatusMessage(
+          "There was an error submitting your form. Please try again later."
+        );
+      } finally {
+        setIsLoading(false); // End loading
+      }
     }
   };
 
@@ -241,9 +270,10 @@ const Contact: React.FC = () => {
               </div>
               <button
                 type="submit"
+                disabled={isLoading}
                 className="w-full py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
               >
-                Submit
+                {isLoading ? "Submitting..." : "Submit"}
               </button>
             </form>
           </section>

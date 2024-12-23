@@ -28,8 +28,68 @@ interface FormState {
   resume: File | null;
 }
 
-
-const jobs: Job[] = [
+const IndiaJobs: Job[] = [
+  {
+    title: "Medical Coder",
+    description:
+      "Translate healthcare services and procedures into standardized codes for billing and insurance purposes.",
+    requirements: [
+      "Certified Professional Coder (CPC) or equivalent certification",
+      "Knowledge of ICD-10, CPT, and HCPCS coding systems",
+      "Attention to detail and accuracy",
+      "Familiarity with medical terminology and anatomy",
+    ],
+    location: "Hyderabad, IN",
+    benefits: [
+      "Health insurance",
+      "Retirement plan",
+      "Paid time off",
+      "Continuing education opportunities",
+    ],
+    department: "Coding",
+    color: "bg-gradient-to-br from-blue-200 via-blue-100 to-white",
+  },
+  {
+    title: "Medical Biller",
+    description:
+      "Process and manage billing information for healthcare services, ensuring timely and accurate insurance claims.",
+    requirements: [
+      "High school diploma or equivalent",
+      "Experience with medical billing software",
+      "Knowledge of insurance policies and procedures",
+      "Strong communication and organizational skills",
+    ],
+    location: "Hyderabad, IN",
+    benefits: [
+      "Medical, dental, and vision insurance",
+      "401(k) with company match",
+      "Paid vacation and holidays",
+    ],
+    department: "Billing",
+    color: "bg-gradient-to-br from-green-200 via-green-100 to-white",
+  },
+  {
+    title: "Medical Billing and Coding Specialist",
+    description:
+      "Manage both billing and coding processes to ensure accurate claims and reimbursements for healthcare services.",
+    requirements: [
+      "Certified Medical Billing and Coding Specialist (CMBS) or equivalent certification",
+      "Familiarity with medical coding systems (ICD-10, CPT, HCPCS)",
+      "Experience with medical billing software",
+      "Attention to detail and ability to maintain accuracy under pressure",
+    ],
+    location: "Hyderabad, IN",
+    benefits: [
+      "Competitive salary",
+      "Healthcare coverage",
+      "Flexible work hours",
+      "Professional development opportunities",
+    ],
+    department: "Billing & Coding",
+    color: "bg-gradient-to-br from-purple-200 via-purple-100 to-white",
+  },
+];
+const USJobs: Job[] = [
   {
     title: "Registered Nurse (RN)",
     description:
@@ -51,13 +111,14 @@ const jobs: Job[] = [
     color: "bg-gradient-to-br from-blue-200 via-blue-100 to-white",
   },
   {
-    title: "Medical Billing Specialist",
+    title: "Medical Biller",
     description:
-      "Handle insurance claims, billing procedures, and patient records in a healthcare facility.",
+      "Process and manage billing information for healthcare services, ensuring timely and accurate insurance claims.",
     requirements: [
       "High school diploma or equivalent",
-      "Knowledge of healthcare billing software",
-      "Attention to detail and organizational skills",
+      "Experience with medical billing software",
+      "Knowledge of insurance policies and procedures",
+      "Strong communication and organizational skills",
     ],
     location: "San Francisco, CA",
     benefits: [
@@ -69,21 +130,23 @@ const jobs: Job[] = [
     color: "bg-gradient-to-br from-green-200 via-green-100 to-white",
   },
   {
-    title: "Physical Therapist",
+    title: "Medical Billing and Coding Specialist",
     description:
-      "Help patients recover from injuries or surgeries through physical exercises and therapy.",
+      "Manage both billing and coding processes to ensure accurate claims and reimbursements for healthcare services.",
     requirements: [
-      "Doctor of Physical Therapy (DPT)",
-      "State licensure as a Physical Therapist",
-      "Strong interpersonal and motivational skills",
+      "Certified Medical Billing and Coding Specialist (CMBS) or equivalent certification",
+      "Familiarity with medical coding systems (ICD-10, CPT, HCPCS)",
+      "Experience with medical billing software",
+      "Attention to detail and ability to maintain accuracy under pressure",
     ],
     location: "Austin, TX",
     benefits: [
       "Competitive salary",
       "Healthcare coverage",
       "Flexible work hours",
+      "Professional development opportunities",
     ],
-    department: "Rehabilitation",
+    department: "Billing & Coding",
     color: "bg-gradient-to-br from-purple-200 via-purple-100 to-white",
   },
 ];
@@ -101,6 +164,7 @@ const Careers: React.FC = () => {
     resume: null,
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [selectedTab, setSelectedTab] = useState("India");
 
   const handleApplyNow = (job: Job) => {
     setSelectedJob(job);
@@ -123,7 +187,6 @@ const Careers: React.FC = () => {
       }));
     }
   };
-
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -207,8 +270,41 @@ const Careers: React.FC = () => {
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
             Explore Job Opportunities
           </h2>
+          {/* Tabs for India and US Careers */}
+          <div className="flex justify-center mb-8">
+            <button
+              onClick={() => setSelectedTab("India")}
+              className={`py-2 px-6 mx-2 rounded-lg text-lg font-semibold ${
+                selectedTab === "India"
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-200 text-gray-800"
+              } transition-all duration-300`}
+            >
+              India Careers
+            </button>
+            <button
+              onClick={() => setSelectedTab("US")}
+              className={`py-2 px-6 mx-2 rounded-lg text-lg font-semibold ${
+                selectedTab === "US"
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-200 text-gray-800"
+              } transition-all duration-300`}
+            >
+              US Careers
+            </button>
+          </div>
+
+          {/* Conditionally render the tab content */}
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+              {selectedTab === "India"
+                ? "Available Jobs in India"
+                : "Available Jobs in the US"}
+            </h3>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {jobs.map((job, index) => (
+          {(selectedTab === "India" ? IndiaJobs : USJobs).map((job, index) => (
               <div
                 key={index}
                 className={`rounded-lg shadow-md p-6 transition-transform transform hover:scale-105 ${job.color}`}
@@ -266,131 +362,138 @@ const Careers: React.FC = () => {
 
       {/* Modal */}
       {isModalOpen && (
-  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-    <motion.div
-      initial={{ scale: 0.8, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      exit={{ scale: 0.8, opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      className="bg-white rounded-xl shadow-lg p-8 max-w-lg w-full relative"
-    >
-      <button
-        className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 focus:outline-none"
-        onClick={() => setIsModalOpen(false)}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="2"
-          stroke="currentColor"
-          className="w-6 h-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      </button>
-      <h2 className="text-3xl font-semibold text-center mb-6 text-gray-800">
-        Apply for <span className="text-blue-600">{selectedJob?.title}</span>
-      </h2>
-      <form onSubmit={handleSubmit} className="space-y-5">
-        <div className="flex flex-col space-y-2">
-          <label className="text-gray-600 font-medium">Full Name</label>
-          <input
-            type="text"
-            name="name"
-            placeholder="Enter your full name"
-            value={formData.name}
-            onChange={handleInputChange}
-            className={`w-full px-4 py-3 border ${
-              errors.name ? "border-red-500" : "border-gray-300"
-            } rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none`}
-          />
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="bg-white rounded-xl shadow-lg p-8 max-w-lg w-full relative"
+          >
+            <button
+              className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 focus:outline-none"
+              onClick={() => setIsModalOpen(false)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="2"
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+            <h2 className="text-3xl font-semibold text-center mb-6 text-gray-800">
+              Apply for{" "}
+              <span className="text-blue-600">{selectedJob?.title}</span>
+            </h2>
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="flex flex-col space-y-2">
+                <label className="text-gray-600 font-medium">Full Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Enter your full name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  className={`w-full px-4 py-3 border ${
+                    errors.name ? "border-red-500" : "border-gray-300"
+                  } rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none`}
+                />
+              </div>
+              <div className="flex flex-col space-y-2">
+                <label className="text-gray-600 font-medium">Email</label>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className={`w-full px-4 py-3 border ${
+                    errors.email ? "border-red-500" : "border-gray-300"
+                  } rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none`}
+                />
+              </div>
+              <div className="flex flex-col space-y-2">
+                <label className="text-gray-600 font-medium">
+                  Phone Number
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  placeholder="Enter your phone number"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  className={`w-full px-4 py-3 border ${
+                    errors.phone ? "border-red-500" : "border-gray-300"
+                  } rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none`}
+                />
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="flex flex-col space-y-2">
+                  <label className="text-gray-600 font-medium">Country</label>
+                  <input
+                    type="text"
+                    name="country"
+                    placeholder="Your country"
+                    value={formData.country}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  />
+                </div>
+                <div className="flex flex-col space-y-2">
+                  <label className="text-gray-600 font-medium">Address</label>
+                  <textarea
+                    name="address"
+                    placeholder="Your address"
+                    value={formData.address}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  />
+                </div>
+              </div>
+              <div className="flex flex-col space-y-2">
+                <label className="text-gray-600 font-medium">
+                  Message (optional)
+                </label>
+                <textarea
+                  name="message"
+                  placeholder="Write a message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                />
+              </div>
+              <div className="flex flex-col space-y-2">
+                <label className="text-gray-600 font-medium">
+                  Upload Resume
+                </label>
+                <input
+                  type="file"
+                  name="resume"
+                  onChange={handleFileChange}
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                />
+                {errors.resume && (
+                  <p className="text-red-500 text-sm">{errors.resume}</p>
+                )}
+              </div>
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-md"
+              >
+                Submit Application
+              </button>
+            </form>
+          </motion.div>
         </div>
-        <div className="flex flex-col space-y-2">
-          <label className="text-gray-600 font-medium">Email</label>
-          <input
-            type="email"
-            name="email"
-            placeholder="Enter your email"
-            value={formData.email}
-            onChange={handleInputChange}
-            className={`w-full px-4 py-3 border ${
-              errors.email ? "border-red-500" : "border-gray-300"
-            } rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none`}
-          />
-        </div>
-        <div className="flex flex-col space-y-2">
-          <label className="text-gray-600 font-medium">Phone Number</label>
-          <input
-            type="tel"
-            name="phone"
-            placeholder="Enter your phone number"
-            value={formData.phone}
-            onChange={handleInputChange}
-            className={`w-full px-4 py-3 border ${
-              errors.phone ? "border-red-500" : "border-gray-300"
-            } rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none`}
-          />
-        </div>
-        <div className="grid grid-cols-2 gap-4">
-          <div className="flex flex-col space-y-2">
-            <label className="text-gray-600 font-medium">Country</label>
-            <input
-              type="text"
-              name="country"
-              placeholder="Your country"
-              value={formData.country}
-              onChange={handleInputChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            />
-          </div>
-          <div className="flex flex-col space-y-2">
-            <label className="text-gray-600 font-medium">Address</label>
-            <textarea
-              name="address"
-              placeholder="Your address"
-              value={formData.address}
-              onChange={handleInputChange}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-            />
-          </div>
-        </div>
-        <div className="flex flex-col space-y-2">
-          <label className="text-gray-600 font-medium">Message (optional)</label>
-          <textarea
-            name="message"
-            placeholder="Write a message"
-            value={formData.message}
-            onChange={handleInputChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-          />
-        </div>
-        <div className="flex flex-col space-y-2">
-          <label className="text-gray-600 font-medium">Upload Resume</label>
-          <input
-            type="file"
-            name="resume"
-            onChange={handleFileChange}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-          />
-          {errors.resume && (
-            <p className="text-red-500 text-sm">{errors.resume}</p>
-          )}
-        </div>
-        <button
-          type="submit"
-          className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-md"
-        >
-          Submit Application
-        </button>
-      </form>
-    </motion.div>
-  </div>
-)}
+      )}
     </div>
   );
 };

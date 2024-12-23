@@ -31,6 +31,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/winsoltech" element={<Home />} />
+          <Route path="/about" element={<Home />} />
           <Route path="blogPosts/improving-patient-care" element={<ImprovePatient />} />
           <Route path="blogPosts/ai-in-healthcare" element={<AiHealth />} />
           <Route path="blogPosts/data-analytics-in-healthcare" element={<DataAnalytics />} />

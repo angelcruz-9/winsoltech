@@ -5,7 +5,7 @@ import { FaHeartbeat } from 'react-icons/fa';
 const aboutData = {
   title: (
     <>
-      At <strong className="text-primary">WINSOLTECH</strong>, we are dedicated to revolutionizing healthcare services by providing innovative solutions that streamline patient management, optimize operational workflows, and ensure regulatory compliance. <br /> <br /> Our global delivery model, with a major hub in India, supports healthcare providers across specialties, enhancing both patient outcomes and organizational performance. <br /> <br /> Our team of healthcare experts is committed to driving efficiency and value, ensuring that our clients can focus on what truly matters—patient care.
+      At <strong className="text-white">WINSOLTECH</strong>, we are dedicated to revolutionizing healthcare services by providing innovative solutions that streamline patient management, optimize operational workflows, and ensure regulatory compliance. <br /> <br /> Our global delivery model, with a major hub in India, supports healthcare providers across specialties, enhancing both patient outcomes and organizational performance. <br /> <br /> Our team of healthcare experts is committed to driving efficiency and value, ensuring that our clients can focus on what truly matters—patient care.
     </>
   ),
   subTitle: 'OUR COMMITMENT TO HEALTHCARE EXCELLENCE',

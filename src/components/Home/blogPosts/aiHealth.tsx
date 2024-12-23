@@ -2,11 +2,10 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const AiHealth: React.FC = () => {
-
-    useEffect(() => {
-        // Scroll to the top of the page on page load
-        window.scrollTo(0, 0);
-      }, []);
+  useEffect(() => {
+    // Scroll to the top of the page on page load
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="p-6 py-24 bg-gradient-to-br from-green-50 via-blue-50 to-blue-100">
@@ -16,43 +15,62 @@ const AiHealth: React.FC = () => {
           AI in Healthcare: Revolutionizing Patient Care
         </h1>
         <p className="text-xl text-gray-700 mt-6">
-          Discover the transformative impact of artificial intelligence in healthcare, from personalized medicine to predictive analytics.
+          Uncover the transformative power of artificial intelligence in
+          healthcare, spanning personalized medicine to predictive analytics.{" "}
         </p>
       </header>
 
       {/* Introduction Section */}
       <section className="container mx-auto mb-16">
         <div className="bg-white rounded-lg shadow-xl p-8">
-          <h2 className="text-3xl font-semibold text-blue-800 mb-6">Introduction</h2>
+          <h2 className="text-3xl font-semibold text-blue-800 mb-6">
+            Introduction
+          </h2>
           <p className="text-gray-700 text-lg">
-            Artificial intelligence is reshaping healthcare by enabling faster diagnoses, personalized treatments, and improved operational efficiency. With AI-driven tools, healthcare providers can offer more accurate, accessible, and affordable care.
+            Artificial intelligence is transforming healthcare by accelerating
+            diagnoses, customizing treatments, and boosting operational
+            efficiency. With AI-driven solutions, healthcare providers can
+            deliver more accurate, accessible, and affordable care.{" "}
           </p>
           <p className="text-gray-700 mt-4 text-lg">
-            The integration of AI into medical systems ensures real-time insights, predictive analytics, and patient-centric solutions, paving the way for a healthier future.
+            The incorporation of AI into healthcare systems delivers real-time
+            insights, predictive analytics, and patient-centered solutions,
+            shaping a healthier future.{" "}
           </p>
         </div>
       </section>
 
       {/* Benefits Section */}
       <section className="container mx-auto mb-16">
-        <h2 className="text-3xl font-semibold text-gray-800 text-center mb-12">Key Benefits of AI in Healthcare</h2>
+        <h2 className="text-3xl font-semibold text-gray-800 text-center mb-12">
+          Key Benefits of AI in Healthcare
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           <div className="bg-gradient-to-r from-green-100 to-green-200 rounded-lg p-8 shadow-md">
-            <h3 className="text-xl font-bold text-green-900 mb-4">Early Diagnostics</h3>
+            <h3 className="text-xl font-bold text-green-900 mb-4">
+              Early Diagnostics
+            </h3>
             <p className="text-gray-700">
-              AI algorithms analyze complex medical data to detect diseases at an early stage, improving patient outcomes significantly.
+              AI algorithms examine intricate medical data to spot diseases
+              early, resulting in substantially improved patient outcomes.{" "}
             </p>
           </div>
           <div className="bg-gradient-to-r from-blue-100 to-blue-200 rounded-lg p-8 shadow-md">
-            <h3 className="text-xl font-bold text-blue-900 mb-4">Predictive Analytics</h3>
+            <h3 className="text-xl font-bold text-blue-900 mb-4">
+              Predictive Analytics
+            </h3>
             <p className="text-gray-700">
-              AI tools predict health trends, helping providers manage patient care proactively and prevent future complications.
+              AI tools anticipate health trends, allowing providers to
+              proactively manage patient care and avert future complications.{" "}
             </p>
           </div>
           <div className="bg-gradient-to-r from-purple-100 to-purple-200 rounded-lg p-8 shadow-md">
-            <h3 className="text-xl font-bold text-purple-900 mb-4">Personalized Treatments</h3>
+            <h3 className="text-xl font-bold text-purple-900 mb-4">
+              Personalized Treatments
+            </h3>
             <p className="text-gray-700">
-              AI enables personalized medicine by tailoring treatments based on individual genetic profiles and health data.
+              AI drives personalized medicine by adapting treatments to each
+              patient's unique genetic makeup and health information.{" "}
             </p>
           </div>
         </div>
@@ -60,7 +78,9 @@ const AiHealth: React.FC = () => {
 
       {/* Features Section */}
       <section className="container mx-auto mb-16">
-        <h2 className="text-3xl font-semibold text-gray-800 text-center mb-12">Innovative AI-Powered Features</h2>
+        <h2 className="text-3xl font-semibold text-gray-800 text-center mb-12">
+          Innovative AI-Powered Features
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div>
             <img
@@ -72,16 +92,22 @@ const AiHealth: React.FC = () => {
           <div className="flex flex-col justify-center">
             <ul className="list-disc pl-6 space-y-4 text-gray-700 text-lg">
               <li>
-                <strong>AI Diagnostics:</strong> Identifies patterns in scans and lab results, improving diagnostic speed and accuracy.
+                <strong>AI Diagnostics:</strong> Recognizes patterns in scans
+                and lab results, boosting diagnostic speed and precision.
               </li>
               <li>
-                <strong>Virtual Health Assistants:</strong> Chatbots and virtual assistants enhance patient engagement and simplify healthcare navigation.
+                <strong>Virtual Health Assistants:</strong> Chatbots and virtual
+                assistants improve patient interaction and streamline the
+                healthcare experience.
               </li>
               <li>
-                <strong>Real-Time Monitoring:</strong> Wearables and IoT devices provide continuous health monitoring, reducing emergencies.
+                <strong>Real-Time Monitoring:</strong> Wearables and IoT devices
+                enable constant health monitoring, reducing the risk of
+                emergencies.
               </li>
               <li>
-                <strong>Drug Discovery:</strong> AI accelerates the process of developing new drugs and treatments for diseases.
+                <strong>Drug Discovery:</strong> AI enhances the speed of
+                developing new drugs and therapies for diseases.
               </li>
             </ul>
           </div>
@@ -90,24 +116,35 @@ const AiHealth: React.FC = () => {
 
       {/* Use Cases Section */}
       <section className="container mx-auto mb-16">
-        <h2 className="text-3xl font-semibold text-gray-800 text-center mb-12">AI in Action: Real-World Use Cases</h2>
+        <h2 className="text-3xl font-semibold text-gray-800 text-center mb-12">
+          AI in Action: Real-World Use Cases
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div className="bg-gray-50 rounded-lg p-8 shadow-md">
-            <h3 className="text-xl font-bold text-gray-800 mb-4">AI-Driven Imaging</h3>
+            <h3 className="text-xl font-bold text-gray-800 mb-4">
+              AI-Driven Imaging
+            </h3>
             <p className="text-gray-700">
-              AI analyzes medical images, such as X-rays and MRIs, detecting abnormalities with exceptional precision.
+              AI inspects medical images, including X-rays and MRIs, to detect
+              abnormalities with high precision.
             </p>
           </div>
           <div className="bg-gray-50 rounded-lg p-8 shadow-md">
-            <h3 className="text-xl font-bold text-gray-800 mb-4">Predictive Maintenance</h3>
+            <h3 className="text-xl font-bold text-gray-800 mb-4">
+              Predictive Maintenance
+            </h3>
             <p className="text-gray-700">
-              Hospitals use AI to predict equipment failures, ensuring uninterrupted patient care.
+              AI is used by hospitals to forecast equipment failures,
+              guaranteeing seamless patient care.
             </p>
           </div>
           <div className="bg-gray-50 rounded-lg p-8 shadow-md">
-            <h3 className="text-xl font-bold text-gray-800 mb-4">Genomics and Research</h3>
+            <h3 className="text-xl font-bold text-gray-800 mb-4">
+              Genomics and Research
+            </h3>
             <p className="text-gray-700">
-              AI deciphers genetic data to identify disease-causing mutations and create targeted therapies.
+              AI examines genetic data to uncover disease-related mutations and
+              design personalized therapies.
             </p>
           </div>
         </div>
@@ -119,9 +156,13 @@ const AiHealth: React.FC = () => {
           Ready to Embrace AI in Healthcare?
         </h2>
         <p className="text-lg text-gray-700 mb-6">
-          Join us on a journey to transform patient care and healthcare systems with cutting-edge AI technologies.
+          Join us on a journey to transform patient care and healthcare systems
+          with cutting-edge AI technologies.
         </p>
-        <Link to='/contact' className="bg-indigo-600 text-white py-3 px-6 rounded-lg text-lg hover:bg-indigo-700 transition">
+        <Link
+          to="/contact"
+          className="bg-indigo-600 text-white py-3 px-6 rounded-lg text-lg hover:bg-indigo-700 transition"
+        >
           Learn More
         </Link>
       </footer>

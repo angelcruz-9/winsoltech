@@ -5,7 +5,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 
 const navItems = [
   { name: "Home", path: "/" },
-  { name: "About", path: "#about" },
+  { name: "About", path: "/about"  },
   { name: "Our Solutions", path: "/solutions" },
   { name: "Careers", path: "/careers" },
   { name: "Contact", path: "/contact" },
@@ -32,14 +32,13 @@ const Navigation = () => {
 
   const handleLinkClick = (path: string) => {
     if (path.startsWith("#")) {
-      // Handle hash navigation
       const sectionId = path.substring(1);
       const section = document.getElementById(sectionId);
       if (section) {
         section.scrollIntoView({ behavior: "smooth" });
+        navigate(`#${sectionId}`, { replace: true });
       }
     } else {
-      // Navigate using React Router
       navigate(path);
     }
     closeMobileMenu();
@@ -73,7 +72,7 @@ const Navigation = () => {
             transition={{ duration: 0.3 }}
           >
             <div className="absolute top-4 right-4">
-              <button onClick={closeMobileMenu} className="text-xl">
+              <button onClick={closeMobileMenu} className="text-xl text-white">
                 <FaTimes />
               </button>
             </div>
@@ -87,7 +86,7 @@ const Navigation = () => {
                         : `hover:text-secondary ${
                             isActive(item.path)
                               ? "border-b-4 border-secondary text-secondary"
-                              : 'text-black'
+                              : "text-black"
                           }`
                     }`}
                     onClick={() => handleLinkClick(item.path)}
