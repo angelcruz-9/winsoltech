@@ -18,16 +18,6 @@ interface Job {
   color: string;
 }
 
-interface FormState {
-  name: string;
-  email: string;
-  phone: string;
-  country: string;
-  address: string;
-  message: string;
-  resume: File | null;
-}
-
 const IndiaJobs: Job[] = [
   {
     title: "Medical Coder",
@@ -154,14 +144,15 @@ const USJobs: Job[] = [
 const Careers: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
-  const [formData, setFormData] = useState<FormState>({
+  const [file, setFile] = useState(null);
+  const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     country: "",
     address: "",
     message: "",
-    resume: null,
+    file: file,
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [selectedTab, setSelectedTab] = useState("India");
@@ -178,16 +169,11 @@ const Careers: React.FC = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]; // Get the selected file
-    if (file) {
-      setFormData((prev) => ({
-        ...prev,
-        resume: file,
-      }));
-    }
+  const handleFileChange = (e: any) => {
+    setFile(e.target.files[0]);
   };
 
+  // eslint-disable-next-line
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
     if (!formData.name) newErrors.name = "Name is required";
@@ -195,19 +181,45 @@ const Careers: React.FC = () => {
       newErrors.email = "Valid email is required";
     if (!formData.phone || !/^\d{10}$/.test(formData.phone))
       newErrors.phone = "Valid phone number is required";
-    if (!formData.resume) newErrors.resume = "Resume is required";
-
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (validateForm()) {
-      console.log("Form submitted:", formData);
-      setIsModalOpen(false);
-      alert("Application submitted successfully!");
+  
+    // Create a FormData object
+    const formDataToSend = new FormData();
+    formDataToSend.append('name', formData.name);
+    formDataToSend.append('email', formData.email);
+    formDataToSend.append('phone', formData.phone);
+    formDataToSend.append('message', formData.message);
+    formDataToSend.append('address', formData.address);
+    formDataToSend.append('country', formData.country);
+    if (file) {
+      formDataToSend.append('file', file);
     }
+  
+    fetch("https://node-crosscloudops.onrender.com/contact-email", {
+      method: 'POST',
+      body: formDataToSend, // Directly use FormData object
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        alert("Form submitted successfully!");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+          country: "",
+          address: "",
+          file: null,
+        });
+        setFile(null); // Clear the file input
+      })
+      .catch((error) => console.error("Error:", error));
   };
 
   return (

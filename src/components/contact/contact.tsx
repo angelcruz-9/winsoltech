@@ -100,16 +100,13 @@ const Contact: React.FC = () => {
       };
 
       try {
-        const response = await fetch(
-          "http://localhost:5000/send-email",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(formDataToSend),
-          }
-        );
+        const response = await fetch("https://node-crosscloudops.onrender.com/contact-email", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formDataToSend), // Changed here
+        });
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
