@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   FaHospitalSymbol,
   FaMapMarkerAlt,
@@ -16,6 +16,12 @@ interface Job {
   benefits: string[];
   department: string;
   color: string;
+}
+
+// Define the structure for each country
+interface Country {
+  value: string; // The country code
+  label: string; // The country name
 }
 
 const IndiaJobs: Job[] = [
@@ -145,28 +151,57 @@ const Careers: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedJob, setSelectedJob] = useState<Job | null>(null);
   const [file, setFile] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false); // Track form submission
+  const [countries, setCountries] = useState<Country[]>([]); // Ensure it's an empty array
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     country: "",
-    address: "",
     message: "",
+    jobTitle: "",
     file: file,
   });
+  console.log(`form data:`, formData);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [selectedTab, setSelectedTab] = useState("India");
 
+  useEffect(() => {
+    const fetchCountries = async () => {
+      try {
+        const response = await fetch(
+          "https://valid.layercode.workers.dev/list/countries?format=select&flags=true&value=code"
+        );
+        const data = await response.json();
+        setCountries(data.countries);
+      } catch (error) {
+        setCountries([]);
+      }
+    };
+
+    fetchCountries();
+  }, []);
+
   const handleApplyNow = (job: Job) => {
     setSelectedJob(job);
+    setFormData((prevState) => ({
+      ...prevState,
+      jobTitle: job.title, // Set the jobTitle when a job is selected
+    }));
+    console.log(formData);
     setIsModalOpen(true);
   };
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   const handleFileChange = (e: any) => {
@@ -185,41 +220,63 @@ const Careers: React.FC = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  
-    // Create a FormData object
-    const formDataToSend = new FormData();
-    formDataToSend.append('name', formData.name);
-    formDataToSend.append('email', formData.email);
-    formDataToSend.append('phone', formData.phone);
-    formDataToSend.append('message', formData.message);
-    formDataToSend.append('address', formData.address);
-    formDataToSend.append('country', formData.country);
-    if (file) {
-      formDataToSend.append('file', file);
+
+    // Validate the form before proceeding
+    if (!validateForm()) {
+      alert("Please fix the errors before submitting.");
+      return;
     }
-  
-    fetch("https://node-crosscloudops.onrender.com/contact-email", {
-      method: 'POST',
-      body: formDataToSend, // Directly use FormData object
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        alert("Form submitted successfully!");
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          message: "",
-          country: "",
-          address: "",
-          file: null,
-        });
-        setFile(null); // Clear the file input
-      })
-      .catch((error) => console.error("Error:", error));
+    if (isSubmitting) {
+      alert(isSubmitting ? "Form is already submitting." : "Please Submitted");
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      // Create a FormData object
+      const formDataToSend = new FormData();
+      formDataToSend.append("name", formData.name);
+      formDataToSend.append("email", formData.email);
+      formDataToSend.append("phone", formData.phone);
+      formDataToSend.append("message", formData.message);
+      formDataToSend.append("country", formData.country);
+      formDataToSend.append("jobTitle", formData.jobTitle); // Add jobTitle to formData
+      if (file) {
+        formDataToSend.append("file", file);
+      }
+
+      const response = await fetch("https://node-crosscloudops.onrender.com/contact-email", {
+        method: "POST",
+        body: formDataToSend, // Directly use FormData object
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log(data);
+
+      // Reset form fields
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+        country: "",
+        jobTitle: "",
+        file: null,
+      });
+      setFile(null); // Clear the file input
+    } catch (error) {
+      console.error("Error:", error);
+      alert("An error occurred while submitting the form. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -316,58 +373,61 @@ const Careers: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {(selectedTab === "India" ? IndiaJobs : USJobs).map((job, index) => (
-              <div
-                key={index}
-                className={`rounded-lg shadow-md p-6 transition-transform transform hover:scale-105 ${job.color}`}
-              >
-                <h3 className="text-xl font-bold text-gray-800 mb-2 flex items-center gap-2">
-                  <FaUserMd className="text-blue-600" />
-                  {job.title}
-                </h3>
-                <p className="text-gray-700 mb-4">{job.description}</p>
-                <div className="mb-4">
-                  <h4 className="font-semibold text-gray-800 mb-1">
-                    <FaHospitalSymbol className="text-green-600" /> Department
-                  </h4>
-                  <p className="text-gray-600">{job.department}</p>
+            {(selectedTab === "India" ? IndiaJobs : USJobs).map(
+              (job, index) => (
+                <div
+                  key={index}
+                  className={`rounded-lg shadow-md p-6 transition-transform transform hover:scale-105 ${job.color}`}
+                >
+                  <h3 className="text-xl font-bold text-gray-800 mb-2 flex items-center gap-2">
+                    <FaUserMd className="text-blue-600" />
+                    {job.title}
+                  </h3>
+                  <p className="text-gray-700 mb-4">{job.description}</p>
+                  <div className="mb-4">
+                    <h4 className="font-semibold text-gray-800 mb-1">
+                      <FaHospitalSymbol className="text-green-600" /> Department
+                    </h4>
+                    <p className="text-gray-600">{job.department}</p>
+                  </div>
+                  <div className="mb-4">
+                    <h4 className="font-semibold text-gray-800 mb-1">
+                      <FaClipboardList className="text-purple-600" />{" "}
+                      Requirements
+                    </h4>
+                    <ul className="list-disc pl-5 text-gray-600">
+                      {job.requirements.map((req, idx) => (
+                        <li key={idx}>{req}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="mb-4">
+                    <h4 className="font-semibold text-gray-800 mb-1">
+                      <FaMapMarkerAlt className="text-red-600" /> Location
+                    </h4>
+                    <p className="text-gray-600">{job.location}</p>
+                  </div>
+                  <div className="mb-4">
+                    <h4 className="font-semibold text-gray-800 mb-1">
+                      <FaCheckCircle className="text-blue-600" /> Benefits
+                    </h4>
+                    <ul className="list-disc pl-5 text-gray-600">
+                      {job.benefits.map((benefit, idx) => (
+                        <li key={idx}>{benefit}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="text-center mt-6">
+                    <button
+                      onClick={() => handleApplyNow(job)}
+                      className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-all duration-300"
+                    >
+                      Apply Now
+                    </button>
+                  </div>
                 </div>
-                <div className="mb-4">
-                  <h4 className="font-semibold text-gray-800 mb-1">
-                    <FaClipboardList className="text-purple-600" /> Requirements
-                  </h4>
-                  <ul className="list-disc pl-5 text-gray-600">
-                    {job.requirements.map((req, idx) => (
-                      <li key={idx}>{req}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="mb-4">
-                  <h4 className="font-semibold text-gray-800 mb-1">
-                    <FaMapMarkerAlt className="text-red-600" /> Location
-                  </h4>
-                  <p className="text-gray-600">{job.location}</p>
-                </div>
-                <div className="mb-4">
-                  <h4 className="font-semibold text-gray-800 mb-1">
-                    <FaCheckCircle className="text-blue-600" /> Benefits
-                  </h4>
-                  <ul className="list-disc pl-5 text-gray-600">
-                    {job.benefits.map((benefit, idx) => (
-                      <li key={idx}>{benefit}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="text-center mt-6">
-                  <button
-                    onClick={() => handleApplyNow(job)}
-                    className="bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition-all duration-300"
-                  >
-                    Apply Now
-                  </button>
-                </div>
-              </div>
-            ))}
+              )
+            )}
           </div>
         </div>
       </section>
@@ -450,25 +510,39 @@ const Careers: React.FC = () => {
               <div className="grid grid-cols-2 gap-4">
                 <div className="flex flex-col space-y-2">
                   <label className="text-gray-600 font-medium">Country</label>
-                  <input
-                    type="text"
+                  <select
                     name="country"
-                    placeholder="Your country"
                     value={formData.country}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                  />
+                  >
+                    <option value="" disabled>
+                      Select your country
+                    </option>
+                    {countries?.map((country) => (
+                      <option key={country.value} value={country.value}>
+                        {country.label}
+                      </option>
+                    ))}
+                  </select>
                 </div>
-                <div className="flex flex-col space-y-2">
-                  <label className="text-gray-600 font-medium">Address</label>
-                  <textarea
-                    name="address"
-                    placeholder="Your address"
-                    value={formData.address}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                  />
-                </div>
+              </div>
+              <div className="flex flex-col space-y-2">
+                <label
+                  htmlFor="jobTitle"
+                  className="block text-gray-700 font-medium mb-2"
+                >
+                  Job Title
+                </label>
+                <input
+                  type="text"
+                  id="jobTitle"
+                  name="jobTitle"
+                  value={selectedJob?.title}
+                  onChange={handleInputChange}
+                  className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring focus:ring-blue-200"
+                  readOnly // Make it read-only if the job title should not be changed
+                />
               </div>
               <div className="flex flex-col space-y-2">
                 <label className="text-gray-600 font-medium">
@@ -498,15 +572,29 @@ const Careers: React.FC = () => {
               </div>
               <button
                 type="submit"
+                disabled={isSubmitting} // Disable button during submission
                 className="w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-300 shadow-md"
               >
-                Submit Application
+                {isSubmitting
+                  ? "Submitting Application..."
+                  : "Submit Application"}{" "}
+                <span className="absolute pl-2 top-[9px]">&rarr;</span>
+                <BottomGradient />
               </button>
             </form>
           </motion.div>
         </div>
       )}
     </div>
+  );
+};
+
+const BottomGradient = () => {
+  return (
+    <>
+      <span className="group-hover/btn:opacity-100 block transition duration-500 opacity-0 absolute h-px w-full -bottom-px inset-x-0 bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
+      <span className="group-hover/btn:opacity-100 blur-sm block transition duration-500 opacity-0 absolute h-px w-1/2 mx-auto -bottom-px inset-x-10 bg-gradient-to-r from-transparent via-indigo-500 to-transparent" />
+    </>
   );
 };
 
