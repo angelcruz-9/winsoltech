@@ -21,14 +21,14 @@ function Home() {
       title: "The Role of AI in Healthcare Transformation",
       excerpt:
         "Artificial Intelligence is revolutionizing healthcare, from diagnostics to treatment planning. Learn how AI is making healthcare smarter.",
-        serviceId: "ai-in-healthcare",
+      serviceId: "ai-in-healthcare",
     },
     {
       id: 3,
       title: "Optimizing Healthcare Operations with Data Analytics",
       excerpt:
         "Data-driven insights are helping healthcare organizations operate more efficiently. Explore the impact of data analytics.",
-        serviceId: "data-analytics-in-healthcare",
+      serviceId: "data-analytics-in-healthcare",
     },
     {
       id: 4,
@@ -42,14 +42,14 @@ function Home() {
       title: "The Role of AI in Healthcare Transformation",
       excerpt:
         "Artificial Intelligence is revolutionizing healthcare, from diagnostics to treatment planning. Learn how AI is making healthcare smarter.",
-        serviceId: "ai-in-healthcare",
+      serviceId: "ai-in-healthcare",
     },
     {
       id: 6,
       title: "Optimizing Healthcare Operations with Data Analytics",
       excerpt:
         "Data-driven insights are helping healthcare organizations operate more efficiently. Explore the impact of data analytics.",
-        serviceId: "data-analytics-in-healthcare",
+      serviceId: "data-analytics-in-healthcare",
     },
     {
       id: 7,
@@ -63,14 +63,14 @@ function Home() {
       title: "The Role of AI in Healthcare Transformation",
       excerpt:
         "Artificial Intelligence is revolutionizing healthcare, from diagnostics to treatment planning. Learn how AI is making healthcare smarter.",
-        serviceId: "ai-in-healthcare",
+      serviceId: "ai-in-healthcare",
     },
     {
       id: 9,
       title: "Optimizing Healthcare Operations with Data Analytics",
       excerpt:
         "Data-driven insights are helping healthcare organizations operate more efficiently. Explore the impact of data analytics.",
-        serviceId: "data-analytics-in-healthcare",
+      serviceId: "data-analytics-in-healthcare",
     },
     {
       id: 10,
@@ -84,14 +84,14 @@ function Home() {
       title: "The Role of AI in Healthcare Transformation",
       excerpt:
         "Artificial Intelligence is revolutionizing healthcare, from diagnostics to treatment planning. Learn how AI is making healthcare smarter.",
-        serviceId: "ai-in-healthcare",
+      serviceId: "ai-in-healthcare",
     },
     {
       id: 12,
       title: "Optimizing Healthcare Operations with Data Analytics",
       excerpt:
         "Data-driven insights are helping healthcare organizations operate more efficiently. Explore the impact of data analytics.",
-        serviceId: "data-analytics-in-healthcare",
+      serviceId: "data-analytics-in-healthcare",
     },
   ];
 
@@ -141,8 +141,9 @@ function Home() {
             Revolutionizing Healthcare with Comprehensive Solutions
           </h1>
           <p className="text-base sm:text-lg md:w-2/3 md:text-xl text-white mb-8 px-4 md:px-24">
-            At WINSOLTECH, we empower healthcare organizations with cutting-edge
-            technology solutions that enhance patient care, optimize clinical workflows, and drive operational excellence.
+            At WINSOLTECH, We provide healthcare organizations with advanced
+            technological solutions that improve patient care, streamline
+            clinical processes, and promote operational efficiency.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-8">
             <motion.div variants={linkVariants} whileHover="hover">
@@ -204,7 +205,9 @@ function Home() {
         transition={{ duration: 0.8 }}
       >
         <div className="container mx-auto px-6 lg:px-24 text-center">
-          <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">Get in Touch</h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 sm:mb-6">
+            Get in Touch
+          </h2>
           <p className="text-gray-300 mb-6">
             Ready to transform your healthcare operations? Contact us to learn
             how we can help.
