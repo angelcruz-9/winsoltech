@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Testimonials from "./testimonials";
+import ContactSection from "./contactSection";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -147,37 +149,7 @@ const Contact: React.FC = () => {
       </header>
 
       <main className="container max-w-5xl mx-auto py-10 px-4">
-        {/* Why Contact Us */}
-        <section className="mb-12 text-center">
-          <h2 className="text-3xl font-semibold mb-6">Why Contact Us?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="p-6 bg-white shadow-lg rounded-lg">
-              <h3 className="text-xl font-bold text-blue-600 mb-3">
-                Expert Support
-              </h3>
-              <p className="text-gray-600">
-                Get answers from our team of specialists and expert advisors.
-              </p>
-            </div>
-            <div className="p-6 bg-white shadow-lg rounded-lg">
-              <h3 className="text-xl font-bold text-blue-600 mb-3">
-                Fast Response
-              </h3>
-              <p className="text-gray-600">
-                We value your time. Expect quick and helpful responses.
-              </p>
-            </div>
-            <div className="p-6 bg-white shadow-lg rounded-lg">
-              <h3 className="text-xl font-bold text-blue-600 mb-3">
-                Customized Solutions
-              </h3>
-              <p className="text-gray-600">
-                Let us understand your needs and tailor solutions specifically
-                for you.
-              </p>
-            </div>
-          </div>
-        </section>
+        <ContactSection />
         {isFormVisible ? (
           <section className="mb-12 bg-white p-8 rounded-lg shadow-lg">
             <h2 className="text-2xl font-semibold text-center mb-6">
@@ -285,39 +257,7 @@ const Contact: React.FC = () => {
             </button>
           </section>
         )}
-
-        {/* Testimonials Section */}
-        <section className="mb-12 text-center">
-          <h2 className="text-3xl font-semibold mb-6">What Our Clients Say</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <blockquote className="p-6 bg-white shadow-lg rounded-lg">
-              <p className="text-gray-600">
-                "The team was incredibly responsive and went above and beyond to
-                help us."
-              </p>
-              <cite className="block mt-4 font-bold text-gray-800">
-                — Jane Doe
-              </cite>
-            </blockquote>
-            <blockquote className="p-6 bg-white shadow-lg rounded-lg">
-              <p className="text-gray-600">
-                "I received expert guidance that helped solve my problem
-                quickly."
-              </p>
-              <cite className="block mt-4 font-bold text-gray-800">
-                — John Smith
-              </cite>
-            </blockquote>
-            <blockquote className="p-6 bg-white shadow-lg rounded-lg">
-              <p className="text-gray-600">
-                "A fantastic experience! Highly recommend reaching out to them."
-              </p>
-              <cite className="block mt-4 font-bold text-gray-800">
-                — Emily Brown
-              </cite>
-            </blockquote>
-          </div>
-        </section>
+        <Testimonials />
       </main>
 
       <footer className="w-full bg-blue-700 text-white py-6 text-center">

@@ -141,9 +141,9 @@ function Home() {
             Revolutionizing Healthcare with Comprehensive Solutions
           </h1>
           <p className="text-base sm:text-lg md:w-2/3 md:text-xl text-white mb-8 px-4 md:px-24">
-            At WINSOLTECH, We provide healthcare organizations with advanced
-            technological solutions that improve patient care, streamline
-            clinical processes, and promote operational efficiency.
+            WINSOLTECH offers cutting-edge technology solutions to healthcare
+            organizations that enhance patient care, expedite clinical
+            procedures, and foster operational effectiveness.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-8">
             <motion.div variants={linkVariants} whileHover="hover">

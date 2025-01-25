@@ -1,21 +1,30 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { FaHeartbeat } from 'react-icons/fa';
+import React from "react";
+import { motion } from "framer-motion";
+import { FaHeartbeat } from "react-icons/fa";
 
 const aboutData = {
   title: (
     <>
-      At <strong className="text-white">WINSOLTECH</strong>, we are dedicated to revolutionizing healthcare services by providing innovative solutions that streamline patient management, optimize operational workflows, and ensure regulatory compliance. <br /> <br /> Our global delivery model, with a major hub in India, supports healthcare providers across specialties, enhancing both patient outcomes and organizational performance. <br /> <br /> Our team of healthcare experts is committed to driving efficiency and value, ensuring that our clients can focus on what truly matters—patient care.
+      At <strong className="text-white">WINSOLTECH</strong>, By offering
+      cutting-edge technologies that improve operational workflows, simplify
+      patient administration, and guarantee regulatory compliance, we are
+      committed to transforming healthcare services. <br /> <br /> With a
+      significant center in India, our global delivery strategy helps healthcare
+      professionals from a variety of specializations, improving patient
+      outcomes and organizational effectiveness. <br /> <br /> Our team of
+      healthcare professionals is dedicated to increasing value and efficiency
+      so that our clients may concentrate on patient care, which is what really
+      counts.
     </>
   ),
-  subTitle: 'OUR COMMITMENT TO HEALTHCARE EXCELLENCE',
+  subTitle: "OUR DEVOTION TO OUTSTANDING HEALTHCARE",
   subItems: [
-    'Tailored medical billing services to ensure financial accuracy and compliance',
-    'Optimized revenue cycle management with a focus on reducing administrative burden',
-    'HIPAA-compliant solutions to safeguard patient information and maintain data security',
-    'Healthcare IT solutions that streamline workflows and improve patient outcomes',
-    'Expert support for healthcare providers, ensuring uninterrupted service delivery',
-    'Proven strategies to enhance patient engagement and satisfaction',
+    "Customized medical billing services to guarantee compliance and financial accuracy",
+    "Revenue cycle management that is optimized with an emphasis on lowering administrative burden",
+    "HIPAA-compliant methods for preserving data security and protecting patient information",
+    "IT solutions for healthcare that optimize processes and enhance patient outcomes",
+    "Professional assistance for medical professionals, guaranteeing continuous service provision",
+    "Proven techniques to improve patient satisfaction and engagement",
   ],
 };
 
@@ -52,7 +61,9 @@ function About() {
             {aboutData.subItems.map((item, index) => (
               <li key={index} className="flex items-start space-x-4">
                 <FaHeartbeat className="text-blue-900 w-6 h-6 mt-1" />
-                <span className="text-base sm:text-lg text-gray-700">{item}</span>
+                <span className="text-base sm:text-lg text-gray-700">
+                  {item}
+                </span>
               </li>
             ))}
           </ul>
